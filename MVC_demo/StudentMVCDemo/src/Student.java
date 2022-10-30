@@ -34,7 +34,7 @@ public class Student {
     }
 
     public String getStudentInfo() {
-        return "SID: " + studentID + ", SName: " + studentName;
+        return "SID: " + studentID + ",\n SName: " + studentName;
     }
 
 }
