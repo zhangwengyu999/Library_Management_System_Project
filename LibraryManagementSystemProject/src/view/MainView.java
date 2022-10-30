@@ -7,11 +7,21 @@ public class MainView {
     public void searchPage() {
         // ...
     }
-    public void userRentPage() {
+    public void processUserRentPage() {
         // ...
     }
-    public void userReturnPage() {
+    public void processUserReturnPage() {
         // ...
     }
-    // ...
+    public void processUserWantPage() {
+        // ...
+    }
+    public void noticePage() {
+        // ...
+    }
+
+    public void analysisReportPage(){
+        // ...
+    }
+
 }

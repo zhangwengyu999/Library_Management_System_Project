@@ -17,15 +17,15 @@ public class WantBook {
         return user.getAccountID();
     }
 
-    // add user's want book
-    public void addWantISBN(String ISBN) {
-        // ...
-    }
-
-    // remove user's want book
-    public void removeWantISBN(String ISBN) {
-        // ...
-    }
+//    // add user's want book
+//    public void addWantISBN(String ISBN) {
+//        // ...
+//    }
+//
+//    // remove user's want book
+//    public void removeWantISBN(String ISBN) {
+//        // ...
+//    }
 
     public String getWantISBNs() {
         return this.wantISBN;

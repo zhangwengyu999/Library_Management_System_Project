@@ -4,17 +4,19 @@ public class Book {
     private String bookID;
     private String ISBN;
     private String bookName;
-    private String publisher;
+    private String author;
     private String category;
     private boolean[] status; // Length in 3, isRent, isAvailable, isPlaced, true for yes, false for no
     private String timeStamp;
 
 
+    public Book() {}
+
     public Book(String bookID, String ISBN, String bookName, String publisher, String category, String timeStamp){
         this.bookID = bookID;
         this.ISBN = ISBN;
         this.bookName = bookName;
-        this.publisher = publisher;
+        this.author = publisher;
         this.category = category;
         this.status = new boolean[]{false,true,false};
         this.timeStamp = timeStamp;
@@ -33,8 +35,8 @@ public class Book {
         return bookName;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getAuthor() {
+        return author;
     }
 
     public String getCategory() {
@@ -62,8 +64,8 @@ public class Book {
         this.bookName = inBookName;
     }
 
-    public void setPublisher(String inPublisher) {
-        this.publisher = inPublisher;
+    public void setPublisher(String inAuthor) {
+        this.author = inAuthor;
     }
 
     public void setCategory(String inCategory) {
@@ -93,7 +95,7 @@ public class Book {
         getBookName();
         getCategory();
         getStatus();
-        getPublisher();
+        getAuthor();
         getTimeStamp();
     }
 
