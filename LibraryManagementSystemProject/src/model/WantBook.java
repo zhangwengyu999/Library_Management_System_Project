@@ -1,42 +1,45 @@
 package model;
 
 public class WantBook {
-    private User user;
+    private String accountID;
     private String wantISBN;
     private int size;
-    private String wantDate;
 
-    public WantBook(User user, String InWantISBN, String InWantDate) {
-        this.user = user;
+    private int wantYear;
+    private int wantMonth;
+    private int wantDay;
+
+    public WantBook(String inAccountID, String InWantISBN, int inWantYear, int inWantMonth, int inWantDay) {
+        this.accountID = inAccountID;
         this.wantISBN = InWantISBN;
-        this.wantDate = InWantDate;
+        this.wantYear = inWantYear;
+        this.wantMonth = inWantMonth;
+        this.wantDay = inWantDay;
         this.size = 0;
     }
 
-    public String getUserAccountID() {
-        return user.getAccountID();
+
+    public void SetUserAccountID(String inAccountID) {
+        this.accountID = inAccountID;
     }
 
-//    // add user's want book
-//    public void addWantISBN(String ISBN) {
-//        // ...
-//    }
-//
-//    // remove user's want book
-//    public void removeWantISBN(String ISBN) {
-//        // ...
-//    }
+    public String getUserAccountID() {
+        return this.accountID;
+    }
+
 
     public String getWantISBNs() {
         return this.wantISBN;
     }
 
-    public String getWantDate() {
-        return this.wantDate;
+    public int[] getWantDate() {
+        return new int[]{wantYear,wantMonth,wantDay};
     }
 
-    public void setWantDate(String inWantDate) {
-        this.wantDate = inWantDate;
+    public void setWantDate(int[] inDate) {
+        this.wantYear = inDate[0];
+        this.wantMonth = inDate[1];
+        this.wantDay = inDate[2];
     }
 }
 

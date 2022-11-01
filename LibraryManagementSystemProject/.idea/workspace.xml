@@ -2,26 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/DayCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/database/SearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controller/DayCalculatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../First_Stage/draft.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../First_Stage/draft.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DayCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DayCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/WantBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WantBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
-    <list id="0f871b6f-6d5d-46de-a17a-ad75809d5390" name="Changes by davidjiang" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
-    </list>
-    <list id="4d06a7ed-82d3-4d75-8414-5844848bc8a3" name="Changes by HaleyKwok" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
-    </list>
-    <list id="f285b786-498c-406d-b6f0-ae9272ebfcac" name="Changes by lmh" comment="" />
-    <list id="051cfbe1-0146-47b4-bb56-39b7b18151c2" name="Changes by shanpooo" comment="">
+      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/WantBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WantBook.java" afterDir="false" />
     </list>
-    <list id="10c55c5f-67ce-4fa0-9489-062b043a99e2" name="Changes by Y" comment="" />
+    <list id="d9666931-53a6-4188-aedb-b2ff5c20d61a" name="Changes by HaleyKwok" comment="" />
+    <list id="1049bf78-d734-442d-93ed-dbab45121e1a" name="Changes by lmh" comment="" />
+    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="">
+      <change beforePath="$PROJECT_DIR$/src/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -41,9 +48,51 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/controller/MainController.java">
       <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="0f871b6f-6d5d-46de-a17a-ad75809d5390" />
-        <range start1="9" end1="14" start2="10" end2="160" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="15" end1="16" start2="161" end2="161" changelist="4d06a7ed-82d3-4d75-8414-5844848bc8a3" />
+        <range start1="10" end1="14" start2="10" end2="16" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="16" end1="17" start2="18" end2="31" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="18" end1="18" start2="32" end2="37" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="21" end1="23" start2="40" end2="41" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="24" end1="25" start2="42" end2="43" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="31" end1="33" start2="49" end2="50" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="37" end1="38" start2="54" end2="55" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="39" end1="40" start2="56" end2="57" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="46" end1="46" start2="63" end2="65" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="47" end1="48" start2="66" end2="66" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="50" end1="51" start2="68" end2="69" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="52" end1="53" start2="70" end2="71" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="59" end1="59" start2="77" end2="79" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="60" end1="61" start2="80" end2="80" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="63" end1="64" start2="82" end2="83" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="65" end1="66" start2="84" end2="85" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="72" end1="72" start2="91" end2="93" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="73" end1="74" start2="94" end2="94" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="75" end1="75" start2="95" end2="110" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="79" end1="81" start2="114" end2="116" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="83" end1="85" start2="118" end2="119" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="89" end1="91" start2="123" end2="125" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="93" end1="95" start2="127" end2="128" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="101" end1="106" start2="134" end2="157" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="107" end1="112" start2="158" end2="170" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="113" end1="116" start2="171" end2="171" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="117" end1="117" start2="172" end2="200" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="119" end1="126" start2="202" end2="208" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="129" end1="131" start2="211" end2="213" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="133" end1="135" start2="215" end2="228" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="136" end1="144" start2="229" end2="229" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="145" end1="146" start2="230" end2="231" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="149" end1="161" start2="234" end2="281" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/model/RentBook.java">
+      <ranges>
+        <range start1="3" end1="6" start2="3" end2="9" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="7" end1="11" start2="10" end2="16" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="13" end1="15" start2="18" end2="20" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="17" end1="19" start2="22" end2="26" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
+        <range start1="21" end1="23" start2="28" end2="30" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="25" end1="27" start2="32" end2="34" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="29" end1="31" start2="36" end2="38" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="33" end1="35" start2="40" end2="42" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
       </ranges>
     </file>
   </component>
@@ -61,14 +110,51 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="DayCalculatorTest.dayApartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.DayCalculatorTest" />
+      <option name="METHOD_NAME" value="dayApartTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DayCalculatorTest.dayApartTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -78,7 +164,8 @@
       <option name="presentableId" value="Default" />
       <updated>1667096303953</updated>
       <workItem from="1667096306559" duration="463000" />
-      <workItem from="1667096787230" duration="14142000" />
+      <workItem from="1667096787230" duration="14202000" />
+      <workItem from="1667302373793" duration="10577000" />
     </task>
     <servers />
   </component>

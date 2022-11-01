@@ -8,6 +8,7 @@ public class Book {
     private String category;
     private boolean[] status; // Length in 3, isRent, isAvailable, isPlaced, true for yes, false for no
     private String timeStamp;
+    private String location;
 
 
     public Book() {}

@@ -3,7 +3,7 @@ package controller;
 // Cite from COMP1011 A1 Q4 (2022).
 // s = start, e = end
 public class DayCalculator {
-    public int dayApart(int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
+    public static int dayApart(int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
         int daysOfMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         boolean isLeap = false;
 

@@ -1,37 +1,44 @@
 package model;
 
 public class RentBook {
-    private User user;
-    private Book book;
-    private String rentDate;
+    private String accountID;
+    private String bookID;
+//    private String rentDate;
+    private int rentYear;
+    private int rentMonth;
+    private int rentDay;
 
-    public RentBook(User user, Book book, String inRentDate) {
-        this.user = user;
-        this.book = book;
-        this.rentDate = inRentDate;
+    public RentBook(String inAccountID, String inBookID, int inYear, int inMonth, int inDay) {
+        this.accountID = inAccountID;
+        this.bookID = inBookID;
+        this.rentYear = inYear;
+        this.rentMonth = inMonth;
+        this.rentDay = inDay;
     }
 
-    public String getRentDate() {
-        return this.rentDate;
+    public int[] getRentDate() {
+        return new int[]{rentYear,rentMonth,rentDay};
     }
 
-    public void setRentDate(String inRentDate) {
-        this.rentDate = inRentDate;
+    public void setRentDate(int[] inRentDate) {
+        this.rentYear = inRentDate[0];
+        this.rentMonth = inRentDate[1];
+        this.rentDay = inRentDate[2];
     }
 
-    public void setBook(Book inBook) {
-        this.book = inBook;
+    public void setBook(String inBookID) {
+        this.bookID = inBookID;
     }
 
-    public void setUser(User inUser) {
-        this.user = inUser;
+    public void setUser(String inAccountID) {
+        this.accountID = inAccountID;
     }
 
-    public Book getBook() {
-        return this.book;
+    public String getBook() {
+        return this.bookID;
     }
 
-    public User getUser() {
-        return this.user;
+    public String getUser() {
+        return this.accountID;
     }
 }

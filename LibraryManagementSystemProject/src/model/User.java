@@ -4,6 +4,7 @@ public class User {
     private String accountID;
     private boolean accountStatus;
     private String noticeString;
+    private int reserveCount;
 
     public User(String accountID, boolean accountStatus, String noticeString) {
         this.accountID = accountID;
