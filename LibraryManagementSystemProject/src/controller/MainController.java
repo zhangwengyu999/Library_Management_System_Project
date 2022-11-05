@@ -1,19 +1,21 @@
 package controller;
 
-import model.Book;
-import model.RentBook;
-import model.User;
-import model.WantBook;
+import model.*;
 import view.MainView;
 import java.util.*;
 
 public class MainController {
-    //    private Book book;
-//    private User user;
+
     private List<Book> books;
     private List<User> users;
     private List<RentBook> rentBooks;
     private List<WantBook> wantBooks;
+
+    private HashMap<String,SQLModel> bookBuffer;
+    private HashMap<String,SQLModel> userBuffer;
+    private HashMap<String,List<SQLModel>> rentBookBuffer;
+    private HashMap<String,List<SQLModel>> wantBookBuffer;
+
     private MainView mainView;
     private final int MAX_RENT_DAY = 14;
     private final int MAX_PLACED_DAY = 7;
@@ -28,13 +30,59 @@ public class MainController {
         users = new ArrayList<>();
         rentBooks = new ArrayList<>();
         wantBooks = new ArrayList<>();
+
+        bookBuffer = new HashMap<>();
+        userBuffer = new HashMap<>();
+        rentBookBuffer = new HashMap<>();
+        wantBookBuffer = new HashMap<>();
     }
 
-//    public MainController(Book book,User user){
-//        this.book = book;
-//        this.user = user;
 
-//    }
+    // ----------------- Method for HashMap buffer -----------------
+
+
+    // Add item into buffer
+    public void addToBuffer(Book book) throws Exception {
+        book.pushToDatabase();
+        bookBuffer.put(book.getBookID(),book);
+    }
+
+    public void addToBuffer(User book) throws Exception {
+//        book.pushToDatabase();
+//        bookBuffer.put(book.getBookID(),book);
+    }
+
+    public void addToBuffer(RentBook book) throws Exception {
+        // ...
+    }
+
+    public void addToBuffer(WantBook book) throws Exception {
+        // ...
+    }
+
+
+    // Delete item from buffer
+    public void deleteFromBuffer(String bookID) throws Exception {
+        bookBuffer.get(bookID).deleteFromDatabase();
+        bookBuffer.remove(bookID);
+    }
+    // ...
+
+
+
+    // Search book
+    public List<SQLModel> searchBookOnName(String inName) throws Exception {
+        List<SQLModel> result = new ArrayList<>();
+        for (SQLModel book : bookBuffer.values()) {
+            if (((Book)book).getBookName().equals(inName)) {
+                result.add(book.pullFromDatabase());
+            }
+        }
+        return result;
+    }
+
+    // ----------------- Method for HashMap buffer End -----------------
+
 
     // ------------------ Search ------------------
 

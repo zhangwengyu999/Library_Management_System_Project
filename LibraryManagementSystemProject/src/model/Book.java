@@ -1,6 +1,11 @@
 package model;
 
-public class Book {
+import controller.database.DataBase;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Book implements SQLModel {
     private String bookID;
     private String ISBN;
     private String bookName;
@@ -90,18 +95,60 @@ public class Book {
     }
 
     // for JDBC
-    public void pullInfo(){
-        getISBN();
-        getBookID();
-        getBookName();
-        getCategory();
-        getStatus();
-        getAuthor();
-        getTimeStamp();
+    public SQLModel pullFromDatabase() throws SQLException {
+        DataBase db = DataBase.getDataBase();
+        ResultSet resultSet;
+        String sql = "SELECT * FROM BOOK WHERE bookID = " + bookID;
+
+        try{
+            resultSet = db.query(sql);
+            while (resultSet.next()){
+                bookID = resultSet.getInt("bookID")+ "";
+                ISBN = resultSet.getString("ISBN");
+                bookName = resultSet.getString("bookName");
+                author = resultSet.getString("author");
+                category = resultSet.getString("bookCategory");
+                //timeStamp = resultSet.getString("timeStamp");
+                //location = resultSet.getString("location");
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return this;
     }
 
     // for JDBC
-    public void pushInfo() {
+    public SQLModel pushToDatabase() throws SQLException {
+        DataBase db = DataBase.getDataBase();
+        if (db.contains("BOOK", "bookID", bookID)){
+            String sql = "UPDATE BOOK SET ISBN = " + ISBN + ", bookName = " + bookName + ", author = " + author + ", bookCategory = " + category + " WHERE bookID = " + bookID;
+            try {
+                db.update(sql);
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        else {
+            String sql = "INSERT INTO BOOK VALUES (" + bookID + ", " + ISBN + ", " + bookName + ", " + author + ", " + category + ", " + timeStamp + ", " + location + ")";
+            try {
+                db.inert(sql);
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return this;
+    }
 
+    public void deleteFromDatabase () throws SQLException {
+        DataBase db = DataBase.getDataBase();
+        String sql = "DELETE FROM BOOK WHERE bookID = " + bookID;
+        try {
+            db.query(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
