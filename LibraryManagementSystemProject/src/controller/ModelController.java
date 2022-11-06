@@ -10,11 +10,14 @@ public class ModelController {
     private List<User> users;
     private List<RentBook> rentBooks;
     private List<WantBook> wantBooks;
+    private List<PlacedBook> placedBooks;
 
     private HashMap<String, SQLModel> bookBuffer;
     private HashMap<String, SQLModel> userBuffer;
-    private HashMap<String, List<SQLModel>> rentBookBuffer;
-    private HashMap<String, List<SQLModel>> wantBookBuffer;
+    private HashMap<String, RentBook> rentBookBuffer; // Key: bookId, value: RendBook record
+    private HashMap<String, Queue<SQLModel>> wantBookBuffer; // key: ISBN, value: User Queue
+    private HashMap<String, SQLModel> placedBookBuffer;
+    // private HashMap<String, Queue<SQLModel>> wantBookBuffer2; // key: accountID, value: WantBook record
 
     private final int MAX_RENT_DAY = 14;
     private final int MAX_PLACED_DAY = 7;
@@ -28,131 +31,364 @@ public class ModelController {
         users = new ArrayList<>();
         rentBooks = new ArrayList<>();
         wantBooks = new ArrayList<>();
+        placedBooks = new ArrayList<>();
 
         bookBuffer = new HashMap<>();
         userBuffer = new HashMap<>();
         rentBookBuffer = new HashMap<>();
         wantBookBuffer = new HashMap<>();
+        placedBookBuffer = new HashMap<>();
     }
 
 
-    // ----------------- Method for HashMap buffer -----------------
+    // ----------------- Method on HashMap buffer -----------------
 
-
-    // Add item into buffer
-    public void addToBuffer(Book book) throws Exception {
+    /* Add Book record into bookBuffer and update to the DB
+     * @param book: the book to add
+     */
+    public void addRecord(Book book) throws Exception {
         book.pushToDatabase();
         bookBuffer.put(book.getBookID(), book);
     }
 
-    public void addToBuffer(User user) throws Exception {
-//        book.pushToDatabase();
-//        bookBuffer.put(book.getBookID(),book);
+    /* Add User record into userBuffer and update to the DB
+     * @param user: the uer to add
+     */
+    public void addRecord(User user) throws Exception {
+        user.pushToDatabase();
+        bookBuffer.put(user.getAccountID(),user);
     }
 
-    public void addToBuffer(RentBook book) throws Exception {
-        // ...
+    /* Add rentBook record into rentBookBuffer and update to the DB
+     * @param rentBook: the rentBook to add
+     */
+    public void addRecord(RentBook rentBook) throws Exception {
+        rentBook.pushToDatabase();
+        rentBookBuffer.put(rentBook.getBookID(),rentBook);
     }
 
-    public void addToBuffer(WantBook book) throws Exception {
-        // ...
+    /* Add wantBook record into wantBookBuffer and update to the DB
+     * @param wantBook: the wantBook to add
+     */
+    public void addRecord(WantBook wantBook) throws Exception {
+        wantBook.pushToDatabase();
+
+        Queue<SQLModel> queue; // Queue of User
+        if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
+            queue = wantBookBuffer.get(wantBook.getWantISBNs());
+        }
+        else {
+            queue = new LinkedList<>();
+        }
+        // add the user to the queue with that ISBN
+        queue.add(userBuffer.get(wantBook.getUserAccountID()));
+        wantBookBuffer.put(wantBook.getWantISBNs(), queue);
+    }
+
+    public void addRecord(PlacedBook placedBook) throws Exception {
+        placedBook.pushToDatabase();
+        rentBookBuffer.put(placedBook.getBookID(),placedBook);
+    }
+
+    // Delete book from buffer and DB
+    public void deleteBookRecord(String inBookID) throws Exception {
+        bookBuffer.get(inBookID).deleteFromDatabase();
+        bookBuffer.remove(inBookID);
+    }
+
+    // Delete user from buffer and DB
+    public void deleteUserRecord(String inAccountID) throws Exception {
+        userBuffer.get(inAccountID).deleteFromDatabase();
+        userBuffer.remove(inAccountID);
+    }
+
+    // Delete want book from buffer and DB
+    public void deleteWantBookRecord(String inISBN, String inAccountID) throws Exception {
+        Queue<SQLModel> queue = wantBookBuffer.get(inISBN);
+        Queue<SQLModel> out = new LinkedList<>();
+        SQLModel targetUser;
+        for (SQLModel user: queue){
+            if (((User)user).getAccountID().equals(inAccountID)) {
+                targetUser = user;
+                targetUser.deleteFromDatabase();
+            }
+            else{
+                out.add(user);
+            }
+        }
+        wantBookBuffer.put(inISBN, out);
+    }
+
+    // Delete rent book from buffer and DB
+    public void deleteRentBookRecord(String inBookID) throws Exception {
+        rentBookBuffer.get(inBookID).deleteFromDatabase();
+        rentBookBuffer.remove(inBookID);
     }
 
 
-    // Delete item from buffer
-    public void deleteFromBuffer(String bookID) throws Exception {
-        bookBuffer.get(bookID).deleteFromDatabase();
-        bookBuffer.remove(bookID);
-    }
-    // ...
+    // --------------- Search on Book ---------------
 
-
-    // Search book
-    public List<SQLModel> searchBookOnName(String inName) throws Exception {
-        List<SQLModel> result = new ArrayList<>();
+    /* Search book on name inName
+     * @param inName: the name of the book
+     * @return List<Book>: a list of book with the name inName
+     * @throws Exception: if the book is not found
+     * */
+    public List<Book> searchBookOnBookName(String inName) throws Exception {
+        List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getBookName().equals(inName)) {
-                result.add(book.pullFromDatabase());
+                result.add((Book)book.pullFromDatabase());
             }
+        }
+        if (result.size() == 0) {
+            throw new Exception("No book found!");
         }
         return result;
     }
 
-    // ----------------- Method for HashMap buffer End -----------------
+    /*
+     * Search book on ISBN
+     * @param inISBN: the ISBN of the book
+     * return List<Book>: a list of book with the id
+     */
+    public List<Book> searchBookOnBookID(String inBookID) throws Exception {
+        List<Book> result = new ArrayList<>();
+        if (bookBuffer.containsKey(inBookID)) {
+            result.add((Book)bookBuffer.get(inBookID));
+        }
+        if (result.size() == 0) {
+            throw new Exception("No book found!");
+        }
+        return result;
+    }
+    /*
+     * Search book on Author
+     * @param inAuthor: the author of the book
+     * return List<Book>: a list of book with the author
+     */
+    public List<Book> searchBookOnBookAuthor(String inAuthor) throws Exception {
+        List<Book> result = new ArrayList<>();
+        for (SQLModel book : bookBuffer.values()) {
+            if (((Book) book).getBookName().equals(inAuthor)) {
+                result.add((Book)book.pullFromDatabase());
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("No book found!");
+        }
+        return result;
+    }
+    /*
+     * Search book on category
+     * @param inCategory: the category of the book
+     * return List<Book>: a list of book with the category
+     */
+    public List<Book> searchBookOnBookCategory(String inCategory) throws Exception {
+        List<Book> result = new ArrayList<>();
+        for (SQLModel book : bookBuffer.values()) {
+            if (((Book) book).getBookName().equals(inCategory)) {
+                result.add((Book)book.pullFromDatabase());
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("No book found!");
+        }
+        return result;
+    }
+
+    /*
+     * Search book on ISBN
+     * @param inCategory: the ISBN of the book
+     * return List<Book>: a list of book with the category
+     */
+    public List<Book> searchBookOnBookISBN(String inISBN) throws Exception {
+        List<Book> result = new ArrayList<>();
+        for (SQLModel book : bookBuffer.values()) {
+            if (((Book) book).getISBN().equals(inISBN)) {
+                result.add((Book)book.pullFromDatabase());
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("No book found!");
+        }
+        return result;
+    }
+
+    // --------------- Search on Book End ---------------
+
+
+    // --------------- Search on Rent Book ---------------
+    public List<RentBook> searchRentBookOnBookID(String inBookID) throws Exception {
+        List<RentBook> result = new ArrayList<>();
+        if (rentBookBuffer.containsKey(inBookID)){
+            result.add((RentBook)rentBookBuffer.get(inBookID).pullFromDatabase());
+        }
+        else{
+            throw new Exception("This book is not rent by other.");
+        }
+        return result;
+    }
+
+    public List<RentBook> searchRentBookOnAccountID(String inAccountID) throws Exception {
+        List<RentBook> result = new ArrayList<>();
+        for (SQLModel rentBook : rentBookBuffer.values()) {
+            if (((RentBook) rentBook).getAccountID().equals(inAccountID)) {
+                result.add((RentBook) rentBook.pullFromDatabase());
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("This user didn't rent any books.");
+        }
+        return result;
+    }
+    // --------------- Search on Rent Book Part End---------------
+
+
+    // --------------- Search on Want Book ---------------
+    public List<String> searchWantBookOnAccountID(String inAccountID) throws Exception {
+        List<String> result = new ArrayList<>();
+        for (String isbn : wantBookBuffer.keySet()) {
+            if (wantBookBuffer.get(isbn).contains(userBuffer.get(inAccountID))) {
+                result.add(isbn);
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("This user didn't reserve any books.");
+        }
+        return result;
+    }
+
+    public List<User> searchUserFromWantBookOnISBN(String inISBN) throws Exception {
+        List<User> result = new ArrayList<>();
+        if (wantBookBuffer.containsKey(inISBN)){
+            for (SQLModel user : wantBookBuffer.get(inISBN)){
+                result.add((User)user.pullFromDatabase());
+            }
+        }
+        else{
+            throw new Exception("This book is not unwanted by any users.");
+        }
+        return result;
+    }
+    // --------------- Search on Want Book End ---------------
+
+
+    // --------------- Search on Placed Book ---------------
+    public List<PlacedBook> searchPlacedBookOnAccountID(String inAccountID) throws Exception {
+        List<PlacedBook> result = new ArrayList<>();
+        for (SQLModel placedBook : placedBookBuffer.values()) {
+            if (((PlacedBook) placedBook).getAccountID().equals(inAccountID)) {
+                result.add((PlacedBook) placedBook.pullFromDatabase());
+            }
+        }
+        if (result.size() == 0) {
+            throw new Exception("This user didn't placed any books.");
+        }
+        return result;
+    }
+
+    public List<PlacedBook> searchPlacedBookOnBookID(String inBookID) throws Exception {
+        List<PlacedBook> result = new ArrayList<>();
+        if (placedBookBuffer.containsKey(inBookID)){
+            result.add((PlacedBook) placedBookBuffer.get(inBookID).pullFromDatabase());
+        }
+        else{
+            throw new Exception("This book is not placed by any users.");
+        }
+        return result;
+    }
+    // --------------- Search on Want Book End ---------------
+
+
+    // --------------- Search on User ---------------
+    public List<User> searchUserOnAccountID(String inAccountID) throws Exception {
+        List<User> result = new ArrayList<>();
+        if (userBuffer.containsKey(inAccountID)){
+            result.add((User)userBuffer.get(inAccountID).pullFromDatabase());
+        }
+        else{
+            throw new Exception("No user found.");
+        }
+        return result;
+    }
+
+
+    // --------------- Search on User End ---------------
+
 
 
     // ------------------ Search ------------------
 
-    public List<Book> searchBookByNameFromBooks(String inName) {
-        List<Book> outBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getBookName().equals(inName)) {
-                outBooks.add(book);
-            }
-        }
-        if (!outBooks.isEmpty()) {
-            return outBooks;
-        } else {
-            return null;
-        }
-    }
+//    public List<Book> searchBookOnBookName(String inName) {
+//        List<Book> outBooks = new ArrayList<>();
+//        for (Book book : books) {
+//            if (book.getBookName().equals(inName)) {
+//                outBooks.add(book);
+//            }
+//        }
+//        if (!outBooks.isEmpty()) {
+//            return outBooks;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    public List<Book> searchBookByISBNFromBooks(String inISBN) {
-        List<Book> outBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getBookName().equals(inISBN)) {
-                outBooks.add(book);
-            }
-        }
-        if (!outBooks.isEmpty()) {
-            return outBooks;
-        } else {
-            return null;
-        }
-    }
+//    public List<Book> searchBookOnBookISBN(String inISBN) {
+//        List<Book> outBooks = new ArrayList<>();
+//        for (Book book : books) {
+//            if (book.getBookName().equals(inISBN)) {
+//                outBooks.add(book);
+//            }
+//        }
+//        if (!outBooks.isEmpty()) {
+//            return outBooks;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    public List<Book> searchBookByAuthorFromBooks(String inAuthor) {
-        List<Book> outBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getBookName().equals(inAuthor)) {
-                outBooks.add(book);
-            }
-        }
-        if (!outBooks.isEmpty()) {
-            return outBooks;
-        } else {
-            return null;
-        }
-    }
+//    public List<Book> searchBookOnBookAuthor(String inAuthor) {
+//        List<Book> outBooks = new ArrayList<>();
+//        for (Book book : books) {
+//            if (book.getBookName().equals(inAuthor)) {
+//                outBooks.add(book);
+//            }
+//        }
+//        if (!outBooks.isEmpty()) {
+//            return outBooks;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    public List<Book> searchBookByCategoryFromBooks(String inCategory) {
-        List<Book> outBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getBookName().equals(inCategory)) {
-                outBooks.add(book);
-            }
-        }
-        if (!outBooks.isEmpty()) {
-            return outBooks;
-        } else {
-            return null;
-        }
-    }
+//    public List<Book> searchBookOnBookCategory(String inCategory) {
+//        List<Book> outBooks = new ArrayList<>();
+//        for (Book book : books) {
+//            if (book.getBookName().equals(inCategory)) {
+//                outBooks.add(book);
+//            }
+//        }
+//        if (!outBooks.isEmpty()) {
+//            return outBooks;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    public List<Book> searchBookByBookID(String inBookID) {
-        List<Book> outBooks = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getBookName().equals(inBookID)) {
-                outBooks.add(book);
-                break;
-            }
-        }
-        if (!outBooks.isEmpty()) {
-            return outBooks;
-        } else {
-            return null;
-        }
-    }
+//    public List<Book> searchBookOnBookID(String inBookID) {
+//        List<Book> outBooks = new ArrayList<>();
+//        for (Book book : books) {
+//            if (book.getBookName().equals(inBookID)) {
+//                outBooks.add(book);
+//                break;
+//            }
+//        }
+//        if (!outBooks.isEmpty()) {
+//            return outBooks;
+//        } else {
+//            return null;
+//        }
+//    }
     // -----------------------------------------------
 
     // ----------------- de/activate User -----------------
@@ -180,9 +416,17 @@ public class ModelController {
     // Reserve a book with a ISBN whether it is available in the Library or not,
     // if not available, put the pair of <User ID, ISBN> object into wantBook array;
     // if available, tell the user to go to the library to find it.
-    public boolean reserveBook(String inISBN, String inAccountID) {
+    public boolean reserveBook(String inAccountID, String inISBN) {
         // The book is in the library for sure
-        List<Book> foundBooks = searchBookByISBNFromBooks(inISBN);
+        List<Book> foundBooks;
+        try{
+            foundBooks = searchBookOnBookISBN(inISBN);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
         boolean canBeReserved = true;
         for (Book book : foundBooks) {
             if (book.getStatus()[1]) {
@@ -208,7 +452,14 @@ public class ModelController {
     public void cancelReservedBook(String inISBN, User inUser) {
         // Only a reserved book can be cancelled
         if (!reserveBook(inISBN, inUser.getAccountID())) return;
-        List<Book> foundBooks = searchBookByISBNFromBooks(inISBN);
+        List<Book> foundBooks;
+        try{
+            foundBooks = searchBookOnBookISBN(inISBN);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         boolean isAllRent = true;
         for (Book book : foundBooks) {
             if (!book.getStatus()[0]) {
@@ -247,9 +498,9 @@ public class ModelController {
 
 //        ISBN = book.getISBN();
 //        status = book.getStatus();
-        if (searchBookByISBNFromBooks(ISBN) != null) {
+//        if (searchBookOnBookISBN(ISBN) != null) {
 
-        }
+//        }
     }
 
     public void generateAnalysisReport() {
@@ -273,48 +524,57 @@ public class ModelController {
 
 
     public void rentBookFromUser(String accountID, String bookID) {
-        List<Book> searchRentBooks = searchBookByBookID(bookID);
-        for (Book book : searchRentBooks) {
-            if (book.getStatus()[2]) {
-                RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
-                book.setRent(true);
-                book.setAvailable(false);
-                rentBooks.add(rentBook);
-                break;
-            } else {
-                System.out.println("This book is not available for rent.");
+        try{
+            List<Book> searchRentBooks = searchBookOnBookID(bookID);
+            for (Book book : searchRentBooks) {
+                if (book.getStatus()[2]) {
+                    RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
+                    book.setRent(true);
+                    book.setAvailable(false);
+                    rentBooks.add(rentBook);
+                    break;
+                } else {
+                    System.out.println("This book is not available for rent.");
+                }
             }
         }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void returnBookFromUser(String bookID) {
-        for (RentBook rentbook : rentBooks) {
-            if (bookID.equals(rentbook.getBook())) {
+        try{
+            for (RentBook rentbook : rentBooks) {
+                if (bookID.equals(rentbook.getBookID())) {
 //                if(accountID.equals(rentbook.getUser())){
-                List<Book> searchReturnBooks = searchBookByBookID(bookID);
-                for (Book book : searchReturnBooks) {
-                    for (WantBook wantbook : wantBooks) {
-                        book.setRent(false);
-                        List<Book> searchReturnBooks1 = searchBookByISBNFromBooks(bookID);
-                        for (Book book1 : searchReturnBooks1) {
-                            if (wantbook.getWantISBNs().equals(book1.getISBN())) {
-                                book.setPlaced(true);
-                                // notificationToUser();
-                                break;
-                            } else {
-                                book.setAvailable(true);
-                                break;
+                    List<Book> searchReturnBooks = searchBookOnBookID(bookID);
+                    for (Book book : searchReturnBooks) {
+                        for (WantBook wantbook : wantBooks) {
+                            book.setRent(false);
+                            List<Book> searchReturnBooks1 = searchBookOnBookISBN(bookID);
+                            for (Book book1 : searchReturnBooks1) {
+                                if (wantbook.getWantISBNs().equals(book1.getISBN())) {
+                                    book.setPlaced(true);
+                                    // notificationToUser();
+                                    break;
+                                } else {
+                                    book.setAvailable(true);
+                                    break;
+                                }
                             }
                         }
+                        rentBooks.remove(rentbook);
+                        break;
                     }
-                    rentBooks.remove(rentbook);
-                    break;
-                }
 //                }
-
+                }
             }
         }
-
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 

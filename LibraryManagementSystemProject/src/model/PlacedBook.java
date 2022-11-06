@@ -6,7 +6,7 @@ import exception.canNotHappenedException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PlacedBook extends RentBook{
+public class PlacedBook extends RentBook implements SQLModel {
     public PlacedBook(String inAccountID, String inBookID, int inYear, int inMonth, int inDay) {
         super(inAccountID, inBookID, inYear, inMonth,inDay);
     }

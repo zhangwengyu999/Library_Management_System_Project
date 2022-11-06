@@ -80,11 +80,11 @@ public class RentBook implements SQLModel {
         this.accountID = inAccountID;
     }
 
-    public String getBook() {
+    public String getBookID() {
         return this.bookID;
     }
 
-    public String getUser() {
+    public String getAccountID() {
         return this.accountID;
     }
 

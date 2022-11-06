@@ -66,6 +66,11 @@ public class Book implements SQLModel {
         return status;
     }
 
+    // show related information
+    public String showInfo(Book book){
+        return book.getISBN() + " " + book.getBookName() + " " + book.getAuthor() + " " + book.getCategory();
+    }
+
     // setter
     public void setISBN(String inISBN) {
         this.ISBN = inISBN;
