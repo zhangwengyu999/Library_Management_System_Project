@@ -1,22 +1,21 @@
 package controller;
 
 import model.*;
-import view.MainView;
+
 import java.util.*;
 
-public class MainController {
+public class ModelController {
 
     private List<Book> books;
     private List<User> users;
     private List<RentBook> rentBooks;
     private List<WantBook> wantBooks;
 
-    private HashMap<String,SQLModel> bookBuffer;
-    private HashMap<String,SQLModel> userBuffer;
-    private HashMap<String,List<SQLModel>> rentBookBuffer;
-    private HashMap<String,List<SQLModel>> wantBookBuffer;
+    private HashMap<String, SQLModel> bookBuffer;
+    private HashMap<String, SQLModel> userBuffer;
+    private HashMap<String, List<SQLModel>> rentBookBuffer;
+    private HashMap<String, List<SQLModel>> wantBookBuffer;
 
-    private MainView mainView;
     private final int MAX_RENT_DAY = 14;
     private final int MAX_PLACED_DAY = 7;
     private final int MAX_WANT_BOOK = 8;
@@ -24,8 +23,7 @@ public class MainController {
     private int month = 11;
     private int day = 1;
 
-    public MainController() {
-        mainView = new MainView();
+    public ModelController() {
         books = new ArrayList<>();
         users = new ArrayList<>();
         rentBooks = new ArrayList<>();
@@ -44,10 +42,10 @@ public class MainController {
     // Add item into buffer
     public void addToBuffer(Book book) throws Exception {
         book.pushToDatabase();
-        bookBuffer.put(book.getBookID(),book);
+        bookBuffer.put(book.getBookID(), book);
     }
 
-    public void addToBuffer(User book) throws Exception {
+    public void addToBuffer(User user) throws Exception {
 //        book.pushToDatabase();
 //        bookBuffer.put(book.getBookID(),book);
     }
@@ -69,12 +67,11 @@ public class MainController {
     // ...
 
 
-
     // Search book
     public List<SQLModel> searchBookOnName(String inName) throws Exception {
         List<SQLModel> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
-            if (((Book)book).getBookName().equals(inName)) {
+            if (((Book) book).getBookName().equals(inName)) {
                 result.add(book.pullFromDatabase());
             }
         }
@@ -210,7 +207,7 @@ public class MainController {
 
     public void cancelReservedBook(String inISBN, User inUser) {
         // Only a reserved book can be cancelled
-        if (!reserveBook(inISBN,inUser.getAccountID())) return;
+        if (!reserveBook(inISBN, inUser.getAccountID())) return;
         List<Book> foundBooks = searchBookByISBNFromBooks(inISBN);
         boolean isAllRent = true;
         for (Book book : foundBooks) {
@@ -226,8 +223,7 @@ public class MainController {
                     wantBooks.remove(wantBook);
                 }
             }
-        }
-        else {
+        } else {
             // cancel reserve of inUser and inISBN
             for (WantBook wantBook : wantBooks) {
                 if (inUser.getAccountID().equals(wantBook.getUserAccountID()) && inISBN.equals(wantBook.getWantISBNs())) {
@@ -238,18 +234,17 @@ public class MainController {
                     // if any, notify to the next user and update the day (+7)
 
 
-                }
-                else {
+                } else {
                     // if not, reset book status to isAvailable
                 }
             }
         }
         // 如果大于7天期限，强制取消
-        
+
     }
 
     public void notificationToUser(String ISBN, User inUser) {
-        
+
 //        ISBN = book.getISBN();
 //        status = book.getStatus();
         if (searchBookByISBNFromBooks(ISBN) != null) {
@@ -262,12 +257,12 @@ public class MainController {
     }
 
     public List<RentBook> getExpiredRentBookAndUser() {
-        List<RentBook> output= new ArrayList<>();
-        for (int i=0;i<rentBooks.size();i++) {
+        List<RentBook> output = new ArrayList<>();
+        for (int i = 0; i < rentBooks.size(); i++) {
             RentBook rentBook = rentBooks.get(i);
-            int year = rentBook.getRentDate()[0];
-            int month = rentBook.getRentDate()[1];
-            int day = rentBook.getRentDate()[2];
+            int year = rentBook.getDate()[0];
+            int month = rentBook.getDate()[1];
+            int day = rentBook.getDate()[2];
             int rentDays = DayCalculator.dayApart(year, month, day, this.year, this.month, this.day);
             if (rentDays > MAX_RENT_DAY) {
                 output.add(rentBook);
@@ -276,9 +271,6 @@ public class MainController {
         return output;
     }
 
-    public void inputListener() {
-
-    }
 
     public void rentBookFromUser(String accountID, String bookID) {
         List<Book> searchRentBooks = searchBookByBookID(bookID);
@@ -294,35 +286,67 @@ public class MainController {
             }
         }
     }
-    public void returnBookFromUser(String accountID, String bookID){
-        for (RentBook rentbook:rentBooks){
-            if (bookID.equals(rentbook.getBook())){
-                if(accountID.equals(rentbook.getUser())){
-                    List<Book> searchReturnBooks =searchBookByBookID(bookID);
-                    for (Book book: searchReturnBooks){
-                        for (WantBook wantbook: wantBooks){
-                            book.setRent(false);
-                            List<Book> searchReturnBooks1 = searchBookByISBNFromBooks(bookID);
-                            for (Book book1: searchReturnBooks1){
-                                if (wantbook.getWantISBNs().equals(book1.getISBN())){
-                                    book.setPlaced(true);
-                                    // notificationToUser();
-                                    break;
-                                }
-                                else{
-                                    book.setAvailable(true);
-                                    break;
-                                }
+
+    public void returnBookFromUser(String bookID) {
+        for (RentBook rentbook : rentBooks) {
+            if (bookID.equals(rentbook.getBook())) {
+//                if(accountID.equals(rentbook.getUser())){
+                List<Book> searchReturnBooks = searchBookByBookID(bookID);
+                for (Book book : searchReturnBooks) {
+                    for (WantBook wantbook : wantBooks) {
+                        book.setRent(false);
+                        List<Book> searchReturnBooks1 = searchBookByISBNFromBooks(bookID);
+                        for (Book book1 : searchReturnBooks1) {
+                            if (wantbook.getWantISBNs().equals(book1.getISBN())) {
+                                book.setPlaced(true);
+                                // notificationToUser();
+                                break;
+                            } else {
+                                book.setAvailable(true);
+                                break;
                             }
                         }
-                        rentBooks.remove(rentbook);
-                        break;
                     }
+                    rentBooks.remove(rentbook);
+                    break;
                 }
+//                }
 
             }
         }
 
     }
-
 }
+
+//    public void returnBookFromUser(String accountID, String bookID){
+//        for (RentBook rentbook:rentBooks){
+//            if (bookID.equals(rentbook.getBook())){
+////                if(accountID.equals(rentbook.getUser())){
+//                    List<Book> searchReturnBooks = searchBookByBookID(bookID);
+//                    for (Book book: searchReturnBooks){
+//                        for (WantBook wantbook: wantBooks){
+//                            book.setRent(false);
+//                            List<Book> searchReturnBooks1 = searchBookByISBNFromBooks(bookID);
+//                            for (Book book1: searchReturnBooks1){
+//                                if (wantbook.getWantISBNs().equals(book1.getISBN())){
+//                                    book.setPlaced(true);
+//                                    // notificationToUser();
+//                                    break;
+//                                }
+//                                else{
+//                                    book.setAvailable(true);
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                        rentBooks.remove(rentbook);
+//                        break;
+//                    }
+////                }
+//
+//            }
+//        }
+//
+//    }
+//
+//}
