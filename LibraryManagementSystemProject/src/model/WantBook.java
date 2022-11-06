@@ -1,6 +1,12 @@
 package model;
 
-public class WantBook {
+import controller.database.DataBase;
+import exception.canNotHappenedException;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class WantBook implements SQLModel {
     private String accountID;
     private String wantISBN;
     private int size;
@@ -32,14 +38,69 @@ public class WantBook {
         return this.wantISBN;
     }
 
-    public int[] getWantDate() {
-        return new int[]{wantYear,wantMonth,wantDay};
+    public String getWantDate() {
+        String yyyy = wantYear+"";
+        String mm = wantMonth<10?"0"+wantMonth:wantMonth+"";
+        String dd = wantDay<10?"0"+wantDay:wantDay+"";
+        return yyyy+"-"+mm+"-"+dd;
     }
 
     public void setWantDate(int[] inDate) {
         this.wantYear = inDate[0];
         this.wantMonth = inDate[1];
         this.wantDay = inDate[2];
+    }
+
+    public SQLModel pullFromDatabase() throws SQLException {
+        DataBase db = DataBase.getDataBase();
+        ResultSet resultSet;
+        ResultSet resultSet2;
+
+        String sql =
+                "SELECT bookID, ISBN, wantTime FROM WANT_BOOK WHERE ISBN =" + wantISBN+" AND accountID = " + accountID;
+        String sql2 = "SELECT COUNT(*) FROM WANT_BOOK WHERE accountID = " + accountID;
+        try{
+            resultSet = db.query(sql);
+            resultSet2 = db.query(sql2);
+            while (resultSet.next()){
+                wantISBN = resultSet.getString("ISBN");
+                accountID = resultSet.getString("accountID");
+                String temp = resultSet.getString("wantTime");
+                String[] temp2 = temp.split("-");
+                wantYear = Integer.parseInt(temp2[0]);
+                wantMonth = Integer.parseInt(temp2[1]);
+                wantDay = Integer.parseInt(temp2[2]);
+            }
+            while (resultSet2.next()){
+                size = resultSet2.getInt(1);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public SQLModel pushToDatabase() throws SQLException,canNotHappenedException {
+        DataBase db = DataBase.getDataBase();
+        if (db.contains("WANT_BOOK","ISBN","accountID",wantISBN,accountID)){
+            throw new canNotHappenedException();
+        }
+        else {
+            String sql = "INSERT INTO WANT_BOOK VALUE(" +accountID  + "," + wantISBN + "," + getWantDate()+")";
+            db.update(sql);
+        }
+        return this;
+    }
+
+    public void deleteFromDatabase () throws SQLException {
+        DataBase db = DataBase.getDataBase();
+        String sql = "DELETE FROM WANT_BOOK WHERE ISBN = " + wantISBN + " AND accountID = " + accountID;
+        try {
+            db.query(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
