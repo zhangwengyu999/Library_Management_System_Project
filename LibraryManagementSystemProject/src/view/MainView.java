@@ -16,23 +16,46 @@ public class MainView {
         System.out.println("Welcome to the Library Management System(LMS)!");
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [L] Manager Login");
-        System.out.println("- [E] Exit");
+        System.out.println("- [E] Exit System");
 
     }
     public void mainPage() {
         System.out.println("Welcome Manager [" + managerAccountID + "]");
         System.out.println("Please select the following options in [x]:");
-        System.out.println("- [A] Account Status");
-        System.out.println("- [S] Search a Book");
+        System.out.println("- [O] Operation on System");
+        System.out.println("- [U] User Operation");
         System.out.println("- [R] Return a Book");
-        System.out.println("- [E] Exit");
+        System.out.println("- [S] Search a Book");
+        System.out.println("- [E] Exit System");
     }
 
-    public void processInputOptionPage() {
+    public void DBAllOperationPage(){
+        System.out.println("Please select the following options in [x]:");
+        System.out.println("- [A] Add information");
+        System.out.println("- [D] Delete information");
+        System.out.println("- [Back] Back to previous page");
+    }
+
+    public void DBAddOperationPage(){
+        System.out.println("Please select the following options in [x]:");
+        System.out.println("- [B] Add Book");
+        System.out.println("- [U] Add User");
+        System.out.println("- [Back] Back to previous page");
+    }
+
+    public void DBDeleteOperationPage(){
+        System.out.println("Please select the following options in [x]:");
+        System.out.println("- [B] Delete Book");
+        System.out.println("- [U] Delete User");
+        System.out.println("- [Back] Back to previous page");
+
+    }
+
+    public void processUserOptionPage() {
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [R] Rent a Book");
         System.out.println("- [W] Want a Book");
-        System.out.println("- [B] Back to previous page");
+        System.out.println("- [Back] Back to previous page");
 
     }
 
@@ -42,7 +65,7 @@ public class MainView {
         System.out.println("- [N] Search a Book by Name");
         System.out.println("- [A] Search a Book by Author");
         System.out.println("- [C] Search a Book by Category");
-        System.out.println("- [B] Back to previous page");
+        System.out.println("- [Back] Back to previous page");
     }
 
     public void processUserRentPage() {
@@ -59,10 +82,6 @@ public class MainView {
         System.out.println("\"B\" Back to previous page");
         System.out.println("Please input ISBN:");
     }
-
-//    public void noticePage() {
-//        System.out.println("Successful!");
-//    }
 
     public void analysisReportPage() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
@@ -96,6 +115,50 @@ public class MainView {
     public void accountBannedPage() {
         System.out.println("Sorry, this account has been banned and cannot be operated");
     }
+    
+    public void linePage() {
+        System.out.println("----------------------------------------------------------------/n" +
+                "----------------------------------------------------------------");
+    }
 
+    public void successPage() {
+        System.out.println("Execute successfully");
+    }
+
+    public void unSuccessPage() {
+        System.out.println("Execute unsuccessfully");
+    }
+
+    public void addBookPage() {
+        System.out.println("Please enter bookID, ISBN, bookName, bookPublisher, bookCategory respectively:");
+    }
+
+    public void inputUserPage() {
+        System.out.println("Please enter accountID");
+    }
+
+    public void inputISBNPage() {
+        System.out.println("Please enter the book ISBN");
+    }
+
+    public void inputNamePage() {
+        System.out.println("Please enter the book name");
+    }
+
+    public void inputAuthorPage() {
+        System.out.println("Please enter the author name");
+    }
+
+    public void inputCategoryPage() {
+        System.out.println("Please enter the book category");
+    }
+
+    public void inputBookIDPage() {
+        System.out.println("Please enter the bookID");
+    }
+
+    public void enterPage() {
+        System.out.println("Please enter related information");
+    }
 
 }
