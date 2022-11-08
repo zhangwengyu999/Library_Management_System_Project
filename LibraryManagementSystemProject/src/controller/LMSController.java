@@ -5,7 +5,7 @@ import model.Book;
 import view.MainView;
 import java.util.Scanner;
 
-public class CentralController {
+public class LMSController {
     private static final ModelController modelController = new ModelController();
     private static final MainView mainView = new MainView();
 //    private static final System.console() System.console() = System.System.console()();

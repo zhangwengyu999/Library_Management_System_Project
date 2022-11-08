@@ -3,34 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/view/MainView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/view/MainView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlacedBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlacedBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
-    <list id="a8525da9-a4f0-4037-bfe9-f160159486c8" name="Changes by davidjiang" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/DataProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
-    <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
-    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="">
+      <change beforePath="$PROJECT_DIR$/src/controller/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
     </list>
-    <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="">
-      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
-    </list>
+    <list id="a8525da9-a4f0-4037-bfe9-f160159486c8" name="Changes by davidjiang" comment="" />
+    <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
+    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="" />
+    <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,93 +28,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/view/MainView.java">
-      <ranges>
-        <range start1="1" end1="3" start2="1" end2="1" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="4" end1="5" start2="2" end2="3" changelist="a8525da9-a4f0-4037-bfe9-f160159486c8" />
-        <range start1="7" end1="8" start2="5" end2="5" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="9" end1="9" start2="6" end2="13" changelist="a8525da9-a4f0-4037-bfe9-f160159486c8" />
-        <range start1="15" end1="16" start2="19" end2="20" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="21" end1="21" start2="25" end2="26" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="22" end1="26" start2="27" end2="28" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="28" end1="29" start2="30" end2="31" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="30" end1="31" start2="32" end2="32" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="34" end1="45" start2="35" end2="36" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="48" end1="49" start2="39" end2="45" changelist="a8525da9-a4f0-4037-bfe9-f160159486c8" />
-        <range start1="50" end1="50" start2="46" end2="47" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="51" end1="52" start2="48" end2="50" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="53" end1="53" start2="51" end2="52" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="54" end1="55" start2="53" end2="55" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="56" end1="56" start2="56" end2="57" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="57" end1="58" start2="58" end2="60" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="59" end1="62" start2="61" end2="65" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="63" end1="65" start2="66" end2="89" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="67" end1="67" start2="91" end2="100" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/controller/ModelController.java">
-      <ranges>
-        <range start1="12" end1="12" start2="12" end2="13" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="15" end1="17" start2="16" end2="20" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="30" end1="30" start2="33" end2="34" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="35" end1="35" start2="39" end2="40" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="38" end1="39" start2="43" end2="44" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="40" end1="43" start2="45" end2="49" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="47" end1="50" start2="53" end2="59" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="52" end1="54" start2="61" end2="67" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="56" end1="58" start2="69" end2="85" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="60" end1="60" start2="87" end2="91" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="61" end1="65" start2="92" end2="96" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="66" end1="67" start2="97" end2="103" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="68" end1="68" start2="104" end2="126" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="69" end1="72" start2="127" end2="137" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="74" end1="75" start2="139" end2="208" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="76" end1="76" start2="209" end2="212" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="80" end1="81" start2="216" end2="217" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="83" end1="84" start2="219" end2="230" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="85" end1="90" start2="231" end2="236" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="92" end1="96" start2="238" end2="240" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="97" end1="97" start2="241" end2="242" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="98" end1="98" start2="243" end2="244" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="99" end1="104" start2="245" end2="252" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="106" end1="110" start2="254" end2="256" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="111" end1="111" start2="257" end2="258" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="113" end1="118" start2="260" end2="265" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="120" end1="124" start2="267" end2="269" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="125" end1="125" start2="270" end2="271" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="126" end1="126" start2="272" end2="273" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="127" end1="132" start2="274" end2="281" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="134" end1="138" start2="283" end2="285" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="139" end1="139" start2="286" end2="287" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="141" end1="148" start2="289" end2="307" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="149" end1="153" start2="308" end2="310" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="154" end1="154" start2="311" end2="312" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="155" end1="155" start2="313" end2="391" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="182" end1="183" start2="418" end2="419" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="184" end1="185" start2="420" end2="429" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="210" end1="211" start2="454" end2="462" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="249" end1="250" start2="500" end2="501" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="251" end1="252" start2="502" end2="503" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="275" end1="286" start2="526" end2="542" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="287" end1="287" start2="543" end2="544" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="290" end1="292" start2="547" end2="550" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="293" end1="312" start2="551" end2="570" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="313" end1="314" start2="571" end2="572" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="316" end1="317" start2="574" end2="577" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/controller/CentralController.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="4" end1="6" start2="5" end2="6" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="10" end1="10" start2="10" end2="11" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="12" end1="14" start2="13" end2="15" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="17" end1="47" start2="18" end2="124" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="48" end1="49" start2="125" end2="125" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -147,28 +39,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="view" />
@@ -180,9 +72,9 @@
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CentralController">
-    <configuration name="CentralController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.CentralController" />
+  <component name="RunManager" selected="Application.LMSController">
+    <configuration name="LMSController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.LMSController" />
       <module name="LibraryManagementSystemProject" />
       <extension name="coverage">
         <pattern>
@@ -212,7 +104,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CentralController" />
+        <item itemvalue="Application.LMSController" />
         <item itemvalue="JUnit.DayCalculatorTest.dayApartTest" />
       </list>
     </recent_temporary>
@@ -230,7 +122,8 @@
       <workItem from="1667302373793" duration="10577000" />
       <workItem from="1667388708884" duration="3899000" />
       <workItem from="1667630639880" duration="8036000" />
-      <workItem from="1667694974044" duration="20365000" />
+      <workItem from="1667694974044" duration="20490000" />
+      <workItem from="1667884523154" duration="5821000" />
     </task>
     <servers />
   </component>
