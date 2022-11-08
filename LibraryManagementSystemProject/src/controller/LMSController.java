@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class LMSController {
     private static final ModelController modelController = new ModelController();
     private static final MainView mainView = new MainView();
-//    private static final System.console() System.console() = System.System.console()();
 
     public static String inputListener() {
         Scanner scanner = new Scanner(System.in);
@@ -18,34 +17,124 @@ public class LMSController {
     public static void main(String[] args) {
         while(true) {
             mainView.welcomePage();
-            String input =inputListener();
+            mainView.linePage();
+            String input = inputListener();
             if (input.equals("L")) {
                 while (true) {
                     mainView.mainPage();
+                    mainView.linePage();
                     String mainOption = inputListener();
-                    if (mainOption.equals("A")) { // account status for search
-                        System.out.println("Please input User Account ID:");
+                    if (mainOption.equals("O")) {
+                        mainView.DBAllOperationPage();
+                        mainView.linePage();
+                        while (true) {
+                            if (inputListener().equals("A")) {
+                                mainView.DBAddOperationPage();
+                                mainView.linePage();
+                                while (true) {
+                                    if (inputListener().equals("B")) {
+                                        mainView.addBookPage();
+                                        mainView.enterPage();
+                                        String bookID = inputListener();
+                                        String bookISBN = inputListener();
+                                        String bookName = inputListener();
+                                        String bookPublisher = inputListener();
+                                        String bookCategory = inputListener();
+//                                        int year = modelController.getYear();
+//                                        int month = modelController.getMonth();
+//                                        int day = modelController.getDay();
+                                        Book book = new Book(bookID, bookISBN, bookName, bookPublisher, bookCategory);
+
+                                        if (modelController.addRecord(book)) {
+                                            mainView.successPage();
+                                        }
+                                        else {
+                                            mainView.unSuccessPage();
+                                        }
+                                    } else if (inputListener().equals("U")) {
+                                        mainView.inputUserPage();
+                                        String accountID = inputListener();
+                                        User user = new User(accountID,true,"");
+                                        if (modelController.addRecord(user)) {
+                                            mainView.successPage();
+                                        } else {
+                                            mainView.unSuccessPage();
+                                        }
+                                    } else if (inputListener().equals("Back")) {
+                                        break;
+                                    } else {
+                                        mainView.errorPage();
+                                    }
+                                }
+                            } else if (inputListener().equals("D")) {
+                                mainView.DBDeleteOperationPage();
+                                mainView.linePage();
+                                while (true) {
+                                    if (inputListener().equals("B")){
+                                        mainView.inputBookIDPage();
+                                        mainView.enterPage();
+                                        String bookID = inputListener();
+                                        if (modelController.deleteBookRecord(bookID)) {
+                                            mainView.successPage();
+                                        }
+                                        else {
+                                            mainView.unSuccessPage();
+                                        }
+                                    } else if (inputListener().equals("U")) {
+                                        mainView.inputUserPage();
+                                        mainView.enterPage();
+                                        String accountID = inputListener();
+                                        if (modelController.deleteUserRecord(accountID)) {
+                                            mainView.successPage();
+                                        }
+                                        else {
+                                            mainView.unSuccessPage();
+                                        }
+                                    } else if (inputListener().equals("Back")) {
+                                        break;
+                                    } else {
+                                        mainView.errorPage();
+                                    }
+                                }
+                            } else if (inputListener().equals("Back")) {
+                                break;
+                            } else {
+                                mainView.errorPage();
+                            }
+                        }
+                    }
+                    else if (mainOption.equals("U")) { // User operation
+                        mainView.inputUserPage();
                         String userAccountID = inputListener();
                         User user = new User(userAccountID);
                         if (user.getAccountStatus()) {
                             while (true) {
-                                mainView.processInputOptionPage();
+                                mainView.processUserOptionPage();
+                                mainView.linePage();
                                 String inputOption = inputListener();
                                 if (inputOption.equals("R")) {
                                     while (true) {
                                         mainView.processUserRentPage();
+                                        mainView.linePage();
                                         String inBookID = inputListener();
-                                        if (inBookID.equals("B")) break; // back to previous
-                                        modelController.rentBookFromUser(userAccountID, inBookID);
+                                        if (inBookID.equals("Back")) break; // back to previous
+                                        if (modelController.rentBookFromUser(userAccountID, inBookID)) { //used rentBookFromUser return boolean
+                                            mainView.successPage();
+                                        } else {
+                                            mainView.unSuccessPage();
+                                        }
                                     }
                                 } else if (inputOption.equals("W")) {
                                     while (true) {
                                         mainView.processUserWantPage();
                                         String inISBN = inputListener();
-                                        if (inISBN.equals("B")) break; // back to previous
-                                        modelController.reserveBook(userAccountID, inISBN);
+                                        if (inISBN.equals("Back")) break; // back to previous
+                                        if(modelController.reserveBook(userAccountID, inISBN)){
+                                            mainView.successPage();
+                                        }
+                                        else{mainView.unSuccessPage();}
                                     }
-                                } else if (inputOption.equals("B")) { // back to previous
+                                } else if (inputOption.equals("Back")) { // back to previous
                                     break;
                                 } else {
                                     mainView.errorPage();
@@ -57,9 +146,10 @@ public class LMSController {
                     } else if (mainOption.equals("S")) { // search
                         while (true) {
                             mainView.processUserSearchPage();
+                            mainView.linePage();
                             String searchOption = inputListener();
                             if (searchOption.equals("I")) { // ISBN
-                                System.out.println("Please enter the book ISBN:");
+                                mainView.inputISBNPage();
                                 String inISBN = inputListener();
                                 try {
                                     for (Book book : modelController.searchBookOnBookISBN(inISBN)) {
@@ -69,7 +159,7 @@ public class LMSController {
                                     e.printStackTrace();
                                 }
                             } else if (searchOption.equals("N")) { // name
-                                System.out.println("Please enter the book Name:");
+                                mainView.inputNamePage();
                                 String inName = inputListener();
                                 try {
                                     for (Book book : modelController.searchBookOnBookName(inName)) {
@@ -79,7 +169,7 @@ public class LMSController {
                                     e.printStackTrace();
                                 }
                             } else if (searchOption.equals("A")) { // author
-                                System.out.println("Please enter the book Author Name:");
+                                mainView.inputAuthorPage();
                                 String inAuthor = inputListener();
                                 try {
                                     for (Book book : modelController.searchBookOnBookAuthor(inAuthor)) {
@@ -89,7 +179,7 @@ public class LMSController {
                                     e.printStackTrace();
                                 }
                             } else if (searchOption.equals("C")) { // category
-                                System.out.println("Please enter the book Category:");
+                                mainView.inputCategoryPage();
                                 String inCategory = inputListener();
                                 try {
                                     for (Book book : modelController.searchBookOnBookCategory(inCategory)) {
@@ -98,7 +188,7 @@ public class LMSController {
                                 } catch (Exception e){
                                     e.printStackTrace();
                                 }
-                            } else if (searchOption.equals("B")) { // back to previous
+                            } else if (searchOption.equals("Back")) { // back to previous
                                 break;
                             } else {
                                 mainView.errorPage();
@@ -107,11 +197,16 @@ public class LMSController {
                     } else if (mainOption.equals("R")) { // return book
                         while (true) {
                             mainView.processUserReturnPage();
+                            mainView.linePage();
                             String inBookID = inputListener();
-                            if (inBookID.equals("B")) break; // back to previous
-                            modelController.returnBookFromUser(inBookID);
+                            if (inBookID.equals("Back")) break; // back to previous
+                            if (modelController.returnBookFromUser(inBookID)) {
+                                mainView.successPage();
+                            } else {
+                                mainView.unSuccessPage();
+                            }
                         }
-                    } else if (mainOption.equals("E")) { // exit
+                    } else if (mainOption.equals("B")) { // back to previous
                         break;
                     } else {
                         mainView.errorPage();

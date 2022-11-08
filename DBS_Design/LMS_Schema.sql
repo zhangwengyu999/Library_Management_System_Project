@@ -31,6 +31,7 @@ CREATE TABLE WANT_BOOK(
 CREATE TABLE HAS_RENT(
     accountID NUMBER(10) NOT NULL,
     bookID NUMBER(15) NOT NULL, 
+    rentTime VARCHAR(10) NOT NULL,
     PRIMARY KEY (bookID,accountID),
     FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
@@ -39,19 +40,20 @@ CREATE TABLE HAS_RENT(
 CREATE TABLE HAS_PLACED(
     accountID NUMBER(10) NOT NULL,
     bookID NUMBER(15) NOT NULL, 
+    placeTime VARCHAR(10) NOT NULL,
     PRIMARY KEY (bookID,accountID),
     FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
 );
 
-CREATE TABLE BOOK_STATUS(
-    bookID NUMBER(15) NOT NULL, 
-    statusTime VARCHAR(10) NOT NULL,
-    isRent CHAR(1) CHECK (isRent in ( 'T', 'F' )) NOT NULL,
-    isAvailable CHAR(1) CHECK (isAvailable in ( 'T', 'F' )) NOT NULL,
-    isPlaced CHAR(1) CHECK (isPlaced in ( 'T', 'F' )) NOT NULL,
-    FOREIGN KEY (bookID) REFERENCES BOOK(bookID)
-);
+-- CREATE TABLE BOOK_STATUS(
+--     bookID NUMBER(15) NOT NULL, 
+--     statusTime VARCHAR(10) NOT NULL,
+--     isRent CHAR(1) CHECK (isRent in ( 'T', 'F' )) NOT NULL,
+--     isAvailable CHAR(1) CHECK (isAvailable in ( 'T', 'F' )) NOT NULL,
+--     isPlaced CHAR(1) CHECK (isPlaced in ( 'T', 'F' )) NOT NULL,
+--     FOREIGN KEY (bookID) REFERENCES BOOK(bookID)
+-- );
 
 CREATE TABLE USER_NOTIFICATION(
     noticeID NUMBER(10) NOT NULL,

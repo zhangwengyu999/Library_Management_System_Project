@@ -11,28 +11,29 @@ public class Book implements SQLModel {
     private String bookName;
     private String author;
     private String category;
-    private boolean[] status; // Length in 3, isRent, isAvailable, isPlaced, true for yes, false for no
-    private String timeStamp;
+//    private boolean[] status; // Length in 3, isRent, isAvailable, isPlaced, true for yes, false for no
+//    private String timeStamp;
     private String location;
-    private int year = 2022;
-    private int month = 11;
-    private int day = 1;
+//    private int year = 2022;
+//    private int month = 11;
+//    private int day = 1;
 
 
     public Book() {}
 
-    public Book(String bookID, String ISBN, String bookName, String publisher, String category, String timeStamp, int inYear, int inMonth, int inDay){
+    public Book(String bookID, String ISBN, String bookName, String publisher, String category) {
         this.bookID = bookID;
         this.ISBN = ISBN;
         this.bookName = bookName;
         this.author = publisher;
         this.category = category;
-        this.status = new boolean[]{false,true,false};
-        this.timeStamp = timeStamp;
-        this.year = inYear;
-        this.month = inMonth;
-        this.day = inDay;
+//        this.status = new boolean[]{false,true,false};
+//        this.year = inYear;
+//        this.month = inMonth;
+//        this.day = inDay;
     }
+
+
 
     // getter
     public String getISBN() {
@@ -55,16 +56,16 @@ public class Book implements SQLModel {
         return category;
     }
 
-    public String getTime() {
-        String yyyy = year+"";
-        String mm = month<10?"0"+month:month+"";
-        String dd = day<10?"0"+day:day+"";
-        return yyyy+"-"+mm+"-"+dd;
-    }
+//    public String getTime() {
+//        String yyyy = year+"";
+//        String mm = month<10?"0"+month:month+"";
+//        String dd = day<10?"0"+day:day+"";
+//        return yyyy+"-"+mm+"-"+dd;
+//    }
 
-    public boolean[] getStatus() {
-        return status;
-    }
+//    public boolean[] getStatus() {
+//        return status;
+//    }
 
     // show related information
     public String showInfo(Book book){
@@ -92,29 +93,18 @@ public class Book implements SQLModel {
         this.category = inCategory;
     }
 
-    public void setTimeStamp(String inTimeStamp) {
-        this.timeStamp = inTimeStamp;
-    }
+//    public void setTimeStamp(String inTimeStamp) {
+//        this.timeStamp = inTimeStamp;
+//    }
 
-    public void setRent(boolean inRent) {
-        this.status[0] = inRent;
-    }
-
-    public void setAvailable(boolean inAvailable) {
-        this.status[1] = inAvailable;
-    }
-
-    public void setPlaced(boolean inPlaced) {
-        this.status[2] = inPlaced;
-    }
 
     // for JDBC
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
         String sql =
-                    "SELECT b.bookID, b.ISBN, b.bookName, b.author, b.bookCategory, s.isRent, s.isAvailable, s.isPlaced" +
-                    "FROM BOOK b NATURE JOIN BOOK_STATUS s WHERE b.bookID =" + bookID;
+                    "SELECT bookID, ISBN, bookName, author, bookCategory" +
+                    "FROM BOOK WHERE bookID =" + bookID;
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
@@ -123,9 +113,6 @@ public class Book implements SQLModel {
                 bookName = resultSet.getString("bookName");
                 author = resultSet.getString("author");
                 category = resultSet.getString("bookCategory");
-                status[0] = resultSet.getString("isRent").equals("T");
-                status[1] = resultSet.getString("isAvailable").equals("T");
-                status[2] = resultSet.getString("isPlaced").equals("T");
             }
         }
         catch (SQLException e){
@@ -141,12 +128,12 @@ public class Book implements SQLModel {
             String sql = "UPDATE BOOK SET ISBN = " + ISBN + ", bookName = " + bookName + ", author = " + author +
                     ", bookCategory = " + category +
                         " WHERE bookID = " + bookID;
-            String sql2 = "UPDATE BOOK_STATUS SET isRent = " + (status[0]?"T":"F") +
-                        ", isAvailable = " + (status[1]?"T":"F") + ", isPlaced = " + (status[2]?"T":"F") +
-                        " WHERE bookID = " + bookID;
+//            String sql2 = "UPDATE BOOK_STATUS SET isRent = " + (status[0]?"T":"F") +
+//                        ", isAvailable = " + (status[1]?"T":"F") + ", isPlaced = " + (status[2]?"T":"F") +
+//                        " WHERE bookID = " + bookID;
             try {
                 db.update(sql);
-                db.update(sql2);
+//                db.update(sql2);
             }
             catch (SQLException e){
                 e.printStackTrace();
@@ -155,11 +142,11 @@ public class Book implements SQLModel {
         else {
             String sql = "INSERT INTO BOOK VALUES (" + bookID + ", " + ISBN + ", " + bookName + ", " + author + ", "
                         + category +")";
-            String sql2 = "INSERT INTO BOOK_STATUS VALUES (" + bookID + ", " +getTime() + ", "+ (status[0]?"T":"F") +
-                        ", " + (status[1]?"T":"F") + ", " + (status[2]?"T":"F") + ")";
+//            String sql2 = "INSERT INTO BOOK_STATUS VALUES (" + bookID + ", " +getTime() + ", "+ (status[0]?"T":"F") +
+//                        ", " + (status[1]?"T":"F") + ", " + (status[2]?"T":"F") + ")";
             try {
                 db.insert(sql);
-                db.insert(sql2);
+//                db.insert(sql2);
             }
             catch (SQLException e){
                 e.printStackTrace();

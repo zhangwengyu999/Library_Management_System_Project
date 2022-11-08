@@ -20,8 +20,15 @@ public class RentBook implements SQLModel {
         this.day = inDay;
     }
 
-    public int[] getDate() {
-        return new int[]{year, month, day};
+    public String getDate() {
+        String yyyy = year+"";
+        String mm = month<10?"0"+month:month+"";
+        String dd = day<10?"0"+day:day+"";
+        return yyyy+"-"+mm+"-"+dd;
+    }
+
+    public int[] getDateArray() {
+        return new int[]{year,month,day};
     }
 
     public void setDate(int[] inRentDate) {
@@ -39,6 +46,11 @@ public class RentBook implements SQLModel {
             while (resultSet.next()) {
                 bookID = resultSet.getString("bookID");
                 accountID = resultSet.getString("accountID");
+                String temp = resultSet.getString("rentTime");
+                String[] temp2 = temp.split("-");
+                year = Integer.parseInt(temp2[0]);
+                month = Integer.parseInt(temp2[1]);
+                day = Integer.parseInt(temp2[2]);
             }
         }
         catch (SQLException e){
@@ -57,7 +69,7 @@ public class RentBook implements SQLModel {
             }
         }
         else {
-            String sql = "INSERT INTO HAS_RENT VALUE(" + bookID + "," + accountID + ")";
+            String sql = "INSERT INTO HAS_RENT VALUE(" + bookID + "," + accountID + ","+ getDate()+")";
             db.update(sql);
         }
         return this;
@@ -87,6 +99,7 @@ public class RentBook implements SQLModel {
     public String getAccountID() {
         return this.accountID;
     }
+
 
 //    public SQLModel pullFromDataBase() throws SQLException {
 //        DataBase db = DataBase.getDataBase();

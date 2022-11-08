@@ -10,6 +10,7 @@ public class User implements SQLModel {
     private boolean accountStatus;
     private String noticeString;
     private int reserveCount;
+    private final int MAX_WANT_BOOK = 8;
     
     public User(String accountID) {
         this.accountID = accountID;
@@ -42,6 +43,26 @@ public class User implements SQLModel {
     }
 
     public void setNoticeString(String noticeString){this.noticeString = noticeString;}
+
+    public int getReserveCount() {
+        return reserveCount;
+    }
+
+    public boolean increaseReserveCount() {
+        if (reserveCount < MAX_WANT_BOOK) {
+            reserveCount++;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean decreaseReserveCount() {
+        if (reserveCount > 0) {
+            reserveCount--;
+            return true;
+        }
+        return false;
+    }
 
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
