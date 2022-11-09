@@ -1,6 +1,7 @@
 package controller.database;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
@@ -58,12 +59,25 @@ class DataBaseTest {
         
     }
 
-    @Test
-    void initializeLMSTable() {
+    @Disabled
+    void createUserTable() {
         String createBookTable = "CREATE TABLE USER_ACCOUNT(" +
                                 "accountID NUMBER(10) NOT NULL," +
                                 "accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL," +
                                 "PRIMARY KEY (accountID))";
+        try {
+            db.query(createBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Disabled
+    void createBookTable() {
+        String createBookTable = "CREATE TABLE BOOK(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL," +
+                "PRIMARY KEY (accountID))";
         try {
             db.query(createBookTable);
         }catch (Exception e) {
