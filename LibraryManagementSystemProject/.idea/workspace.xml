@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Library_Management_System_Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MVC_demo/MVC_demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ojdbc81.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/SearchController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/database/DataBaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/database/DataBaseTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update" />
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="">
       <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
@@ -191,8 +176,16 @@
       <workItem from="1667884523154" duration="5952000" />
       <workItem from="1667905583920" duration="13115000" />
       <workItem from="1667963298078" duration="819000" />
-      <workItem from="1667994269163" duration="1503000" />
+      <workItem from="1667994269163" duration="1560000" />
     </task>
+    <task id="LOCAL-00001" summary="refresh update">
+      <created>1667995898748</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667995898748</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +204,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="refresh update" />
+    <option name="LAST_COMMIT_MESSAGE" value="refresh update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

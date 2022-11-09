@@ -47,6 +47,7 @@ public class ModelController {
     public void refreshBuffers() {
         DataBase db = DataBase.getDataBase();
 
+        // refresh the bookBuffer
         ResultSet resultSet;
         String sql =
                 "SELECT bookID, ISBN, bookName, author, bookCategory" +
@@ -61,6 +62,24 @@ public class ModelController {
                 String category = resultSet.getString("bookCategory");
                 Book book = new Book(bookID, ISBN, bookName, author, category);
                 bookBuffer.put(bookID, book);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        // refresh the userBuffer
+        ResultSet resultSet2;
+        String sql2 =
+                "SELECT accountID, accountStatus" +
+                        "FROM USER_ACCOUNT";
+        try{
+            resultSet2 = db.query(sql2);
+            while (resultSet2.next()){
+                String accountID = resultSet2.getInt("accountID")+ "";
+                String accountStatus = resultSet2.getString("accountStatus");
+                User user = new User(accountID, accountStatus.equals("T"),"");
+                userBuffer.put(accountID, user);
             }
         }
         catch (SQLException e){
