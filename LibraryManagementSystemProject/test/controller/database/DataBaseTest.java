@@ -72,7 +72,7 @@ class DataBaseTest {
         }
     }
 
-    @Test
+    @Disabled
     void createBookTable() {
         String createBookTable = "CREATE TABLE BOOK(" +
                 "bookID NUMBER(15) NOT NULL, " +
@@ -85,6 +85,53 @@ class DataBaseTest {
                 "PRIMARY KEY (bookID))";
         try {
             db.query(createBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void createWantBookTable() {
+        String createWantBookTable = "CREATE TABLE WANT_BOOK(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "ISBN VARCHAR (15) NOT NULL," +
+                "wantTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (ISBN,accountID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createWantBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void createRentBookTable() {
+        String createRentBookTable = "CREATE TABLE HAS_RENT(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "bookID NUMBER(15) NOT NULL," +
+                "rentTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (bookID,accountID)," +
+                "FOREIGN KEY (bookID) REFERENCES BOOK(bookID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createRentBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void createPlacedBookTable() {
+        String createRentBookTable = "CREATE TABLE HAS_PLACED(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "bookID NUMBER(15) NOT NULL," +
+                "placeTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (bookID,accountID)," +
+                "FOREIGN KEY (bookID) REFERENCES BOOK(bookID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createRentBookTable);
         }catch (Exception e) {
             e.printStackTrace();
         }
