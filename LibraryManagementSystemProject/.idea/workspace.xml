@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DataProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
@@ -84,7 +78,7 @@
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTest.initializeLMSTable">
+  <component name="RunManager" selected="JUnit.DataBaseTest.createBookTable">
     <configuration name="DataBaseTest.contains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LibraryManagementSystemProject" />
       <extension name="coverage">
@@ -117,6 +111,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataBaseTest.createBookTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.database" />
+      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
+      <option name="METHOD_NAME" value="createBookTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataBaseTest.initializeLMSTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LibraryManagementSystemProject" />
       <extension name="coverage">
@@ -128,22 +138,6 @@
       <option name="PACKAGE_NAME" value="controller.database" />
       <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
       <option name="METHOD_NAME" value="initializeLMSTable" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataBaseTest.queryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LibraryManagementSystemProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller.database" />
-      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
-      <option name="METHOD_NAME" value="queryTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataBaseTest.createBookTable" />
         <item itemvalue="JUnit.DataBaseTest.initializeLMSTable" />
         <item itemvalue="JUnit.DataBaseTest.containsTest" />
         <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.contains" />
-        <item itemvalue="JUnit.DataBaseTest.queryTest" />
       </list>
     </recent_temporary>
   </component>
