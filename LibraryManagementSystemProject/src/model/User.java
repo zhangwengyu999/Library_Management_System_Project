@@ -72,7 +72,7 @@ public class User implements SQLModel {
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
-                accountID = resultSet.getString("accountID").trim();
+                accountID = resultSet.getInt("accountID")+ "";
                 String temp = resultSet.getString("accountStatus").trim();
                 accountStatus = temp.equals("T");
             }
@@ -87,7 +87,7 @@ public class User implements SQLModel {
         DataBase db = DataBase.getDataBase();
         if (db.contains("USER_ACCOUNT","accountID",accountID)){
             String temp = accountStatus ? "T" : "F";
-            String sql = "UPDATE USER_ACCOUNT SET accountStatus = " + temp + " WHERE accountID = " + accountID;
+            String sql = "UPDATE USER_ACCOUNT SET accountStatus = \'" + temp + "\' WHERE accountID = " + accountID;
             try {
                 db.update(sql);
             }
@@ -97,7 +97,7 @@ public class User implements SQLModel {
         }
         else {
             String temp = accountStatus ? "T" : "F";
-            String sql = "INSERT INTO USER_ACCOUNT VALUES (" + accountID + "," + temp + ")";
+            String sql = "INSERT INTO USER_ACCOUNT VALUES (" + accountID + ",\'" + temp + "\')";
             try {
                 db.insert(sql);
             }

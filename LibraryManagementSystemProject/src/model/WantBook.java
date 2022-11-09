@@ -57,14 +57,14 @@ public class WantBook implements SQLModel {
         ResultSet resultSet2;
 
         String sql =
-                "SELECT bookID, ISBN, wantTime FROM WANT_BOOK WHERE ISBN =" + wantISBN+" AND accountID = " + accountID;
+                "SELECT bookID, ISBN, wantTime FROM WANT_BOOK WHERE ISBN =\'" + wantISBN+"\' AND accountID = " + accountID;
         String sql2 = "SELECT COUNT(*) FROM WANT_BOOK WHERE accountID = " + accountID;
         try{
             resultSet = db.query(sql);
             resultSet2 = db.query(sql2);
             while (resultSet.next()){
                 wantISBN = resultSet.getString("ISBN").trim();
-                accountID = resultSet.getString("accountID").trim();
+                accountID = resultSet.getInt("accountID")+"";
                 String temp = resultSet.getString("wantTime").trim();
                 String[] temp2 = temp.split("-");
                 wantYear = Integer.parseInt(temp2[0]);
@@ -87,7 +87,7 @@ public class WantBook implements SQLModel {
             throw new canNotHappenedException();
         }
         else {
-            String sql = "INSERT INTO WANT_BOOK VALUE(" +accountID  + "," + wantISBN + "," + getWantDate()+")";
+            String sql = "INSERT INTO WANT_BOOK VALUE(" +accountID  + ",\'" + wantISBN + "\',\'" + getWantDate()+"\')";
             db.update(sql);
         }
         return this;
@@ -95,7 +95,7 @@ public class WantBook implements SQLModel {
 
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
-        String sql = "DELETE FROM WANT_BOOK WHERE ISBN = " + wantISBN + " AND accountID = " + accountID;
+        String sql = "DELETE FROM WANT_BOOK WHERE ISBN = \'" + wantISBN + "\' AND accountID = " + accountID;
         try {
             db.query(sql);
         } catch (SQLException e) {

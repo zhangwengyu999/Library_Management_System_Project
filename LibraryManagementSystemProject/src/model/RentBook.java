@@ -40,12 +40,14 @@ public class RentBook implements SQLModel {
     public SQLModel pullFromDatabase() throws SQLException{
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
-        String sql = "SELECT h.bookID, h.accountID FROM HAS_RENT h WHERE bookID = \'" + bookID+"\'";
+        String sql = "SELECT h.bookID, h.accountID " +
+                    "FROM HAS_RENT h " +
+                    "WHERE bookID = " + bookID;
         try{
             resultSet = db.query(sql);
             while (resultSet.next()) {
-                bookID = resultSet.getString("bookID").trim();
-                accountID = resultSet.getString("accountID").trim();
+                bookID = resultSet.getInt("bookID")+"";
+                accountID = resultSet.getInt("accountID")+"";
                 String temp = resultSet.getString("rentTime").trim();
                 String[] temp2 = temp.split("-");
                 year = Integer.parseInt(temp2[0]);
@@ -77,7 +79,8 @@ public class RentBook implements SQLModel {
 
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
-        String sql = "DELETE FROM HAS_RENT WHERE bookID = \'" + bookID+"\'";
+        String sql = "DELETE FROM HAS_RENT " +
+                "WHERE bookID = " + bookID+" AND accountID = "+accountID;
         try {
             db.query(sql);
         } catch (SQLException e) {

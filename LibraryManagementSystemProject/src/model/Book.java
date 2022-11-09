@@ -11,13 +11,7 @@ public class Book implements SQLModel {
     private String bookName;
     private String author;
     private String category;
-//    private boolean[] status; // Length in 3, isRent, isAvailable, isPlaced, true for yes, false for no
-//    private String timeStamp;
     private String location;
-//    private int year = 2022;
-//    private int month = 11;
-//    private int day = 1;
-
 
     public Book() {}
 
@@ -27,10 +21,6 @@ public class Book implements SQLModel {
         this.bookName = bookName;
         this.author = publisher;
         this.category = category;
-//        this.status = new boolean[]{false,true,false};
-//        this.year = inYear;
-//        this.month = inMonth;
-//        this.day = inDay;
     }
 
 
@@ -63,10 +53,6 @@ public class Book implements SQLModel {
 //        return yyyy+"-"+mm+"-"+dd;
 //    }
 
-//    public boolean[] getStatus() {
-//        return status;
-//    }
-
     // show related information
     public String showInfo(Book book){
         return book.getISBN() + " " + book.getBookName() + " " + book.getAuthor() + " " + book.getCategory();
@@ -93,10 +79,6 @@ public class Book implements SQLModel {
         this.category = inCategory;
     }
 
-//    public void setTimeStamp(String inTimeStamp) {
-//        this.timeStamp = inTimeStamp;
-//    }
-
 
     // for JDBC
     public SQLModel pullFromDatabase() throws SQLException {
@@ -104,7 +86,8 @@ public class Book implements SQLModel {
         ResultSet resultSet;
         String sql =
                     "SELECT bookID, ISBN, bookName, author, bookCategory" +
-                    "FROM BOOK WHERE bookID = \'" + bookID+"\'";
+                    "FROM BOOK " +
+                    "WHERE bookID = " + bookID;
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
@@ -128,12 +111,8 @@ public class Book implements SQLModel {
             String sql = "UPDATE BOOK SET ISBN = \'" + ISBN + "\', bookName = \'" + bookName + "\', author = \'" + author +
                     "\', bookCategory = \'" + category +
                         "\' WHERE bookID = " + bookID;
-//            String sql2 = "UPDATE BOOK_STATUS SET isRent = " + (status[0]?"T":"F") +
-//                        ", isAvailable = " + (status[1]?"T":"F") + ", isPlaced = " + (status[2]?"T":"F") +
-//                        " WHERE bookID = " + bookID;
             try {
                 db.update(sql);
-//                db.update(sql2);
             }
             catch (SQLException e){
                 e.printStackTrace();
@@ -142,11 +121,8 @@ public class Book implements SQLModel {
         else {
             String sql = "INSERT INTO BOOK VALUES (" + bookID + ", \'" + ISBN + "\', \'" + bookName + "\', \'" + author + "\', \'"
                         + category +"\')";
-//            String sql2 = "INSERT INTO BOOK_STATUS VALUES (" + bookID + ", " +getTime() + ", "+ (status[0]?"T":"F") +
-//                        ", " + (status[1]?"T":"F") + ", " + (status[2]?"T":"F") + ")";
             try {
                 db.insert(sql);
-//                db.insert(sql2);
             }
             catch (SQLException e){
                 e.printStackTrace();
@@ -158,10 +134,8 @@ public class Book implements SQLModel {
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM BOOK WHERE bookID = " + bookID;
-        String sql2 = "DELETE FROM BOOK_STATUS WHERE bookID = " + bookID;
         try {
             db.query(sql);
-            db.query(sql2);
         } catch (SQLException e) {
             e.printStackTrace();
         }

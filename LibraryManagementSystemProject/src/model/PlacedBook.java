@@ -25,8 +25,8 @@ public class PlacedBook extends RentBook implements SQLModel {
         try{
             resultSet = db.query(sql);
             while (resultSet.next()) {
-                bookID = resultSet.getString("bookID").trim();
-                accountID = resultSet.getString("accountID").trim();
+                bookID = resultSet.getInt("bookID")+"";
+                accountID = resultSet.getInt("accountID")+"";
                 String temp = resultSet.getString("placeTime").trim();
                 String[] temp2 = temp.split("-");
                 year = Integer.parseInt(temp2[0]);
@@ -50,7 +50,7 @@ public class PlacedBook extends RentBook implements SQLModel {
             }
         }
         else {
-            String sql = "INSERT INTO HAS_PLACED VALUE(" + bookID + "," + accountID +","+ getDate()+")";
+            String sql = "INSERT INTO HAS_PLACED VALUE(" + bookID + "," + accountID +",\'"+ getDate()+"\')";
             db.update(sql);
         }
         return this;
@@ -58,7 +58,8 @@ public class PlacedBook extends RentBook implements SQLModel {
 
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
-        String sql = "DELETE FROM HAS_PLACED WHERE bookID = " + bookID;
+        String sql = "DELETE FROM HAS_PLACED " +
+                    "WHERE bookID = " + bookID+" AND accountID = "+accountID;
         try {
             db.query(sql);
         } catch (SQLException e) {

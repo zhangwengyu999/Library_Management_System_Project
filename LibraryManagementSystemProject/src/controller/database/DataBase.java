@@ -37,7 +37,7 @@ public class DataBase {
         return dataBase;
     }
 
-    /*
+    /**
      * initialize the connection to the database
      */
     private void initializeConnection() throws SQLException {
@@ -53,7 +53,7 @@ public class DataBase {
         }
     }
 
-    /*
+    /**
      * close the connection
      */
     public void closeConnection() throws SQLException {
@@ -111,7 +111,26 @@ public class DataBase {
         return false;
     }
 
-    /*
+    /** change to int
+     */
+    public boolean contains(String inTable, String inAttr, int inObject) throws SQLException {
+        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = " + inObject;
+        try{
+            System.out.println(sql);
+            ResultSet resultSet = query(sql);
+            if (resultSet.next()) {
+                return true;
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Query Failed!");
+            e.printStackTrace();
+            throw e;
+        }
+        return false;
+    }
+
+    /**
      * check whether inObjects are in the inTable's inAttrs
      * @param inTable: the table to be checked
      * @param inAttr1: the attribute to be checked
