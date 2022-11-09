@@ -2,24 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/Library_Management_System_Project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MVC_demo/MVC_demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ojdbc81.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/database/SearchController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/PlacedBook.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/RentBook.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/WantBook.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/database/DataBaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/database/DataBaseTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/database/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/database/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/database/SearchController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlacedBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlacedBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/WantBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WantBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
-    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="" />
+    <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="">
+      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
+    </list>
     <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,29 +51,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;J:/COMP2411/PROJECT_G4/Library_Management_System_Project/LibraryManagementSystemProject/lib/ojdbc8.jar&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/21098424d/Library_Management_System_Project/LibraryManagementSystemProject/lib/ojdbc8.jar",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="view" />
@@ -85,7 +86,7 @@
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataBaseTest.queryTest1">
+  <component name="RunManager" selected="JUnit.DataBaseTest.containsTest">
     <configuration name="LMSController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.LMSController" />
       <module name="LibraryManagementSystemProject" />
@@ -165,8 +166,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.containsTest" />
+        <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.contains" />
         <item itemvalue="JUnit.DataBaseTest.queryTest" />
         <item itemvalue="Application.LMSController" />
@@ -190,6 +191,7 @@
       <workItem from="1667884523154" duration="5952000" />
       <workItem from="1667905583920" duration="13115000" />
       <workItem from="1667963298078" duration="819000" />
+      <workItem from="1667994269163" duration="1503000" />
     </task>
     <servers />
   </component>
@@ -217,6 +219,15 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/test/controller/database/DataBaseTest.java</url>
+          <line>45</line>
+          <properties class="controller.database.DataBaseTest" method="containsTest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

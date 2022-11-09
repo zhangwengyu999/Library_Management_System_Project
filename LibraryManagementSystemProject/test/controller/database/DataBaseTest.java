@@ -39,12 +39,14 @@ class DataBaseTest {
         expected.add("Alice JONES");
         expected.add("Bob JONES");
         assertEquals(out, expected);
+
     }
 
     @Test
     void containsTest() {
         try {
             assertTrue(db.contains("STUDENT","STUDENT_NAME","Mike"));
+            assertFalse(db.contains("STUDENT","STUDENT_NAME","Dog"));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -53,10 +55,17 @@ class DataBaseTest {
 
     @Test
     void testContains() {
+        
     }
 
     @Test
     void update() {
+        try{
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Test

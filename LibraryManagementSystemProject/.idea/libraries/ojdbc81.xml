@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="ojdbc8">
+  <library name="ojdbc81">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/ojdbc8.jar!/" />
     </CLASSES>
