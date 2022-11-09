@@ -59,7 +59,7 @@ class DataBaseTest {
         
     }
 
-    @Test
+    @Disabled
     void createUserTable() {
         String createUSERTable = "CREATE TABLE USER_ACCOUNT(" +
                                 "accountID NUMBER(10) NOT NULL," +
@@ -91,7 +91,7 @@ class DataBaseTest {
         }
     }
 
-    @Test
+    @Disabled
     void createWantBookTable() {
         String createWantBookTable = "CREATE TABLE WANT_BOOK(" +
                 "accountID NUMBER(10) NOT NULL," +
@@ -106,7 +106,7 @@ class DataBaseTest {
         }
     }
 
-    @Test
+    @Disabled
     void createRentBookTable() {
         String createRentBookTable = "CREATE TABLE HAS_RENT(" +
                 "accountID NUMBER(10) NOT NULL," +
@@ -122,7 +122,7 @@ class DataBaseTest {
         }
     }
 
-    @Test
+    @Disabled
     void createPlacedBookTable() {
         String createRentBookTable = "CREATE TABLE HAS_PLACED(" +
                 "accountID NUMBER(10) NOT NULL," +
