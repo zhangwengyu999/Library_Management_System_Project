@@ -57,7 +57,7 @@ public class WantBook implements SQLModel {
         ResultSet resultSet2;
 
         String sql =
-                "SELECT bookID, ISBN, wantTime FROM WANT_BOOK WHERE ISBN =\'" + wantISBN+"\' AND accountID = " + accountID;
+                "SELECT accountID, ISBN, wantTime FROM WANT_BOOK WHERE ISBN =\'" + wantISBN+"\' AND accountID = " + accountID;
         String sql2 = "SELECT COUNT(*) FROM WANT_BOOK WHERE accountID = " + accountID;
         try{
             resultSet = db.query(sql);

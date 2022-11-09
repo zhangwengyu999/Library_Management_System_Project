@@ -40,7 +40,7 @@ public class RentBook implements SQLModel {
     public SQLModel pullFromDatabase() throws SQLException{
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
-        String sql = "SELECT h.bookID, h.accountID " +
+        String sql = "SELECT h.bookID, h.accountID, h.rentTime" +
                     "FROM HAS_RENT h " +
                     "WHERE bookID = " + bookID;
         try{

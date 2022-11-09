@@ -43,7 +43,9 @@ public class ModelController {
     }
 
 
-
+    /**
+     * Setup and refresh the buffers from DB
+     */
     public void refreshBuffers() {
         DataBase db = DataBase.getDataBase();
 
@@ -56,12 +58,12 @@ public class ModelController {
             resultSet = db.query(sql);
             while (resultSet.next()){
                 String bookID = resultSet.getInt("bookID")+ "";
-                String ISBN = resultSet.getString("ISBN");
-                String bookName = resultSet.getString("bookName");
-                String author = resultSet.getString("author");
-                String category = resultSet.getString("bookCategory");
+                String ISBN = resultSet.getString("ISBN").trim();
+                String bookName = resultSet.getString("bookName").trim();
+                String author = resultSet.getString("author").trim();
+                String category = resultSet.getString("bookCategory").trim();
                 Book book = new Book(bookID, ISBN, bookName, author, category);
-                bookBuffer.put(bookID, book);
+                addRecord(book);
             }
         }
         catch (SQLException e){
@@ -77,16 +79,95 @@ public class ModelController {
             resultSet2 = db.query(sql2);
             while (resultSet2.next()){
                 String accountID = resultSet2.getInt("accountID")+ "";
-                String accountStatus = resultSet2.getString("accountStatus");
+                String accountStatus = resultSet2.getString("accountStatus").trim();
                 User user = new User(accountID, accountStatus.equals("T"),"");
-                userBuffer.put(accountID, user);
+                addRecord(user);
             }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
-        // ...
 
+        // refresh the rentBookBuffer
+        ResultSet resultSet3;
+        String sql3 =
+                "SELECT bookID, accountID, rentTime" +
+                        "FROM HAS_RENT";
+        try{
+            resultSet3 = db.query(sql3);
+            while (resultSet3.next()){
+                String bookID = resultSet3.getInt("bookID")+ "";
+                String accountID = resultSet3.getInt("accountID")+ "";
+                String rentTime = resultSet3.getString("rentTime").trim();
+                String[] temp2 = rentTime.split("-");
+                year = Integer.parseInt(temp2[0]);
+                month = Integer.parseInt(temp2[1]);
+                day = Integer.parseInt(temp2[2]);
+                RentBook rentBook = new RentBook(accountID, bookID,year, month, day);
+                try{
+                    addRecord(rentBook);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        // refresh the wantBookBuffer
+        ResultSet resultSet4;
+        String sql4 =
+                "SELECT accountID, ISBN, wantTime" +
+                        "FROM WANT_BOOK";
+        try{
+            resultSet4 = db.query(sql4);
+            while (resultSet4.next()){
+                String accountID = resultSet4.getInt("accountID")+ "";
+                String isbn = resultSet4.getInt("ISBN")+ "";
+                String rentTime = resultSet4.getString("wantTime").trim();
+                String[] temp3 = rentTime.split("-");
+                year = Integer.parseInt(temp3[0]);
+                month = Integer.parseInt(temp3[1]);
+                day = Integer.parseInt(temp3[2]);
+                WantBook wantBook = new WantBook(accountID, isbn,year, month, day);
+                try{
+                    addRecord(wantBook);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        // refresh the placedBookBuffer
+        ResultSet resultSet5;
+        String sql5 =
+                "SELECT bookID, accountID, placeTime" +
+                        "FROM HAS_PLACED";
+        try{
+            resultSet5 = db.query(sql5);
+            while (resultSet5.next()){
+                String bookID = resultSet5.getInt("bookID")+ "";
+                String accountID = resultSet5.getInt("accountID")+ "";
+                String rentTime = resultSet5.getString("placeTime").trim();
+                String[] temp2 = rentTime.split("-");
+                year = Integer.parseInt(temp2[0]);
+                month = Integer.parseInt(temp2[1]);
+                day = Integer.parseInt(temp2[2]);
+                PlacedBook placedBook = new PlacedBook(accountID, bookID,year, month, day);
+                try{
+                    addRecord(placedBook);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     // ----------------- Add on HashMap buffer -----------------

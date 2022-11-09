@@ -21,7 +21,7 @@ public class PlacedBook extends RentBook implements SQLModel {
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
-        String sql = "SELECT h.bookID, h.accountID FROM HAS_PLACED h WHERE bookID = " + bookID;
+        String sql = "SELECT h.bookID, h.accountID, h.placeTime FROM HAS_PLACED h WHERE bookID = " + bookID;
         try{
             resultSet = db.query(sql);
             while (resultSet.next()) {
