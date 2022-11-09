@@ -2,12 +2,13 @@ DROP TABLE USER_ACCOUNT;
 DROP TABLE BOOK;
 DROP TABLE WANT_BOOK;
 DROP TABLE HAS_RENT;
-DROP TABLE BOOK_STATUS;
-DROP TABLE USER_NOTIFICATION;
+-- DROP TABLE BOOK_STATUS;
+-- DROP TABLE USER_NOTIFICATION;
 
 CREATE TABLE USER_ACCOUNT(
     accountID NUMBER(10) NOT NULL,
     accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL,
+    notification VARCHAR(8000) NOT NULL,
     PRIMARY KEY (accountID)
 );
 
@@ -57,38 +58,38 @@ CREATE TABLE HAS_PLACED(
 --     FOREIGN KEY (bookID) REFERENCES BOOK(bookID)
 -- );
 
-CREATE TABLE USER_NOTIFICATION(
-    noticeID NUMBER(10) NOT NULL,
-    accountID NUMBER(10) NOT NULL,
-    bookID NUMBER(15), 
-    notificationTime VARCHAR(10) NOT NULL,
-    userMessage VARCHAR(100) NOT NULL,
-    PRIMARY KEY (noticeID),
-    FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
-    FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
-);
+-- CREATE TABLE USER_NOTIFICATION(
+--     noticeID NUMBER(10) NOT NULL,
+--     accountID NUMBER(10) NOT NULL,
+--     bookID NUMBER(15), 
+--     notificationTime VARCHAR(10) NOT NULL,
+--     userMessage VARCHAR(100) NOT NULL,
+--     PRIMARY KEY (noticeID),
+--     FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
+--     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
+-- );
 
-INSERT INTO USER_ACCOUNT VALUES (1, 'T');
-INSERT INTO USER_ACCOUNT VALUES (2, 'T');
-INSERT INTO USER_ACCOUNT VALUES (3, 'T');
-INSERT INTO USER_ACCOUNT VALUES (4, 'T');
-INSERT INTO USER_ACCOUNT VALUES (5, 'T');
-INSERT INTO USER_ACCOUNT VALUES (6, 'F');
-INSERT INTO USER_ACCOUNT VALUES (7, 'F');
+INSERT INTO USER_ACCOUNT VALUES (1, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (2, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (3, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (4, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (5, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (6, 'F', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (7, 'F', 'Notification \n');
 
-INSERT INTO BOOK VALUES (1, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy');
+INSERT INTO BOOK VALUES (1, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy', 1, 0);
 -- rent
-INSERT INTO BOOK VALUES (2, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy');   
+INSERT INTO BOOK VALUES (2, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy', 0, 1);   
 -- placed
-INSERT INTO BOOK VALUES (3, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy');
+INSERT INTO BOOK VALUES (3, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 0, 0);
 -- available
-INSERT INTO BOOK VALUES (4, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy');
+INSERT INTO BOOK VALUES (4, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy', 1, 0);
 -- rent
-INSERT INTO BOOK VALUES (5, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy');
+INSERT INTO BOOK VALUES (5, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 1);
 -- placed
-INSERT INTO BOOK VALUES (6, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy');
+INSERT INTO BOOK VALUES (6, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', 0, 0);
 -- available
-INSERT INTO BOOK VALUES (7, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy');
+INSERT INTO BOOK VALUES (7, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 1, 0);
 -- rent
 
 INSERT INTO WANT_BOOK VALUES (1, '0-05', '2022-11-01'); 
@@ -115,16 +116,16 @@ INSERT INTO HAS_PLACED VALUES (5, 5, '2022-11-3');
 -- INSERT INTO BOOK_STATUS VALUES (6, '2022-10-28', 'F', 'T', 'F');
 -- INSERT INTO BOOK_STATUS VALUES (7, '2022-11-01', 'T', 'F', 'F');
 
-INSERT INTO USER_NOTIFICATION VALUES (1, 1, 1, '2022-11-01', 'Your book is not available now');
-INSERT INTO USER_NOTIFICATION VALUES (2, 1, 2, '2022-10-01', 'Your book is placed now');
-INSERT INTO USER_NOTIFICATION VALUES (3, 2, 3, '2022-11-30', 'Your book is available now');
+-- INSERT INTO USER_NOTIFICATION VALUES (1, 1, 1, '2022-11-01', 'Your book is not available now');
+-- INSERT INTO USER_NOTIFICATION VALUES (2, 1, 2, '2022-10-01', 'Your book is placed now');
+-- INSERT INTO USER_NOTIFICATION VALUES (3, 2, 3, '2022-11-30', 'Your book is available now');
 
 SELECT * FROM USER_ACCOUNT;
 SELECT * FROM BOOK;
 SELECT * FROM WANT_BOOK;
 SELECT * FROM HAS_RENT;
 Select * FROM HAS_PLACED;
-SELECT * FROM USER_NOTIFICATION;
+-- SELECT * FROM USER_NOTIFICATION;
 
 -- Find the record of the RENT BOOK from bookID is ?
 SELECT *

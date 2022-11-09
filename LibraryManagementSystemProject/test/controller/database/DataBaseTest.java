@@ -20,26 +20,27 @@ class DataBaseTest {
 
     @Test
     void queryTest1() {
-        List<String> out = new ArrayList<>();
-        String sql = "SELECT STUDENT_NAME FROM STUDENT";
+
+
+        String sql = "SELECT accountID, accountStatus, NOTIFICATION FROM USER_ACCOUNT";
         try{
             ResultSet resultSet = db.query(sql);
             while (resultSet.next()){
-                out.add(resultSet.getString(1).trim());
+                String accountID = resultSet.getInt("accountID")+ "";
+                System.out.println(accountID);
+                String accountStatus = resultSet.getString("accountStatus").trim();
+                System.out.println(accountStatus);
+                String notice = resultSet.getString("NOTIFICATION").trim();
+                System.out.println(notice);
+
             }
+
         }
         catch (Exception e) {
             System.out.println(e);
         }
-        List<String> expected = new ArrayList<>();
-        expected.add("Mike");
-        expected.add("Alice");
-        expected.add("Jack JONES");
-        expected.add("Mike JONES");
-        expected.add("Tom JONES");
-        expected.add("Alice JONES");
-        expected.add("Bob JONES");
-        assertEquals(out, expected);
+
+
 
     }
 
@@ -64,6 +65,7 @@ class DataBaseTest {
         String createUSERTable = "CREATE TABLE USER_ACCOUNT(" +
                                 "accountID NUMBER(10) NOT NULL," +
                                 "accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL," +
+                                "notification VARCHAR(8000) NOT NULL,"+
                                 "PRIMARY KEY (accountID))";
         try {
             db.query(createUSERTable);
@@ -72,7 +74,7 @@ class DataBaseTest {
         }
     }
 
-    @Test
+    @Disabled
     void createBookTable() {
         String createBookTable = "CREATE TABLE BOOK(" +
                 "bookID NUMBER(15) NOT NULL, " +
@@ -85,6 +87,53 @@ class DataBaseTest {
                 "PRIMARY KEY (bookID))";
         try {
             db.query(createBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Disabled
+    void createWantBookTable() {
+        String createWantBookTable = "CREATE TABLE WANT_BOOK(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "ISBN VARCHAR (15) NOT NULL," +
+                "wantTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (ISBN,accountID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createWantBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Disabled
+    void createRentBookTable() {
+        String createRentBookTable = "CREATE TABLE HAS_RENT(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "bookID NUMBER(15) NOT NULL," +
+                "rentTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (bookID,accountID)," +
+                "FOREIGN KEY (bookID) REFERENCES BOOK(bookID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createRentBookTable);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Disabled
+    void createPlacedBookTable() {
+        String createRentBookTable = "CREATE TABLE HAS_PLACED(" +
+                "accountID NUMBER(10) NOT NULL," +
+                "bookID NUMBER(15) NOT NULL," +
+                "placeTime VARCHAR(10) NOT NULL," +
+                "PRIMARY KEY (bookID,accountID)," +
+                "FOREIGN KEY (bookID) REFERENCES BOOK(bookID)," +
+                "FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID))";
+        try {
+            db.query(createRentBookTable);
         }catch (Exception e) {
             e.printStackTrace();
         }

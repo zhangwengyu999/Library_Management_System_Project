@@ -37,6 +37,15 @@ public class DataBase {
         return dataBase;
     }
 
+    public void reConnect() {
+        try {
+            connection.close();
+            initializeConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     /**
      * initialize the connection to the database
      */
@@ -165,6 +174,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
+            commit();
         }
         catch (SQLException e) {
             System.out.println("Update Failed!");
@@ -181,6 +191,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
+            commit();
         }
         catch (SQLException e) {
             System.out.println("Delete Failed!");
@@ -197,6 +208,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
+            commit();
         }
         catch (SQLException e) {
             System.out.println("Insert Failed!");
