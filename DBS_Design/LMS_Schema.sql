@@ -79,13 +79,13 @@ INSERT INTO USER_ACCOUNT VALUES (7, 'F', 'Notification \n');
 
 INSERT INTO BOOK VALUES (1, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy', 1, 0);
 -- rent
-INSERT INTO BOOK VALUES (2, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy', 0, 0);   
+INSERT INTO BOOK VALUES (2, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy', 0, 1);   
 -- placed
 INSERT INTO BOOK VALUES (3, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 0, 0);
 -- available
-INSERT INTO BOOK VALUES (4, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy', 1, 2);
+INSERT INTO BOOK VALUES (4, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy', 1, 0);
 -- rent
-INSERT INTO BOOK VALUES (5, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 2);
+INSERT INTO BOOK VALUES (5, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 1);
 -- placed
 INSERT INTO BOOK VALUES (6, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', 0, 0);
 -- available
