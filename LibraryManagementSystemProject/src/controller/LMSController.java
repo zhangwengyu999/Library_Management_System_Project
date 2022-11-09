@@ -25,7 +25,7 @@ public class LMSController {
                     mainView.linePage();
                     String mainOption = inputListener();
                     if (mainOption.equals("O")) {
-                        mainView.DBAllOperationPage();
+                        mainView.DBOperationSelectPage();
                         mainView.linePage();
                         while (true) {
                             if (inputListener().equals("A")) {

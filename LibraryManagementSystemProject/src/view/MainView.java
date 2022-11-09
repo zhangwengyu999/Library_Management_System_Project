@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
 public class MainView {
@@ -29,7 +30,7 @@ public class MainView {
         System.out.println("- [E] Exit System");
     }
 
-    public void DBAllOperationPage(){
+    public void DBOperationSelectPage() {
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [A] Add information");
         System.out.println("- [D] Delete information");
@@ -107,7 +108,7 @@ public class MainView {
     }
     
     public void linePage() {
-        System.out.println("----------------------------------------------------------------/n" +
+        System.out.println("----------------------------------------------------------------\n" +
                 "----------------------------------------------------------------");
     }
 
@@ -154,7 +155,9 @@ public class MainView {
     // when the book return by a user and the isbn is somebody want, notify the person who want the book
     public void canBeRentNotification(String ISBN, String accountID) {
         System.out.println("Dear" +accountID);
-        System.out.println("The book (ISBN:"+ISBN+") you want now is available, you can find it in library by yourself!");
+        System.out.println("The book (ISBN:"+ISBN+") you want now is available, you can get it in library by yourself!");
+        System.out.println("Remember the MAX_PLACED_DAY is 7 day, you have better to get it in time");
+        System.out.println("Or you are supposed to reserve this book by another application!");
     }
 
     // A book can be rent for up to 14 day

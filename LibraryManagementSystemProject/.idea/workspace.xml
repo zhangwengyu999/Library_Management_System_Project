@@ -7,14 +7,15 @@
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DataProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
     <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
-    <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="" />
+    <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="">
+      <change beforePath="$PROJECT_DIR$/src/model/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DataProcess.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +33,24 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/model/DataProcess.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="6" end1="6" start2="7" end2="10" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="9" end1="10" start2="13" end2="15" changelist="19ba69da-419c-4446-b903-ff8733e99a8b" />
+        <range start1="16" end1="19" start2="21" end2="23" changelist="19ba69da-419c-4446-b903-ff8733e99a8b" />
+        <range start1="23" end1="24" start2="27" end2="28" changelist="19ba69da-419c-4446-b903-ff8733e99a8b" />
+        <range start1="26" end1="27" start2="30" end2="42" changelist="19ba69da-419c-4446-b903-ff8733e99a8b" />
+        <range start1="30" end1="31" start2="45" end2="50" changelist="19ba69da-419c-4446-b903-ff8733e99a8b" />
+        <range start1="32" end1="34" start2="51" end2="54" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="35" end1="37" start2="55" end2="70" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="38" end1="40" start2="71" end2="89" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="41" end1="43" start2="90" end2="93" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+        <range start1="44" end1="46" start2="94" end2="97" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -168,7 +187,6 @@
         <item itemvalue="JUnit.DataBaseTest.containsTest" />
         <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.contains" />
-        <item itemvalue="JUnit.DataBaseTest.queryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -227,6 +245,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/DataProcess.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
