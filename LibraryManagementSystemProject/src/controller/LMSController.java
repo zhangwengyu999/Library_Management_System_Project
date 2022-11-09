@@ -47,6 +47,7 @@ public class LMSController {
 
                                         if (modelController.addRecord(book)) {
                                             mainView.successPage();
+                                            break;
                                         }
                                         else {
                                             mainView.unSuccessPage();
@@ -57,6 +58,7 @@ public class LMSController {
                                         User user = new User(accountID,true,"");
                                         if (modelController.addRecord(user)) {
                                             mainView.successPage();
+                                            break;
                                         } else {
                                             mainView.unSuccessPage();
                                         }
@@ -76,6 +78,7 @@ public class LMSController {
                                         String bookID = inputListener();
                                         if (modelController.deleteBookRecord(bookID)) {
                                             mainView.successPage();
+                                            break;
                                         }
                                         else {
                                             mainView.unSuccessPage();
@@ -86,6 +89,7 @@ public class LMSController {
                                         String accountID = inputListener();
                                         if (modelController.deleteUserRecord(accountID)) {
                                             mainView.successPage();
+                                            break;
                                         }
                                         else {
                                             mainView.unSuccessPage();
@@ -103,7 +107,7 @@ public class LMSController {
                             }
                         }
                     }
-                    else if (mainOption.equals("U")) { // User operation
+                    else if (mainOption.equals("U")) { // User operation: Want, Rent, Cancel
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
                         User user = new User(userAccountID);
@@ -120,6 +124,7 @@ public class LMSController {
                                         if (inBookID.equals("Back")) break; // back to previous
                                         if (modelController.rentBookFromUser(userAccountID, inBookID)) { //used rentBookFromUser return boolean
                                             mainView.successPage();
+                                            break;
                                         } else {
                                             mainView.unSuccessPage();
                                         }
@@ -129,10 +134,40 @@ public class LMSController {
                                         mainView.processUserWantPage();
                                         String inISBN = inputListener();
                                         if (inISBN.equals("Back")) break; // back to previous
-                                        if(modelController.reserveBook(userAccountID, inISBN)){
+                                        if (modelController.reserveBook(userAccountID, inISBN)) {
                                             mainView.successPage();
+                                            break;
                                         }
-                                        else{mainView.unSuccessPage();}
+                                        else{
+                                            mainView.unSuccessPage();
+                                        }
+                                    }
+                                } else if (inputListener().equals("C")) {
+                                    while (true) {
+                                        mainView.processUserCancelBook();
+                                        if (inputListener().equals("R")) {
+                                            mainView.processUserCancelReservePage();
+                                            String inISBN = inputListener();
+                                            if (modelController.cancelReservedBook(inISBN,userAccountID)) {
+                                                mainView.successPage();
+                                                break;
+                                            } else {
+                                                mainView.unSuccessPage();
+                                            }
+                                        } else if (inputListener().equals("P")) {
+                                            mainView.processUserCancelPlacedPage();
+                                            String inBookID = inputListener();
+                                            if (modelController.cancelPlacedBook(inBookID,userAccountID)) {
+                                                mainView.successPage();
+                                                break;
+                                            } else {
+                                                mainView.unSuccessPage();
+                                            }
+                                        } else if (inputOption.equals("Back")) { // back to previous
+                                            break;
+                                        } else {
+                                            mainView.errorPage();
+                                        }
                                     }
                                 } else if (inputOption.equals("Back")) { // back to previous
                                     break;

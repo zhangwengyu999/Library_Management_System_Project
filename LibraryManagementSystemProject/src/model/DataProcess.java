@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DataProcess {
 
-    public SQLModel getBookCount() throws SQLException {
+    public SQLModel getTotalBookNumber() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
         String sql =
@@ -24,6 +24,29 @@ public class DataProcess {
         return (SQLModel) this;
     }
 
+    public SQLModel getMostRentBook() throws SQLException {
+
+
+
+        return (SQLModel) this;
+    }
+    public SQLModel getLeastRentBook() throws SQLException {
+        return (SQLModel) this;
+    }
+    public SQLModel getAverageRentBook() throws SQLException {
+        return (SQLModel) this;
+    }
+    public SQLModel getBorrowedBook() throws SQLException {
+        return (SQLModel) this;
+    }
+    public SQLModel getMostRentBook() throws SQLException {
+        return (SQLModel) this;
+    }
+    public SQLModel getMostRentBook() throws SQLException {
+        return (SQLModel) this;
+    }
+
+
     //
 
     /*
@@ -32,20 +55,9 @@ public class DataProcess {
     2. Most rented books (favourite)
     3. Least rented books (least favourite)
     4. Average number of books borrowed per day/week/month/year
-    5. Average number of books borrowed per user
-    6. Borrowed books
-    7. Overdue books
-    8. Most borrowed books by category
-    9. Most borrowed books by author
+    5.  Borrowed books
+    6. Most borrowed books by category
+    7. Most borrowed books by author
+
     */
-    
-    /*
-    ACCOUNT
-    1. Number of visitors
-    2. Most active users (borrowed most books)
-    3. New members
-     */
-
-
-
 }

@@ -55,6 +55,7 @@ public class MainView {
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [R] Rent a Book");
         System.out.println("- [W] Want a Book");
+        System.out.println("- [C] Cancel a Book");
         System.out.println("- [Back] Back to previous page");
 
     }
@@ -68,44 +69,33 @@ public class MainView {
         System.out.println("- [Back] Back to previous page");
     }
 
+    public void processUserCancelBook() {
+        System.out.println("Please select the following options in [x]:");
+        System.out.println("- [R] Cancel a reserve book");
+        System.out.println("- [P] Cancel a placed book");
+        System.out.println("- [Back] Back to previous page");
+    }
+
     public void processUserRentPage() {
-        System.out.println("\"B\" Back to previous page");
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please input the book ID which want to rent:");
     }
 
     public void processUserReturnPage() {
-        System.out.println("\"B\" Back to previous page");
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please input the return Book ID:");
     }
 
     public void processUserWantPage() {
-        System.out.println("\"B\" Back to previous page");
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please input ISBN:");
     }
 
-    public void analysisReportPage() {
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-
-        System.out.println("-------------------------------------");
-        System.out.println("           " + "ANALYSIS REPORT");
-        System.out.println("  " + "Create Time: " + timeStamp);
-        System.out.println("-------------------------------------");
-        System.out.println("      " + "Books Status Information");
-        System.out.println("-------------------------------------");
-        System.out.println("Number of Books: " +  countBookNum);
-        System.out.println("Number of People Borrowed Books: " + countPeopleBorrowed);
-        System.out.println("Number of Borrowed Books: " + countBorrowedBook);
-        System.out.println("Number of User who has Wanted Books: " + countPeopleWanted);
-        System.out.println("Number of Wanted Books: " + countWantedBook);
-        System.out.println("-------------------------------------");
-        System.out.println("      " + "Accounts Status Analysis");
-        System.out.println("-------------------------------------");
-        System.out.println("Number of Accounts: " + countAccount);
-        System.out.println("Number of Deactivated Accounts: " + countDeactivatedAccount);
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
+    public void processUserCancelReservePage() {
+        System.out.println("Please input ISBN:");
+    }
+    public void processUserCancelPlacedPage() {
+        System.out.println("Please input bookID:");
     }
 
     public void errorPage() {
@@ -161,4 +151,38 @@ public class MainView {
         System.out.println("Please enter related information");
     }
 
+    // when the book return by a user and the isbn somebody want, the the per
+    public void canBeRentNotification() {
+
+    }
+
+
+
+
+
+
+    public void analysisReportPage() {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+
+        System.out.println("-------------------------------------");
+        System.out.println("           " + "ANALYSIS REPORT");
+        System.out.println("  " + "Create Time: " + timeStamp);
+        System.out.println("-------------------------------------");
+        System.out.println("      " + "Books Status Information");
+        System.out.println("-------------------------------------");
+        System.out.println("Number of Books: " +  countBookNum);
+        System.out.println("Number of People Borrowed Books: " + countPeopleBorrowed);
+        System.out.println("Number of Borrowed Books: " + countBorrowedBook);
+        System.out.println("Number of User who has Wanted Books: " + countPeopleWanted);
+        System.out.println("Number of Wanted Books: " + countWantedBook);
+        System.out.println("-------------------------------------");
+        System.out.println("      " + "Accounts Status Analysis");
+        System.out.println("-------------------------------------");
+        System.out.println("Number of Accounts: " + countAccount);
+        System.out.println("Number of Deactivated Accounts: " + countDeactivatedAccount);
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+    }
 }
