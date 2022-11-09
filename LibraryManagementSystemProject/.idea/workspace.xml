@@ -166,7 +166,6 @@
         <item itemvalue="JUnit.DataBaseTest.containsTest" />
         <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.contains" />
-        <item itemvalue="JUnit.DataBaseTest.queryTest" />
       </list>
     </recent_temporary>
   </component>
