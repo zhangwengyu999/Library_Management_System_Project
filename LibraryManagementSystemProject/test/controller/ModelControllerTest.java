@@ -2,6 +2,7 @@ package controller;
 
 import model.Book;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +11,7 @@ class ModelControllerTest {
     ModelController modelController = new ModelController();
 
 
-    @BeforeAll
+    @BeforeEach
     void refreshBuffers() {
         modelController.refreshBuffers();
     }

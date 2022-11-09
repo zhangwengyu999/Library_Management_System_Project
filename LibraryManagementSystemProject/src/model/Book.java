@@ -141,7 +141,7 @@ public class Book implements SQLModel {
         }
         else {
             String sql = "INSERT INTO BOOK VALUES (" + bookID + ", \'" + ISBN + "\', \'" + bookName + "\', \'" + author + "\', \'"
-                        + category +"\'+, \'" + bookRentNum + "\', \'" + bookWantNum + "\')";
+                        + category +"\'," + bookRentNum + ", " + bookWantNum + ")";
             try {
                 db.insert(sql);
             }
