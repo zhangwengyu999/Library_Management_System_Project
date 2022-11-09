@@ -59,11 +59,12 @@ class DataBaseTest {
         
     }
 
-    @Disabled
+    @Test
     void createUserTable() {
         String createUSERTable = "CREATE TABLE USER_ACCOUNT(" +
                                 "accountID NUMBER(10) NOT NULL," +
                                 "accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL," +
+                                "notification VARCHAR(8000) NOT NULL,"+
                                 "PRIMARY KEY (accountID))";
         try {
             db.query(createUSERTable);
