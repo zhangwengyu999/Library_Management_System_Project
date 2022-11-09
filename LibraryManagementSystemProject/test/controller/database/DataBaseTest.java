@@ -10,12 +10,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DataBaseTest {
-    DataBase db;
+    DataBase db = DataBase.getDataBase();
 
-    @BeforeEach
-    void setup() {
-        db = DataBase.getDataBase();
-    }
+//    @BeforeEach
+//    void setup() {
+//        db = DataBase.getDataBase();
+//    }
 
     @Test
     void queryTest1() {

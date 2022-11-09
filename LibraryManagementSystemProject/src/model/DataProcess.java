@@ -39,12 +39,12 @@ public class DataProcess {
     public SQLModel getBorrowedBook() throws SQLException {
         return (SQLModel) this;
     }
-    public SQLModel getMostRentBook() throws SQLException {
-        return (SQLModel) this;
-    }
-    public SQLModel getMostRentBook() throws SQLException {
-        return (SQLModel) this;
-    }
+//    public SQLModel getMostRentBook() throws SQLException {
+//        return (SQLModel) this;
+//    }
+//    public SQLModel getMostRentBook() throws SQLException {
+//        return (SQLModel) this;
+//    }
 
 
     //
