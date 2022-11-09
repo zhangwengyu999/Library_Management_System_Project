@@ -63,6 +63,8 @@ public class Book implements SQLModel {
         bookWantNum++;
     }
 
+    public void deleteWantBookCount() {bookWantNum--;}
+
 //    public String getTime() {
 //        String yyyy = year+"";
 //        String mm = month<10?"0"+month:month+"";
