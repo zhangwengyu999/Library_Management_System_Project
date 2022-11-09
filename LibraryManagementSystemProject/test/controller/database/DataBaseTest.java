@@ -80,8 +80,8 @@ class DataBaseTest {
                 "bookName VARCHAR(100) NOT NULL," +
                 "author VARCHAR(100) NOT NULL," +
                 "bookCategory VARCHAR(100) NOT NULL," +
-                "bookRentNum = NUMBER(5) NOT NULL," +
-                "bookWantNum = NUMBER(5) NOT NULL," +
+                "bookRentNum NUMBER(5) NOT NULL," +
+                "bookWantNum NUMBER(5) NOT NULL," +
                 "PRIMARY KEY (bookID))";
         try {
             db.query(createBookTable);
