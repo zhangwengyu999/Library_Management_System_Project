@@ -43,7 +43,7 @@ public class LMSController {
 //                                        int year = modelController.getYear();
 //                                        int month = modelController.getMonth();
 //                                        int day = modelController.getDay();
-                                        Book book = new Book(bookID, bookISBN, bookName, bookPublisher, bookCategory);
+                                        Book book = new Book(bookID, bookISBN, bookName, bookPublisher, bookCategory,0,0);
 
                                         if (modelController.addRecord(book)) {
                                             mainView.successPage();
