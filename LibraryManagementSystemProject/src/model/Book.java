@@ -12,15 +12,19 @@ public class Book implements SQLModel {
     private String author;
     private String category;
     private String location;
+    private int bookRentNum = 0;
+    private int bookWantNum = 0;
 
     public Book() {}
 
-    public Book(String bookID, String ISBN, String bookName, String publisher, String category) {
+    public Book(String bookID, String ISBN, String bookName, String publisher, String category, int bookRentNum, int bookWantNum) {
         this.bookID = bookID;
         this.ISBN = ISBN;
         this.bookName = bookName;
         this.author = publisher;
         this.category = category;
+        this.bookRentNum = bookRentNum;
+        this.bookWantNum = bookWantNum;
     }
 
 
@@ -46,6 +50,19 @@ public class Book implements SQLModel {
         return category;
     }
 
+    public int getBookRentNum(){return bookRentNum;}
+
+    public int getBookWantNum(){return bookWantNum;}
+
+    //new
+    public void addRentBookCount() {
+        bookRentNum++;
+    }
+    //new
+    public void addWantBookCount() {
+        bookWantNum++;
+    }
+
 //    public String getTime() {
 //        String yyyy = year+"";
 //        String mm = month<10?"0"+month:month+"";
@@ -55,7 +72,7 @@ public class Book implements SQLModel {
 
     // show related information
     public String showInfo(Book book){
-        return book.getISBN() + " " + book.getBookName() + " " + book.getAuthor() + " " + book.getCategory();
+        return book.getISBN() + " " + book.getBookName() + " " + book.getAuthor() + " " + book.getCategory() + " " + book.getBookRentNum() + " " + book.getBookWantNum();
     }
 
     // setter
@@ -85,7 +102,7 @@ public class Book implements SQLModel {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
         String sql =
-                    "SELECT bookID, ISBN, bookName, author, bookCategory" +
+                    "SELECT bookID, ISBN, bookName, author, bookCategory, bookRentNum, bookWantNum" +
                     "FROM BOOK " +
                     "WHERE bookID = " + bookID;
         try{
@@ -96,6 +113,8 @@ public class Book implements SQLModel {
                 bookName = resultSet.getString("bookName").trim();
                 author = resultSet.getString("author").trim();
                 category = resultSet.getString("bookCategory").trim();
+                bookRentNum = resultSet.getInt("bookRentNum");
+                bookWantNum = resultSet.getInt("bookWantNum");
             }
         }
         catch (SQLException e){
@@ -109,7 +128,7 @@ public class Book implements SQLModel {
         DataBase db = DataBase.getDataBase();
         if (db.contains("BOOK", "bookID", bookID)){
             String sql = "UPDATE BOOK SET ISBN = \'" + ISBN + "\', bookName = \'" + bookName + "\', author = \'" + author +
-                    "\', bookCategory = \'" + category +
+                    "\', bookCategory = \'" + category + "\', bookRentNum = \'" + bookRentNum + "\', bookWantNum = \'" + bookWantNum +
                         "\' WHERE bookID = " + bookID;
             try {
                 db.update(sql);
@@ -120,7 +139,7 @@ public class Book implements SQLModel {
         }
         else {
             String sql = "INSERT INTO BOOK VALUES (" + bookID + ", \'" + ISBN + "\', \'" + bookName + "\', \'" + author + "\', \'"
-                        + category +"\')";
+                        + category +"\'+, \'" + bookRentNum + "\', \'" + bookWantNum + "\')";
             try {
                 db.insert(sql);
             }

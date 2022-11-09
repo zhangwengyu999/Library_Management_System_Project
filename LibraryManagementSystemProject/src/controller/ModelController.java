@@ -62,7 +62,9 @@ public class ModelController {
                 String bookName = resultSet.getString("bookName").trim();
                 String author = resultSet.getString("author").trim();
                 String category = resultSet.getString("bookCategory").trim();
-                Book book = new Book(bookID, ISBN, bookName, author, category);
+                int bookRentNum = resultSet.getInt("bookRentNum");
+                int bookPlacedNum = resultSet.getInt("bookPlacedNum");
+                Book book = new Book(bookID, ISBN, bookName, author, category, bookRentNum, bookPlacedNum);
                 addRecord(book);
             }
         }
