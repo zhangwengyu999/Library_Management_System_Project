@@ -29,6 +29,9 @@ public class ModelController {
     private int month = 11;
     private int day = 1;
 
+
+    DataBase db = DataBase.getDataBase();
+
     public ModelController() {
 //        books = new ArrayList<>();
 //        users = new ArrayList<>();
@@ -41,6 +44,7 @@ public class ModelController {
         rentBookBuffer = new HashMap<>();
         wantBookBuffer = new HashMap<>();
         placedBookBuffer = new HashMap<>();
+        db.reConnect();
     }
 
 
@@ -48,7 +52,7 @@ public class ModelController {
      * Setup and refresh the buffers from DB
      */
     public void refreshBuffers() {
-        DataBase db = DataBase.getDataBase();
+
 
         // refresh the bookBuffer
         ResultSet resultSet;
@@ -76,15 +80,16 @@ public class ModelController {
         // refresh the userBuffer
         ResultSet resultSet2;
         String sql2 =
-                "SELECT accountID, accountStatus" +
-                        " FROM USER_ACCOUNT";
+                "SELECT accountID, accountStatus, NOTIFICATION FROM USER_ACCOUNT";
         try{
             resultSet2 = db.query(sql2);
             while (resultSet2.next()){
                 String accountID = resultSet2.getInt("accountID")+ "";
                 String accountStatus = resultSet2.getString("accountStatus").trim();
-                User user = new User(accountID, accountStatus.equals("T"),"");
+                String notice = resultSet2.getString("NOTIFICATION").trim();
+                User user = new User(accountID, accountStatus.equals("T"),notice);
                 addRecord(user);
+                System.out.println("YES");
             }
         }
         catch (SQLException e){

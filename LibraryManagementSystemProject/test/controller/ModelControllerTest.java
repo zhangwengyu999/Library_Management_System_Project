@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ModelControllerTest {
     ModelController modelController = new ModelController();
 
+
     @Test
     void refreshBuffers() {
         modelController.refreshBuffers();

@@ -20,26 +20,27 @@ class DataBaseTest {
 
     @Test
     void queryTest1() {
-        List<String> out = new ArrayList<>();
-        String sql = "SELECT STUDENT_NAME FROM STUDENT";
+
+
+        String sql = "SELECT accountID, accountStatus, NOTIFICATION FROM USER_ACCOUNT";
         try{
             ResultSet resultSet = db.query(sql);
             while (resultSet.next()){
-                out.add(resultSet.getString(1).trim());
+                String accountID = resultSet.getInt("accountID")+ "";
+                System.out.println(accountID);
+                String accountStatus = resultSet.getString("accountStatus").trim();
+                System.out.println(accountStatus);
+                String notice = resultSet.getString("NOTIFICATION").trim();
+                System.out.println(notice);
+
             }
+
         }
         catch (Exception e) {
             System.out.println(e);
         }
-        List<String> expected = new ArrayList<>();
-        expected.add("Mike");
-        expected.add("Alice");
-        expected.add("Jack JONES");
-        expected.add("Mike JONES");
-        expected.add("Tom JONES");
-        expected.add("Alice JONES");
-        expected.add("Bob JONES");
-        assertEquals(out, expected);
+
+
 
     }
 
