@@ -25,9 +25,9 @@ public class PlacedBook extends RentBook implements SQLModel {
         try{
             resultSet = db.query(sql);
             while (resultSet.next()) {
-                bookID = resultSet.getString("bookID");
-                accountID = resultSet.getString("accountID");
-                String temp = resultSet.getString("placeTime");
+                bookID = resultSet.getString("bookID").trim();
+                accountID = resultSet.getString("accountID").trim();
+                String temp = resultSet.getString("placeTime").trim();
                 String[] temp2 = temp.split("-");
                 year = Integer.parseInt(temp2[0]);
                 month = Integer.parseInt(temp2[1]);

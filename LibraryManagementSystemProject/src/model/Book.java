@@ -104,15 +104,15 @@ public class Book implements SQLModel {
         ResultSet resultSet;
         String sql =
                     "SELECT bookID, ISBN, bookName, author, bookCategory" +
-                    "FROM BOOK WHERE bookID =" + bookID;
+                    "FROM BOOK WHERE bookID = \'" + bookID+"\'";
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
                 bookID = resultSet.getInt("bookID")+ "";
-                ISBN = resultSet.getString("ISBN");
-                bookName = resultSet.getString("bookName");
-                author = resultSet.getString("author");
-                category = resultSet.getString("bookCategory");
+                ISBN = resultSet.getString("ISBN").trim();
+                bookName = resultSet.getString("bookName").trim();
+                author = resultSet.getString("author").trim();
+                category = resultSet.getString("bookCategory").trim();
             }
         }
         catch (SQLException e){
@@ -125,9 +125,9 @@ public class Book implements SQLModel {
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (db.contains("BOOK", "bookID", bookID)){
-            String sql = "UPDATE BOOK SET ISBN = " + ISBN + ", bookName = " + bookName + ", author = " + author +
-                    ", bookCategory = " + category +
-                        " WHERE bookID = " + bookID;
+            String sql = "UPDATE BOOK SET ISBN = \'" + ISBN + "\', bookName = \'" + bookName + "\', author = \'" + author +
+                    "\', bookCategory = \'" + category +
+                        "\' WHERE bookID = " + bookID;
 //            String sql2 = "UPDATE BOOK_STATUS SET isRent = " + (status[0]?"T":"F") +
 //                        ", isAvailable = " + (status[1]?"T":"F") + ", isPlaced = " + (status[2]?"T":"F") +
 //                        " WHERE bookID = " + bookID;
@@ -140,8 +140,8 @@ public class Book implements SQLModel {
             }
         }
         else {
-            String sql = "INSERT INTO BOOK VALUES (" + bookID + ", " + ISBN + ", " + bookName + ", " + author + ", "
-                        + category +")";
+            String sql = "INSERT INTO BOOK VALUES (" + bookID + ", \'" + ISBN + "\', \'" + bookName + "\', \'" + author + "\', \'"
+                        + category +"\')";
 //            String sql2 = "INSERT INTO BOOK_STATUS VALUES (" + bookID + ", " +getTime() + ", "+ (status[0]?"T":"F") +
 //                        ", " + (status[1]?"T":"F") + ", " + (status[2]?"T":"F") + ")";
             try {

@@ -72,8 +72,8 @@ public class User implements SQLModel {
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
-                accountID = resultSet.getString("accountID");
-                String temp = resultSet.getString("accountStatus");
+                accountID = resultSet.getString("accountID").trim();
+                String temp = resultSet.getString("accountStatus").trim();
                 accountStatus = temp.equals("T");
             }
         }

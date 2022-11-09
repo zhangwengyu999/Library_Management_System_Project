@@ -2,29 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/ojdbc8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementSystemProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/database/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/database/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
-    </list>
-    <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
-    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/PlacedBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlacedBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/WantBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WantBook.java" afterDir="false" />
     </list>
-    <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
-    </list>
+    <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
+    <list id="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" name="Changes by shanpooo" comment="" />
+    <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,124 +26,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/controller/LMSController.java">
-      <ranges>
-        <range start1="10" end1="11" start2="10" end2="10" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="20" end1="21" start2="19" end2="21" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="24" end1="24" start2="24" end2="25" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="25" end1="27" start2="26" end2="107" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="31" end1="32" start2="111" end2="113" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="36" end1="36" start2="117" end2="118" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="37" end1="39" start2="119" end2="125" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="44" end1="46" start2="130" end2="135" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="47" end1="48" start2="136" end2="137" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="59" end1="59" start2="148" end2="149" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="61" end1="62" start2="151" end2="152" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="71" end1="72" start2="161" end2="162" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="81" end1="82" start2="171" end2="172" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="91" end1="92" start2="181" end2="182" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="100" end1="101" start2="190" end2="191" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="109" end1="109" start2="199" end2="200" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="110" end1="112" start2="201" end2="207" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="113" end1="114" start2="208" end2="209" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/view/MainView.java">
-      <ranges>
-        <range start1="18" end1="19" start2="18" end2="19" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="24" end1="25" start2="24" end2="27" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="26" end1="28" start2="28" end2="29" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="30" end1="31" start2="31" end2="54" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="34" end1="35" start2="57" end2="58" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="44" end1="45" start2="67" end2="68" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="62" end1="66" start2="85" end2="85" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="98" end1="99" start2="117" end2="162" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/controller/ModelController.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="4" end1="4" start2="5" end2="6" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="9" end1="14" start2="11" end2="16" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="29" end1="34" start2="31" end2="36" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="42" end1="42" start2="44" end2="71" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="44" end1="44" start2="73" end2="74" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="48" end1="49" start2="78" end2="79" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="51" end1="51" start2="81" end2="83" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="53" end1="54" start2="85" end2="86" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="55" end1="57" start2="87" end2="87" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="63" end1="66" start2="93" end2="102" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="73" end1="73" start2="109" end2="110" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="111" end1="114" start2="148" end2="157" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="120" end1="123" start2="163" end2="172" changelist="a2fb52fd-cd5f-4567-9254-74facbfeed91" />
-        <range start1="126" end1="127" start2="175" end2="176" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="154" end1="154" start2="203" end2="213" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="447" end1="448" start2="506" end2="507" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="453" end1="454" start2="512" end2="513" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="461" end1="462" start2="520" end2="529" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="464" end1="465" start2="531" end2="532" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="470" end1="471" start2="537" end2="538" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="475" end1="480" start2="542" end2="543" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="481" end1="489" start2="544" end2="553" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="490" end1="513" start2="554" end2="554" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="514" end1="519" start2="555" end2="562" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="520" end1="522" start2="563" end2="564" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="524" end1="525" start2="566" end2="566" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="526" end1="529" start2="567" end2="569" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="530" end1="531" start2="570" end2="593" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="533" end1="534" start2="595" end2="595" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="535" end1="535" start2="596" end2="612" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="536" end1="536" start2="613" end2="614" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="547" end1="550" start2="625" end2="628" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="572" end1="576" start2="650" end2="654" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="577" end1="578" start2="655" end2="656" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="579" end1="585" start2="657" end2="663" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="591" end1="592" start2="669" end2="670" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="594" end1="620" start2="672" end2="688" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="622" end1="623" start2="690" end2="691" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="625" end1="625" start2="693" end2="694" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="626" end1="626" start2="695" end2="708" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="627" end1="660" start2="709" end2="709" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/model/RentBook.java">
-      <ranges>
-        <range start1="22" end1="24" start2="22" end2="27" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="25" end1="25" start2="28" end2="32" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="41" end1="41" start2="48" end2="53" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="59" end1="60" start2="71" end2="72" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-        <range start1="89" end1="89" start2="101" end2="102" changelist="aca59f69-2d11-4d7a-97a8-bbc27227b4f2" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/model/Book.java">
-      <ranges>
-        <range start1="13" end1="15" start2="13" end2="15" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="16" end1="19" start2="16" end2="19" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="23" end1="24" start2="23" end2="24" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="29" end1="34" start2="29" end2="33" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="35" end1="35" start2="34" end2="36" changelist="603faea2-3af3-4a0d-8b59-60374dabccdc" />
-        <range start1="57" end1="63" start2="58" end2="64" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="64" end1="67" start2="65" end2="68" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="94" end1="101" start2="95" end2="98" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="102" end1="109" start2="99" end2="99" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="115" end1="117" start2="105" end2="107" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="125" end1="128" start2="115" end2="115" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="143" end1="146" start2="130" end2="133" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="148" end1="149" start2="135" end2="136" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="157" end1="159" start2="144" end2="146" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="161" end1="162" start2="148" end2="149" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -164,28 +46,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "J:/COMP2411/PROJECT_G4/Library_Management_System_Project/LibraryManagementSystemProject/lib/ojdbc8.jar",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="view" />
@@ -194,10 +77,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller.database" />
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LMSController">
+  <component name="RunManager" selected="JUnit.DataBaseTest.containsTest">
     <configuration name="LMSController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.LMSController" />
       <module name="LibraryManagementSystemProject" />
@@ -211,17 +95,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DayCalculatorTest.dayApartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataBaseTest.contains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LibraryManagementSystemProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="controller.database.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.DayCalculatorTest" />
-      <option name="METHOD_NAME" value="dayApartTest" />
+      <option name="PACKAGE_NAME" value="controller.database" />
+      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
+      <option name="METHOD_NAME" value="contains" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTest.containsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.database" />
+      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
+      <option name="METHOD_NAME" value="containsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTest.queryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.database" />
+      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
+      <option name="METHOD_NAME" value="queryTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataBaseTest.queryTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller.database" />
+      <option name="MAIN_CLASS_NAME" value="controller.database.DataBaseTest" />
+      <option name="METHOD_NAME" value="queryTest1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -229,8 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataBaseTest.containsTest" />
+        <item itemvalue="JUnit.DataBaseTest.contains" />
+        <item itemvalue="JUnit.DataBaseTest.queryTest1" />
+        <item itemvalue="JUnit.DataBaseTest.queryTest" />
         <item itemvalue="Application.LMSController" />
-        <item itemvalue="JUnit.DayCalculatorTest.dayApartTest" />
       </list>
     </recent_temporary>
   </component>

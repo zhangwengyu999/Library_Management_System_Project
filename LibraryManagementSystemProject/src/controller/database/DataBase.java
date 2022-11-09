@@ -40,13 +40,14 @@ public class DataBase {
     /*
      * initialize the connection to the database
      */
-    private static void initializeConnection() throws SQLException {
+    private void initializeConnection() throws SQLException {
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             connection = (OracleConnection)DriverManager.getConnection(url,username,pwd);
+            System.out.println("DB Connection OK!");
         }
         catch (SQLException e) {
-            System.out.println("Connection Failed!");
+            System.out.println("DB Connection Failed!");
             e.printStackTrace();
             throw e;
         }
@@ -55,23 +56,24 @@ public class DataBase {
     /*
      * close the connection
      */
-    public static void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException {
         try{
             connection.close();
+            System.out.println("Close OK!");
         }
         catch (SQLException e) {
-            System.out.println("Connection Failed!");
+            System.out.println("Close Failed!");
             e.printStackTrace();
             throw e;
         }
     }
 
-    /*
+    /**
      * query the database and get the ResultSet
-     * @param sql: the sql statement
+     * @param inSql: the sql statement
      * @return: the result set
      */
-    public static ResultSet query(String inSql) throws SQLException {
+    public ResultSet query(String inSql) throws SQLException {
         ResultSet resultSet;
         try {
             Statement statement = connection.createStatement();
@@ -85,16 +87,17 @@ public class DataBase {
         return resultSet;
     }
 
-    /*
+    /**
      * check whether inObject is in the inTable's inAttr
      * @param inTable: the table to be checked
      * @param inAttr: the attribute to be checked
      * @param inObject: the object to be checked
      * @return: true if inObject is in the inTable's inAttr
      */
-    public static boolean contains(String inTable, String inAttr, Object inObject) throws SQLException {
-        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = " + inObject;
+    public boolean contains(String inTable, String inAttr, String inObject) throws SQLException {
+        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = \'" + inObject+"\'";
         try{
+            System.out.println(sql);
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
                 return true;
@@ -117,8 +120,8 @@ public class DataBase {
      * @param inObject2: the object to be checked
      * @return: true if inObjects are in the inTable's inAttrs
      */
-    public static boolean contains(String inTable, String inAttr1, String inAttr2, Object inObject1, Object inObject2) throws SQLException {
-        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr1 + " = " + inObject1 + " AND " + inAttr2 + " = " + inObject2;
+    public boolean contains(String inTable, String inAttr1, String inAttr2, String inObject1, String inObject2) throws SQLException {
+        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr1 + " = \'" + inObject1 + "\' AND " + inAttr2 + " = \'" + inObject2+"\'";
         try{
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
@@ -133,11 +136,13 @@ public class DataBase {
         return false;
     }
 
+
+
     /*
      * update the database
      * @param sql: the sql statement
      */
-    public static void update(String inSql) throws SQLException {
+    public void update(String inSql) throws SQLException {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
@@ -153,7 +158,7 @@ public class DataBase {
      * Delete the data in the table
      * @param sql: the sql statement
      */
-    public static void delete(String inSql) throws SQLException {
+    public void delete(String inSql) throws SQLException {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
@@ -169,7 +174,7 @@ public class DataBase {
      * insert the data into the table
      * @param sql: the sql statement
      */
-    public static void insert(String inSql) throws SQLException {
+    public void insert(String inSql) throws SQLException {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
@@ -184,7 +189,7 @@ public class DataBase {
     /*
      * commit the changes
      */
-    public static void commit() throws SQLException {
+    public void commit() throws SQLException {
         try {
             connection.commit();
         }

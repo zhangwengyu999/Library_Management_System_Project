@@ -63,9 +63,9 @@ public class WantBook implements SQLModel {
             resultSet = db.query(sql);
             resultSet2 = db.query(sql2);
             while (resultSet.next()){
-                wantISBN = resultSet.getString("ISBN");
-                accountID = resultSet.getString("accountID");
-                String temp = resultSet.getString("wantTime");
+                wantISBN = resultSet.getString("ISBN").trim();
+                accountID = resultSet.getString("accountID").trim();
+                String temp = resultSet.getString("wantTime").trim();
                 String[] temp2 = temp.split("-");
                 wantYear = Integer.parseInt(temp2[0]);
                 wantMonth = Integer.parseInt(temp2[1]);

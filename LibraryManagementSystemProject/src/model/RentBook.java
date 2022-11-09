@@ -40,13 +40,13 @@ public class RentBook implements SQLModel {
     public SQLModel pullFromDatabase() throws SQLException{
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
-        String sql = "SELECT h.bookID, h.accountID FROM HAS_RENT h WHERE bookID = " + bookID;
+        String sql = "SELECT h.bookID, h.accountID FROM HAS_RENT h WHERE bookID = \'" + bookID+"\'";
         try{
             resultSet = db.query(sql);
             while (resultSet.next()) {
-                bookID = resultSet.getString("bookID");
-                accountID = resultSet.getString("accountID");
-                String temp = resultSet.getString("rentTime");
+                bookID = resultSet.getString("bookID").trim();
+                accountID = resultSet.getString("accountID").trim();
+                String temp = resultSet.getString("rentTime").trim();
                 String[] temp2 = temp.split("-");
                 year = Integer.parseInt(temp2[0]);
                 month = Integer.parseInt(temp2[1]);
@@ -69,7 +69,7 @@ public class RentBook implements SQLModel {
             }
         }
         else {
-            String sql = "INSERT INTO HAS_RENT VALUE(" + bookID + "," + accountID + ","+ getDate()+")";
+            String sql = "INSERT INTO HAS_RENT VALUE( " + bookID + "," + accountID + ",\'"+ getDate()+"\')";
             db.update(sql);
         }
         return this;
@@ -77,7 +77,7 @@ public class RentBook implements SQLModel {
 
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
-        String sql = "DELETE FROM HAS_RENT WHERE bookID = " + bookID;
+        String sql = "DELETE FROM HAS_RENT WHERE bookID = \'" + bookID+"\'";
         try {
             db.query(sql);
         } catch (SQLException e) {
