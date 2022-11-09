@@ -6,18 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/view/MainView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/view/MainView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/Book.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/ModelControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/LibraryManagementSystemProject/controller/ModelControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" afterDir="false" />
-    </list>
-    <list id="1a92e16b-e777-4c79-beca-05b9c8fa7087" name="Changes by davidjiang" comment="">
+      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
     <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
-    <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="" />
+    <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="">
+      <change beforePath="$PROJECT_DIR$/src/model/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DataProcess.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,15 +35,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/test/controller/ModelControllerTest.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="18" end1="18" start2="19" end2="21" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="22" end1="22" start2="25" end2="26" changelist="1a92e16b-e777-4c79-beca-05b9c8fa7087" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -180,6 +171,9 @@
         <item itemvalue="JUnit.DataBaseTest.queryTest1" />
         <item itemvalue="JUnit.DataBaseTest.createBookTable" />
         <item itemvalue="JUnit.DataBaseTest.initializeLMSTable" />
+        <item itemvalue="JUnit.DataBaseTest.containsTest" />
+        <item itemvalue="JUnit.DataBaseTest.queryTest1" />
+        <item itemvalue="JUnit.DataBaseTest.contains" />
       </list>
     </recent_temporary>
   </component>
@@ -240,8 +234,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/controller/ModelControllerTest.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="12" />
+          <line>20</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
