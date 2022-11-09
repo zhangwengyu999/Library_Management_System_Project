@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlacedBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlacedBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/RentBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RentBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/WantBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/WantBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/database/DataBaseTest.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
@@ -225,7 +222,7 @@
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
