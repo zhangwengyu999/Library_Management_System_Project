@@ -52,7 +52,7 @@ public class ModelController {
         // refresh the bookBuffer
         ResultSet resultSet;
         String sql =
-                "SELECT bookID, ISBN, bookName, author, bookCategory" +
+                "SELECT bookID, ISBN, bookName, author, bookCategory, bookRentNum, bookWantNum" +
                         "FROM BOOK";
         try{
             resultSet = db.query(sql);
@@ -63,8 +63,8 @@ public class ModelController {
                 String author = resultSet.getString("author").trim();
                 String category = resultSet.getString("bookCategory").trim();
                 int bookRentNum = resultSet.getInt("bookRentNum");
-                int bookPlacedNum = resultSet.getInt("bookPlacedNum");
-                Book book = new Book(bookID, ISBN, bookName, author, category, bookRentNum, bookPlacedNum);
+                int bookWantNum = resultSet.getInt("bookWantNum");
+                Book book = new Book(bookID, ISBN, bookName, author, category, bookRentNum, bookWantNum);
                 addRecord(book);
             }
         }
@@ -687,6 +687,7 @@ public class ModelController {
              if (size > 0){
                 User nextUser = wantBookBuffer.get(isbn).poll();
                 PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), isbn, year, month, day);
+                book.deleteWantBookCount();
                 addRecord(placedBook);
             }
         }catch(Exception e){
@@ -758,6 +759,7 @@ public class ModelController {
                 if (!rentBookBuffer.containsKey(book.getBookID()) && !placedBookBuffer.containsKey(book.getBookID())) {
                     RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
                     try {
+                        book.addRentBookCount();
                         addRecord(rentBook);
                         return true;
                     } catch (Exception e) {
@@ -781,6 +783,7 @@ public class ModelController {
                 if (nextUser != null) {
                     try {
                         PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), bookID, year, month, day);
+                        book.addWantBookCount();
                         addRecord(placedBook);
                     } catch (Exception e) {
                         e.printStackTrace();
