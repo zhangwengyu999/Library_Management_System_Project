@@ -54,7 +54,7 @@ public class ModelController {
         ResultSet resultSet;
         String sql =
                 "SELECT bookID, ISBN, bookName, author, bookCategory, bookRentNum, bookWantNum" +
-                        "FROM BOOK";
+                        " FROM BOOK";
         try{
             resultSet = db.query(sql);
             while (resultSet.next()){
@@ -77,7 +77,7 @@ public class ModelController {
         ResultSet resultSet2;
         String sql2 =
                 "SELECT accountID, accountStatus" +
-                        "FROM USER_ACCOUNT";
+                        " FROM USER_ACCOUNT";
         try{
             resultSet2 = db.query(sql2);
             while (resultSet2.next()){
@@ -95,7 +95,7 @@ public class ModelController {
         ResultSet resultSet3;
         String sql3 =
                 "SELECT bookID, accountID, rentTime" +
-                        "FROM HAS_RENT";
+                        " FROM HAS_RENT";
         try{
             resultSet3 = db.query(sql3);
             while (resultSet3.next()){
@@ -122,7 +122,7 @@ public class ModelController {
         ResultSet resultSet4;
         String sql4 =
                 "SELECT accountID, ISBN, wantTime" +
-                        "FROM WANT_BOOK";
+                        " FROM WANT_BOOK";
         try{
             resultSet4 = db.query(sql4);
             while (resultSet4.next()){
@@ -149,7 +149,7 @@ public class ModelController {
         ResultSet resultSet5;
         String sql5 =
                 "SELECT bookID, accountID, placeTime" +
-                        "FROM HAS_PLACED";
+                        " FROM HAS_PLACED";
         try{
             resultSet5 = db.query(sql5);
             while (resultSet5.next()){
