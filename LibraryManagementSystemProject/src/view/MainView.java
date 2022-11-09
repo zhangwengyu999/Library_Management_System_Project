@@ -13,7 +13,9 @@ public class MainView {
     int countAccount;
 
     public void welcomePage() {
-        System.out.println("Welcome to the Library Management System(LMS)!");
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("        Welcome to the Library Management System(LMS)!");
+        System.out.println();
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [L] Manager Login");
         System.out.println("- [E] Exit System");
@@ -107,7 +109,7 @@ public class MainView {
     }
     
     public void linePage() {
-        System.out.println("----------------------------------------------------------------/n" +
+        System.out.println("----------------------------------------------------------------\n" +
                 "----------------------------------------------------------------");
     }
 
