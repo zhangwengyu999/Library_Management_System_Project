@@ -151,12 +151,25 @@ public class MainView {
         System.out.println("Please enter related information");
     }
 
-    // when the book return by a user and the isbn somebody want, the the per
-    public void canBeRentNotification() {
-
+    // when the book return by a user and the isbn is somebody want, notify the person who want the book
+    public void canBeRentNotification(String ISBN, String accountID) {
+        System.out.println("Dear" +accountID);
+        System.out.println("The book (ISBN:"+ISBN+") you want now is available, you can find it in library by yourself!");
     }
 
+    // A book can be rent for up to 14 day
+    public void outOfMaxRentDayNotification(String bookID, String accountID) {
+        System.out.println("Dear" +accountID);
+        System.out.println("The book (ID: "+bookID+") has been rent is out of the MAX_RENT_DAY!");
+        System.out.println("Your account will be banned until you return the book!");
+    }
 
+    // A book can be reserved for up to 7 days
+    public void outOfMaxPlacedDayNotification(String bookID, String accountID) {
+        System.out.println("Dear" +accountID);
+        System.out.println("The book (ID: "+bookID+") has been placed on library out of the MAX_PLACED_DAY!");
+        System.out.println("You are supposed to reserve this book by another application!");
+    }
 
 
 

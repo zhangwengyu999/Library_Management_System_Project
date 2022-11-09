@@ -39,10 +39,10 @@ public class DataProcess {
     public SQLModel getBorrowedBook() throws SQLException {
         return (SQLModel) this;
     }
-    public SQLModel getMostRentBook() throws SQLException {
+    public SQLModel getMostBorrowedBookByCategory() throws SQLException {
         return (SQLModel) this;
     }
-    public SQLModel getMostRentBook() throws SQLException {
+    public SQLModel getMostBorrowedBookByAuthor() throws SQLException {
         return (SQLModel) this;
     }
 
@@ -55,7 +55,7 @@ public class DataProcess {
     2. Most rented books (favourite)
     3. Least rented books (least favourite)
     4. Average number of books borrowed per day/week/month/year
-    5.  Borrowed books
+    5. Borrowed books
     6. Most borrowed books by category
     7. Most borrowed books by author
 

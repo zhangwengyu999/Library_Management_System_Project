@@ -2,6 +2,7 @@ package controller;
 
 import controller.database.DataBase;
 import model.*;
+import view.MainView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -667,8 +668,6 @@ public class ModelController {
     }
 
 
-    // 这个人借的书已变成isPlaced，要对wantBookList对应的<ID,ISBN>和（对于下一个想要这个ISBN的人的更新或书籍状态更新）
-    // 这个人借的书已变成isPlaced且超出期限，如果有人想要进行借阅，则更新wantBookList对应的<ID,ISBN>和对于下一个想要这个ISBN的人，否则则改变为isAvailable
 
     public boolean cancelPlacedBook(String inBookID, String inAccountID) {
         try {
@@ -687,6 +686,8 @@ public class ModelController {
              if (size > 0){
                 User nextUser = wantBookBuffer.get(isbn).poll();
                 PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), isbn, year, month, day);
+                MainView mainView = new MainView();
+                mainView.canBeRentNotification(isbn,nextUser.getAccountID());
                 addRecord(placedBook);
             }
         }catch(Exception e){
@@ -706,6 +707,8 @@ public class ModelController {
                 int placedDay = DayCalculator.dayApart(year, month, day,this.year,this.month, this.day);
                 if (placedDay>MAX_PLACED_DAY){
                     cancelPlacedBook(placedBook.getBookID(), placedBook.getAccountID());
+                    MainView mainView = new MainView();
+                    mainView.outOfMaxPlacedDayNotification(placedBook.getBookID(),placedBook.getAccountID());
                 }
             }
             catch (Exception e){
@@ -730,6 +733,8 @@ public class ModelController {
                 int day = rentBook.getDateArray()[2];
                 int rentDays = DayCalculator.dayApart(year, month, day, this.year, this.month, this.day);
                 if (rentDays > MAX_RENT_DAY) {
+                    MainView mainView = new MainView();
+                    mainView.outOfMaxRentDayNotification(rentBook.getBookID(), rentBook.getAccountID());
                     output.add(rentBook);
                 }
             }
