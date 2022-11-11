@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ModelControllerTest {
@@ -119,10 +121,16 @@ class ModelControllerTest {
         assertTrue(modelController.deletePlacedBookRecord("2"));
         assertFalse(modelController.deletePlacedBookRecord("2"));
     }
-//
-//    @Test
-//    void searchBookOnBookName() {
-//    }
+
+    @Test
+    void searchBookOnBookName() {
+        try {
+            List<Book> books = modelController.searchBookOnBookName("The Lord of the Rings");
+            assertEquals("The Lord of the Rings", books.get(0).getBookName());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 //
 //    @Test
 //    void searchBookOnBookID() {
