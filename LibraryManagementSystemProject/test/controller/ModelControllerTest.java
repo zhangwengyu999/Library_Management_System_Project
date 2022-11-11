@@ -127,6 +127,7 @@ class ModelControllerTest {
         try {
             List<Book> books = modelController.searchBookOnBookName("The Lord of the Rings");
             assertEquals("The Lord of the Rings", books.get(0).getBookName());
+            assertEquals("1", books.get(0).getBookID());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
