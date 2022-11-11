@@ -19,15 +19,27 @@ class ModelControllerTest {
     }
 
     @Disabled
-    void addRecord() {
+    void addBookRecordTest() {
         Book book = new Book("2","1010","MyBook","Publisher","Category",0,0);
-//        User user = new User();
         modelController.addRecord(book);
     }
 
     @Test
-    void testAddRecord() {
-
+    void addUserRecord() {
+        User user1 = new User("1",true,"Notification \n");
+        User user2 = new User("2",true,"Notification \n");
+        User user3 = new User("3",true,"Notification \n");
+        User user4 = new User("4",true,"Notification \n");
+        User user5 = new User("5",true,"Notification \n");
+        User user6 = new User("6",false,"Notification \n");
+        User user7 = new User("7",false,"Notification \n");
+        modelController.addRecord(user1);
+        modelController.addRecord(user2);
+        modelController.addRecord(user3);
+        modelController.addRecord(user4);
+        modelController.addRecord(user5);
+        modelController.addRecord(user6);
+        modelController.addRecord(user7);
     }
 
     @Test
@@ -42,13 +54,14 @@ class ModelControllerTest {
     void testAddRecord3() {
     }
 
-    @Test
+    @Disabled
     void deleteBookRecord() {
         assertTrue(modelController.deleteBookRecord("2"));
     }
 
     @Test
     void deleteUserRecord() {
+        assertTrue(modelController.deleteUserRecord("1"));
     }
 
     @Test
