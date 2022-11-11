@@ -407,7 +407,7 @@ public class ModelController {
     public List<Book> searchBookOnBookAuthor(String inAuthor) throws Exception {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
-            if (((Book) book).getBookName().equals(inAuthor)) {
+            if (((Book) book).getAuthor().equals(inAuthor)) {
                 result.add((Book)book);
             }
         }
@@ -424,7 +424,7 @@ public class ModelController {
     public List<Book> searchBookOnBookCategory(String inCategory) throws Exception {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
-            if (((Book) book).getBookName().equals(inCategory)) {
+            if (((Book) book).getCategory().equals(inCategory)) {
                 result.add((Book)book);
             }
         }
@@ -501,8 +501,11 @@ public class ModelController {
     public List<String> searchWantBookOnAccountID(String inAccountID) throws Exception {
         List<String> result = new ArrayList<>();
         for (String isbn : wantBookBuffer.keySet()) {
-            if (wantBookBuffer.get(isbn).contains(userBuffer.get(inAccountID))) {
-                result.add(isbn);
+            for (WantBook wantBook: wantBookBuffer.get(isbn)) {
+                if (wantBook.getUserAccountID().equals(inAccountID)) {
+                    result.add(isbn);
+                    break;
+                }
             }
         }
         if (result.size() == 0) {
