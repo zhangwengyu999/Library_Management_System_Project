@@ -19,7 +19,7 @@ public class ModelController {
     private HashMap<String, Book> bookBuffer; // key: bookId, value: Book object
     private HashMap<String, User> userBuffer; // key: accountID, value: User object
     private HashMap<String, RentBook> rentBookBuffer; // Key: bookId, value: RendBook record
-    private HashMap<String, Queue<User>> wantBookBuffer; // key: ISBN, value: User Queue
+    private HashMap<String, Queue<WantBook>> wantBookBuffer; // key: ISBN, value: User Queue
     private HashMap<String, PlacedBook> placedBookBuffer; // key: bookId, value: PlacedBook record
 
     private final int MAX_RENT_DAY = 14;
@@ -144,7 +144,7 @@ public class ModelController {
                 day = Integer.parseInt(temp3[2]);
                 WantBook wantBook = new WantBook(accountID, isbn,year, month, day);
                 try{
-                    Queue<User> queue; // Queue of User
+                    Queue<WantBook> queue; // Queue of User
                     if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
                         queue = wantBookBuffer.get(wantBook.getWantISBNs());
                     }
@@ -152,8 +152,8 @@ public class ModelController {
                         queue = new LinkedList<>();
                     }
                     // add the user to the queue with that ISBN
-                    queue.add(userBuffer.get(wantBook.getUserAccountID()));
-                    wantBookBuffer.put(wantBook.getWantISBNs(), queue);
+                    queue.add(wantBook);
+                    wantBookBuffer.put(isbn, queue);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -245,7 +245,7 @@ public class ModelController {
         try {
             wantBook.pushToDatabase();
 
-            Queue<User> queue; // Queue of User
+            Queue<WantBook> queue; // Queue of User
             if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
                 queue = wantBookBuffer.get(wantBook.getWantISBNs());
             }
@@ -253,7 +253,7 @@ public class ModelController {
                 queue = new LinkedList<>();
             }
             // add the user to the queue with that ISBN
-            queue.add(userBuffer.get(wantBook.getUserAccountID()));
+            queue.add(wantBook);
             wantBookBuffer.put(wantBook.getWantISBNs(), queue);
             return true;
         } catch (SQLException e) {
@@ -314,16 +314,16 @@ public class ModelController {
      */
     public boolean deleteWantBookRecord(String inISBN, String inAccountID) {
         try {
-            Queue<User> queue = wantBookBuffer.get(inISBN);
-            Queue<User> out = new LinkedList<>();
-            SQLModel targetUser;
-            for (User user: queue){
-                if ((user).getAccountID().equals(inAccountID)) {
-                    targetUser = user;
-                    targetUser.deleteFromDatabase();
+            Queue<WantBook> queue = wantBookBuffer.get(inISBN);
+            Queue<WantBook> out = new LinkedList<>();
+            WantBook targetWantBook;
+            for (WantBook wantBook: queue){
+                if ((wantBook).getUserAccountID().equals(inAccountID)) {
+                    targetWantBook = wantBook;
+                    targetWantBook.deleteFromDatabase();
                 }
                 else{
-                    out.add(user);
+                    out.add(wantBook);
                 }
             }
             wantBookBuffer.put(inISBN, out);
@@ -746,13 +746,15 @@ public class ModelController {
             deletePlacedBookRecord(inBookID);
 
              if (size > 0){
-                User nextUser = wantBookBuffer.get(isbn).poll();
-                PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), isbn, year, month, day);
+                WantBook nextWantUser = wantBookBuffer.get(isbn).poll();
+                PlacedBook placedBook = new PlacedBook(nextWantUser.getUserAccountID(), isbn, year, month, day);
                 MainView mainView = new MainView();
-                mainView.canBeRentNotification(isbn,nextUser.getAccountID());
+                mainView.canBeRentNotification(isbn,nextWantUser.getUserAccountID());
                 StringBuilder sb1 = new StringBuilder();
+                User nextUser = userBuffer.get(nextWantUser.getUserAccountID());
                 sb1.append(nextUser.getNoticeString());
                 sb1.append("The book with ISBN: ").append(isbn).append(" is available now.\n");
+                nextUser.setNoticeString(sb1.toString());
                 addRecord(placedBook);
             }
         }catch(Exception e){
@@ -856,8 +858,8 @@ public class ModelController {
         try {
             if (rentBookBuffer.containsKey(bookID)) {
                 Book book = bookBuffer.get(bookID);
-                Queue<User> wantBookUsers = wantBookBuffer.get(book.getISBN());
-                User nextUser = wantBookUsers.poll();
+                Queue<WantBook> wantBookUsers = wantBookBuffer.get(book.getISBN());
+                User nextUser = userBuffer.get(wantBookUsers.poll());
                 if (nextUser != null) {
                     try {
                         PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), bookID, year, month, day);
@@ -865,6 +867,7 @@ public class ModelController {
                         StringBuilder sb = new StringBuilder();
                         sb.append(nextUser.getNoticeString());
                         sb.append("The book with ISBN: ").append(book.getISBN()).append(" is available now.\n");
+                        nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
                     } catch (Exception e) {
                         e.printStackTrace();
