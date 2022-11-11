@@ -43,6 +43,7 @@ class ModelControllerTest {
 
     @Test
     void deleteBookRecord() {
+        modelController.deleteBookRecord("2");
     }
 
     @Test

@@ -29,16 +29,9 @@ public class ModelController {
     private int month = 11;
     private int day = 1;
 
-
     DataBase db = DataBase.getDataBase();
 
     public ModelController() {
-//        books = new ArrayList<>();
-//        users = new ArrayList<>();
-//        rentBooks = new ArrayList<>();
-//        wantBooks = new ArrayList<>();
-//        placedBooks = new ArrayList<>();
-
         bookBuffer = new HashMap<>();
         userBuffer = new HashMap<>();
         rentBookBuffer = new HashMap<>();
@@ -214,38 +207,52 @@ public class ModelController {
      * Add rentBook record into rentBookBuffer and update to the DB
      * @param rentBook: the rentBook to add
      */
-    public void addRecord(RentBook rentBook) throws Exception {
-
-        rentBook.pushToDatabase();
-        rentBookBuffer.put(rentBook.getBookID(),rentBook);
+    public boolean addRecord(RentBook rentBook) {
+        try {
+            rentBook.pushToDatabase();
+            rentBookBuffer.put(rentBook.getBookID(),rentBook);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     /**
      * Add wantBook record into wantBookBuffer and update to the DB
      * @param wantBook the wantBook to add
      */
-    public void addRecord(WantBook wantBook) throws Exception {
-        wantBook.pushToDatabase();
+    public boolean addRecord(WantBook wantBook) {
+        try {
+            wantBook.pushToDatabase();
 
-        Queue<User> queue; // Queue of User
-        if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
-            queue = wantBookBuffer.get(wantBook.getWantISBNs());
+            Queue<User> queue; // Queue of User
+            if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
+                queue = wantBookBuffer.get(wantBook.getWantISBNs());
+            }
+            else {
+                queue = new LinkedList<>();
+            }
+            // add the user to the queue with that ISBN
+            queue.add(userBuffer.get(wantBook.getUserAccountID()));
+            wantBookBuffer.put(wantBook.getWantISBNs(), queue);
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
-        else {
-            queue = new LinkedList<>();
-        }
-        // add the user to the queue with that ISBN
-        queue.add(userBuffer.get(wantBook.getUserAccountID()));
-        wantBookBuffer.put(wantBook.getWantISBNs(), queue);
     }
 
     /**
      * Add placedBook record into placedBookBuffer and update to the DB
      * @param placedBook: the placedBook to add
      */
-    public void addRecord(PlacedBook placedBook) throws Exception {
-        placedBook.pushToDatabase();
-        rentBookBuffer.put(placedBook.getBookID(),placedBook);
+    public boolean addRecord(PlacedBook placedBook) {
+        try {
+            placedBook.pushToDatabase();
+            rentBookBuffer.put(placedBook.getBookID(),placedBook);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
 
@@ -285,29 +292,39 @@ public class ModelController {
      * @param inISBN: the want book with the ISBN
      * @param inAccountID: the want user with the accountID
      */
-    public void deleteWantBookRecord(String inISBN, String inAccountID) throws Exception {
-        Queue<User> queue = wantBookBuffer.get(inISBN);
-        Queue<User> out = new LinkedList<>();
-        SQLModel targetUser;
-        for (User user: queue){
-            if ((user).getAccountID().equals(inAccountID)) {
-                targetUser = user;
-                targetUser.deleteFromDatabase();
+    public boolean deleteWantBookRecord(String inISBN, String inAccountID) {
+        try {
+            Queue<User> queue = wantBookBuffer.get(inISBN);
+            Queue<User> out = new LinkedList<>();
+            SQLModel targetUser;
+            for (User user: queue){
+                if ((user).getAccountID().equals(inAccountID)) {
+                    targetUser = user;
+                    targetUser.deleteFromDatabase();
+                }
+                else{
+                    out.add(user);
+                }
             }
-            else{
-                out.add(user);
-            }
+            wantBookBuffer.put(inISBN, out);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        wantBookBuffer.put(inISBN, out);
     }
 
     /**
      * Delete rent book from buffer and DB
      * @param inBookID: the placed book with the bookID
      */
-    public void deleteRentBookRecord(String inBookID) throws Exception {
-        rentBookBuffer.get(inBookID).deleteFromDatabase();
-        rentBookBuffer.remove(inBookID);
+    public boolean deleteRentBookRecord(String inBookID) {
+        try {
+            rentBookBuffer.get(inBookID).deleteFromDatabase();
+            rentBookBuffer.remove(inBookID);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -315,9 +332,14 @@ public class ModelController {
      * @param inBookID: the placed book with the bookID
      */
 
-    public void deletePlacedBookRecord(String inBookID) throws Exception {
-        placedBookBuffer.get(inBookID).deleteFromDatabase();
-        placedBookBuffer.remove(inBookID);
+    public boolean deletePlacedBookRecord(String inBookID) {
+        try {
+            placedBookBuffer.get(inBookID).deleteFromDatabase();
+            placedBookBuffer.remove(inBookID);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
@@ -332,7 +354,7 @@ public class ModelController {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getBookName().equals(inName)) {
-                result.add((Book)book.pullFromDatabase());
+                result.add((Book)book);
             }
         }
         if (result.size() == 0) {
@@ -366,7 +388,7 @@ public class ModelController {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getBookName().equals(inAuthor)) {
-                result.add((Book)book.pullFromDatabase());
+                result.add((Book)book);
             }
         }
         if (result.size() == 0) {
@@ -383,7 +405,7 @@ public class ModelController {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getBookName().equals(inCategory)) {
-                result.add((Book)book.pullFromDatabase());
+                result.add((Book)book);
             }
         }
         if (result.size() == 0) {
@@ -401,7 +423,7 @@ public class ModelController {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getISBN().equals(inISBN)) {
-                result.add((Book)book.pullFromDatabase());
+                result.add((Book)book);
             }
         }
         if (result.size() == 0) {
@@ -421,7 +443,7 @@ public class ModelController {
     public List<RentBook> searchRentBookOnBookID(String inBookID) throws Exception {
         List<RentBook> result = new ArrayList<>();
         if (rentBookBuffer.containsKey(inBookID)){
-            result.add((RentBook)rentBookBuffer.get(inBookID).pullFromDatabase());
+            result.add((RentBook)rentBookBuffer.get(inBookID));
         }
         else{
             throw new Exception("This book is not rent by other.");
@@ -439,7 +461,7 @@ public class ModelController {
         List<RentBook> result = new ArrayList<>();
         for (SQLModel rentBook : rentBookBuffer.values()) {
             if (((RentBook) rentBook).getAccountID().equals(inAccountID)) {
-                result.add((RentBook) rentBook.pullFromDatabase());
+                result.add((RentBook) rentBook);
             }
         }
         if (result.size() == 0) {
@@ -479,7 +501,7 @@ public class ModelController {
         List<User> result = new ArrayList<>();
         if (wantBookBuffer.containsKey(inISBN)){
             for (SQLModel user : wantBookBuffer.get(inISBN)){
-                result.add((User)user.pullFromDatabase());
+                result.add((User)user);
             }
         }
         else{
@@ -501,7 +523,7 @@ public class ModelController {
         List<PlacedBook> result = new ArrayList<>();
         for (SQLModel placedBook : placedBookBuffer.values()) {
             if (((PlacedBook) placedBook).getAccountID().equals(inAccountID)) {
-                result.add((PlacedBook) placedBook.pullFromDatabase());
+                result.add((PlacedBook) placedBook);
             }
         }
         if (result.size() == 0) {
@@ -519,7 +541,7 @@ public class ModelController {
     public List<PlacedBook> searchPlacedBookOnBookID(String inBookID) throws Exception {
         List<PlacedBook> result = new ArrayList<>();
         if (placedBookBuffer.containsKey(inBookID)){
-            result.add((PlacedBook) placedBookBuffer.get(inBookID).pullFromDatabase());
+            result.add((PlacedBook) placedBookBuffer.get(inBookID));
         }
         else{
             throw new Exception("This book is not placed by any users.");
@@ -539,7 +561,7 @@ public class ModelController {
     public List<User> searchUserOnAccountID(String inAccountID) throws Exception {
         List<User> result = new ArrayList<>();
         if (userBuffer.containsKey(inAccountID)){
-            result.add((User)userBuffer.get(inAccountID).pullFromDatabase());
+            result.add((User)userBuffer.get(inAccountID));
         }
         else{
             throw new Exception("No user found.");
@@ -558,7 +580,7 @@ public class ModelController {
     public boolean deactivateUser(String inAccountID) {
         if (userBuffer.containsKey(inAccountID)) {
             try{
-                User user = (User) userBuffer.get(inAccountID).pullFromDatabase();
+                User user = (User) userBuffer.get(inAccountID);
                 if (user.getAccountStatus()) {
                     user.setAccountStatus(false);
                     StringBuilder sb = new StringBuilder();
@@ -584,7 +606,7 @@ public class ModelController {
     public boolean activateUser(String inAccountID) {
         if (userBuffer.containsKey(inAccountID)) {
             try{
-                User user = (User) userBuffer.get(inAccountID).pullFromDatabase();
+                User user = (User) userBuffer.get(inAccountID);
                 if (!user.getAccountStatus()) {
                     user.setAccountStatus(true);
                     StringBuilder sb = new StringBuilder();
@@ -632,7 +654,7 @@ public class ModelController {
         if (canBeReserved) {
             WantBook wantBook = new WantBook(inAccountID, inISBN, year, month, day);
             try{
-                User user = (User)userBuffer.get(inAccountID).pullFromDatabase();
+                User user = (User)userBuffer.get(inAccountID);
                 int temp = user.getReserveCount();
                 // check the reserve count < MAX_WANT_BOOK
                 if (temp<MAX_WANT_BOOK) {
@@ -671,7 +693,7 @@ public class ModelController {
         }
 
         try{
-            User user = (User)userBuffer.get(inAccountID).pullFromDatabase();
+            User user = (User)userBuffer.get(inAccountID);
             user.decreaseReserveCount();
             deleteWantBookRecord(inISBN, inAccountID);
             StringBuilder sb = new StringBuilder();
@@ -723,7 +745,7 @@ public class ModelController {
     public void refreshExpiredPlacedBook(){
         for (PlacedBook placedBook: placedBookBuffer.values()){
             try{
-                placedBook = (PlacedBook) placedBook.pullFromDatabase();
+                placedBook = (PlacedBook) placedBook;
                 int year = placedBook.getDateArray()[0];
                 int month = placedBook.getDateArray()[1];
                 int day = placedBook.getDateArray()[2];
@@ -753,7 +775,7 @@ public class ModelController {
         List<RentBook> output = new ArrayList<>();
         for (RentBook rentBook: rentBookBuffer.values()) {
             try {
-                rentBook = (RentBook) rentBook.pullFromDatabase();
+                rentBook = (RentBook) rentBook;
                 int year = rentBook.getDateArray()[0];
                 int month = rentBook.getDateArray()[1];
                 int day = rentBook.getDateArray()[2];
