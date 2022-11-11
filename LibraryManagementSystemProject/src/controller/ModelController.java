@@ -131,7 +131,7 @@ public class ModelController {
         ResultSet resultSet4;
         String sql4 =
                 "SELECT accountID, ISBN, wantTime" +
-                        " FROM WANT_BOOK";
+                        " FROM WANT_BOOK ORDER BY accountID, wantTime";
         try{
             resultSet4 = db.query(sql4);
             while (resultSet4.next()){

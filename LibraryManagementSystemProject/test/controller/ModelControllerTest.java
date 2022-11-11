@@ -307,10 +307,16 @@ class ModelControllerTest {
             System.out.println(e.getMessage());
         }
     }
-//
-//    @Test
-//    void cancelReservedBook() {
-//    }
+
+    @Test
+    void cancelReservedBook() {
+        try {
+            assertTrue(modelController.cancelReservedBook("1","0-04"));
+            assertEquals(1,modelController.searchWantBookOnAccountID("1").size());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 //
 //    @Test
 //    void cancelPlacedBook() {
