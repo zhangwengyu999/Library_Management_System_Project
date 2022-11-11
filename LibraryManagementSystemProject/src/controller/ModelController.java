@@ -615,6 +615,7 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
                     sb.append("Your account has been deactivated.\n");
+                    user.setNoticeString(sb.toString());
                     user.pushToDatabase();
                     return true;
                 }
