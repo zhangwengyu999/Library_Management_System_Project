@@ -106,7 +106,6 @@ class ModelControllerTest {
     void deleteWantBookRecord() {
         assertTrue(modelController.deleteWantBookRecord("0-05","1"));
         assertFalse(modelController.deleteWantBookRecord("0-05","1"));
-
     }
 
     @Test

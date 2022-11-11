@@ -316,16 +316,16 @@ public class ModelController {
         try {
             Queue<WantBook> queue = wantBookBuffer.get(inISBN);
             Queue<WantBook> out = new LinkedList<>();
-            WantBook targetWantBook;
+            if (queue.size() == 0) {return false;}
             for (WantBook wantBook: queue){
                 if ((wantBook).getUserAccountID().equals(inAccountID)) {
-                    targetWantBook = wantBook;
-                    targetWantBook.deleteFromDatabase();
+                    wantBook.deleteFromDatabase();
                 }
                 else{
                     out.add(wantBook);
                 }
             }
+            if(queue.size() == out.size()) {return false;}
             wantBookBuffer.put(inISBN, out);
             return true;
         } catch (Exception e) {
