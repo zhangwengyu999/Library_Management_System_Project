@@ -20,7 +20,7 @@ class ModelControllerTest {
     @Test
     void addRecord() {
         Book book = new Book("2","1010","MyBook","Publisher","Category",0,0);
-        User user = new User()
+//        User user = new User();
         modelController.addRecord(book);
     }
 
