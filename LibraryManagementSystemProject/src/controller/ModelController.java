@@ -27,7 +27,7 @@ public class ModelController {
     private final int MAX_WANT_BOOK = 8;
     private int year = 2022;
     private int month = 11;
-    private int day = 1;
+    private int day = 30;
 
     DataBase db = DataBase.getDataBase();
 
@@ -112,9 +112,9 @@ public class ModelController {
                 String accountID = resultSet3.getInt("accountID")+ "";
                 String rentTime = resultSet3.getString("rentTime").trim();
                 String[] temp2 = rentTime.split("-");
-                year = Integer.parseInt(temp2[0]);
-                month = Integer.parseInt(temp2[1]);
-                day = Integer.parseInt(temp2[2]);
+                int year = Integer.parseInt(temp2[0]);
+                int month = Integer.parseInt(temp2[1]);
+                int day = Integer.parseInt(temp2[2]);
                 RentBook rentBook = new RentBook(accountID, bookID,year, month, day);
                 try{
                     rentBookBuffer.put(rentBook.getBookID(),rentBook);
@@ -139,9 +139,9 @@ public class ModelController {
                 String isbn = resultSet4.getString("ISBN").trim();
                 String rentTime = resultSet4.getString("wantTime").trim();
                 String[] temp3 = rentTime.split("-");
-                year = Integer.parseInt(temp3[0]);
-                month = Integer.parseInt(temp3[1]);
-                day = Integer.parseInt(temp3[2]);
+                int year = Integer.parseInt(temp3[0]);
+                int month = Integer.parseInt(temp3[1]);
+                int day = Integer.parseInt(temp3[2]);
                 WantBook wantBook = new WantBook(accountID, isbn,year, month, day);
                 userBuffer.get(accountID).increaseReserveCount();
                 try{
@@ -176,9 +176,9 @@ public class ModelController {
                 String accountID = resultSet5.getInt("accountID")+ "";
                 String rentTime = resultSet5.getString("placeTime").trim();
                 String[] temp2 = rentTime.split("-");
-                year = Integer.parseInt(temp2[0]);
-                month = Integer.parseInt(temp2[1]);
-                day = Integer.parseInt(temp2[2]);
+                int year = Integer.parseInt(temp2[0]);
+                int month = Integer.parseInt(temp2[1]);
+                int day = Integer.parseInt(temp2[2]);
                 PlacedBook placedBook = new PlacedBook(accountID, bookID,year, month, day);
                 try{
                     placedBookBuffer.put(placedBook.getBookID(),placedBook);
@@ -755,11 +755,13 @@ public class ModelController {
             StringBuilder sb = new StringBuilder();
             sb.append(searchUserFromWantBookOnISBN(isbn).get(0).getNoticeString());
             sb.append("The book with ISBN: ").append(isbn).append(" is canceled for placed now.\n");
+            User nowUser = userBuffer.get(inAccountID);
+            nowUser.setNoticeString(sb.toString());
             deletePlacedBookRecord(inBookID);
 
              if (size > 0){
-                WantBook nextWantUser = wantBookBuffer.get(isbn).poll();
-                PlacedBook placedBook = new PlacedBook(nextWantUser.getUserAccountID(), isbn, year, month, day);
+                WantBook nextWantUser = wantBookBuffer.get(isbn).peek();
+                PlacedBook placedBook = new PlacedBook(nextWantUser.getUserAccountID(), inBookID, year, month, day);
                 MainView mainView = new MainView();
                 mainView.canBeRentNotification(isbn,nextWantUser.getUserAccountID());
                 StringBuilder sb1 = new StringBuilder();
@@ -768,6 +770,7 @@ public class ModelController {
                 sb1.append("The book with ISBN: ").append(isbn).append(" is available now.\n");
                 nextUser.setNoticeString(sb1.toString());
                 addRecord(placedBook);
+                deleteWantBookRecord(isbn,nextWantUser.getUserAccountID());
             }
         }catch(Exception e){
             return false;
@@ -783,7 +786,7 @@ public class ModelController {
                 int year = placedBook.getDateArray()[0];
                 int month = placedBook.getDateArray()[1];
                 int day = placedBook.getDateArray()[2];
-                int placedDay = DayCalculator.dayApart(year, month, day,this.year,this.month, this.day);
+                int placedDay = DayCalculator.dayApart(day, month, year,this.day,this.month, this.year);
                 if (placedDay>MAX_PLACED_DAY){
                     cancelPlacedBook(placedBook.getBookID(), placedBook.getAccountID());
                     MainView mainView = new MainView();
@@ -810,10 +813,10 @@ public class ModelController {
         for (RentBook rentBook: rentBookBuffer.values()) {
             try {
                 rentBook = (RentBook) rentBook;
-                int year = rentBook.getDateArray()[0];
-                int month = rentBook.getDateArray()[1];
-                int day = rentBook.getDateArray()[2];
-                int rentDays = DayCalculator.dayApart(year, month, day, this.year, this.month, this.day);
+                int y = rentBook.getDateArray()[0];
+                int m = rentBook.getDateArray()[1];
+                int d = rentBook.getDateArray()[2];
+                int rentDays = DayCalculator.dayApart(d, m, y, day, month, year);
                 if (rentDays > MAX_RENT_DAY) {
                     MainView mainView = new MainView();
                     mainView.outOfMaxRentDayNotification(rentBook.getBookID(), rentBook.getAccountID());

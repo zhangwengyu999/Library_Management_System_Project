@@ -315,29 +315,38 @@ class ModelControllerTest {
     @Test
     void cancelReservedBook() {
         try {
-            assertTrue(modelController.cancelReservedBook("1","0-04"));
+            assertTrue(modelController.cancelReservedBook("0-04","1"));
             assertEquals(1,modelController.searchWantBookOnAccountID("1").size());
-
-            assertTrue(modelController.cancelReservedBook("5","0-05"));
-            assertEquals(0,modelController.searchWantBookOnAccountID("5").size());
-            assertEquals(0,modelController.searchWantBookOnAccountID("3").size());
-            assertEquals(1, modelController.searchPlacedBookOnAccountID("3").size());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-//
-//    @Test
-//    void cancelPlacedBook() {
-//    }
-//
+
+    @Test
+    void cancelPlacedBook() {
+        try {
+            assertTrue(modelController.cancelPlacedBook("5","5"));
+            assertEquals(0,modelController.searchPlacedBookOnAccountID("5").size());
+            assertEquals(0,modelController.searchWantBookOnAccountID("3").size());
+            assertEquals(2, modelController.searchPlacedBookOnAccountID("3").size());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void getExpiredRentBook() {
+        List<RentBook> rentBooks = modelController.getExpiredRentBook();
+        for (RentBook rentBook: rentBooks) {
+            System.out.println(rentBook.getBookID());
+        }
+    }
+
+    //
 //    @Test
 //    void refreshExpiredPlacedBook() {
 //    }
 //
-//    @Test
-//    void getExpiredRentBook() {
-//    }
 //
 //    @Test
 //    void testGetExpiredRentBook() {
