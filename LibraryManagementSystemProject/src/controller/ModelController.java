@@ -40,6 +40,17 @@ public class ModelController {
         db.reConnect();
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
 
     /**
      * Setup and refresh the buffers from DB

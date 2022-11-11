@@ -17,11 +17,11 @@ public class Book implements SQLModel {
 
     public Book() {}
 
-    public Book(String bookID, String ISBN, String bookName, String publisher, String category, int bookRentNum, int bookWantNum) {
+    public Book(String bookID, String ISBN, String bookName, String author, String category, int bookRentNum, int bookWantNum) {
         this.bookID = bookID;
         this.ISBN = ISBN;
         this.bookName = bookName;
-        this.author = publisher;
+        this.author = author;
         this.category = category;
         this.bookRentNum = bookRentNum;
         this.bookWantNum = bookWantNum;
