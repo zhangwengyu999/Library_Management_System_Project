@@ -62,17 +62,15 @@ public class RentBook implements SQLModel {
     }
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
-        if (db.contains("HAS_RENT","bookID",bookID)){
+        if (!db.contains("HAS_RENT","bookID",bookID)){
+            String sql = "INSERT INTO HAS_RENT " +
+                    "("+"bookID,"+"accountID,"+"rentTime"+")" +
+                    " VALUES( " + bookID + "," + accountID + ",\'"+ getDate()+"\')";
             try {
-                throw new canNotHappenedException();
-            }
-            catch (canNotHappenedException e){
+                db.insert(sql);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else {
-            String sql = "INSERT INTO HAS_RENT VALUE( " + bookID + "," + accountID + ",\'"+ getDate()+"\')";
-            db.update(sql);
         }
         return this;
     }

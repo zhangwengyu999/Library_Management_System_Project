@@ -74,7 +74,7 @@ public class ModelController {
                 int bookRentNum = resultSet.getInt("bookRentNum");
                 int bookWantNum = resultSet.getInt("bookWantNum");
                 Book book = new Book(bookID, ISBN, bookName, author, category, bookRentNum, bookWantNum);
-                addRecord(book);
+                bookBuffer.put(book.getBookID(), book);
             }
         }
         catch (SQLException e){
@@ -92,8 +92,7 @@ public class ModelController {
                 String accountStatus = resultSet2.getString("accountStatus").trim();
                 String notice = resultSet2.getString("NOTIFICATION").trim();
                 User user = new User(accountID, accountStatus.equals("T"),notice);
-                addRecord(user);
-                System.out.println("YES");
+                userBuffer.put(user.getAccountID(),user);
             }
         }
         catch (SQLException e){
@@ -117,7 +116,7 @@ public class ModelController {
                 day = Integer.parseInt(temp2[2]);
                 RentBook rentBook = new RentBook(accountID, bookID,year, month, day);
                 try{
-                    addRecord(rentBook);
+                    rentBookBuffer.put(rentBook.getBookID(),rentBook);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -136,7 +135,7 @@ public class ModelController {
             resultSet4 = db.query(sql4);
             while (resultSet4.next()){
                 String accountID = resultSet4.getInt("accountID")+ "";
-                String isbn = resultSet4.getInt("ISBN")+ "";
+                String isbn = resultSet4.getString("ISBN").trim();
                 String rentTime = resultSet4.getString("wantTime").trim();
                 String[] temp3 = rentTime.split("-");
                 year = Integer.parseInt(temp3[0]);
@@ -144,7 +143,16 @@ public class ModelController {
                 day = Integer.parseInt(temp3[2]);
                 WantBook wantBook = new WantBook(accountID, isbn,year, month, day);
                 try{
-                    addRecord(wantBook);
+                    Queue<User> queue; // Queue of User
+                    if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
+                        queue = wantBookBuffer.get(wantBook.getWantISBNs());
+                    }
+                    else {
+                        queue = new LinkedList<>();
+                    }
+                    // add the user to the queue with that ISBN
+                    queue.add(userBuffer.get(wantBook.getUserAccountID()));
+                    wantBookBuffer.put(wantBook.getWantISBNs(), queue);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -171,7 +179,7 @@ public class ModelController {
                 day = Integer.parseInt(temp2[2]);
                 PlacedBook placedBook = new PlacedBook(accountID, bookID,year, month, day);
                 try{
-                    addRecord(placedBook);
+                    placedBookBuffer.put(placedBook.getBookID(),placedBook);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -259,7 +267,7 @@ public class ModelController {
     public boolean addRecord(PlacedBook placedBook) {
         try {
             placedBook.pushToDatabase();
-            rentBookBuffer.put(placedBook.getBookID(),placedBook);
+            placedBookBuffer.put(placedBook.getBookID(),placedBook);
             return true;
         } catch (SQLException e) {
             return false;

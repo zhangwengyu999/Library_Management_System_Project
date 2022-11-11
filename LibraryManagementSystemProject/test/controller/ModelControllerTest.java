@@ -26,7 +26,7 @@ class ModelControllerTest {
         Book book2 = new Book("2","0-02","Harry Potter and the Philosopher Stone","J.K. Rowling","Fantasy",0,1);
         Book book3 = new Book("3","0-03", "The Hobbit", "J.R.R. Tolkien", "Fantasy",0,0);
         Book book4 = new Book("4", "0-04", "The Chronicles of Narnia", "C.S. Lewis", "Fantasy",1,0);
-        Book book5 = new Book("5", "0-05", "The Lion, the Witch and the Wardrobe", "C.S. Lewis'", "Fantasy",1,1);
+        Book book5 = new Book("5", "0-05", "The Lion, the Witch and the Wardrobe", "C.S. Lewis", "Fantasy",1,1);
         Book book6 = new Book("6", "0-06", "The Little Prince", "Antoine de Saint-Exupéry", "Fantasy",0,0);
         Book book7 = new Book("7","0-03", "The Hobbit", "J.R.R. Tolkien", "Fantasy",1,0);
         modelController.addRecord(book1);
@@ -41,7 +41,7 @@ class ModelControllerTest {
     /**
      * add user data to the DB
      * */
-    @Disabled
+    @Test
     void addUserRecord() {
         User user1 = new User("1",true,"Notification \n");
         User user2 = new User("2",true,"Notification \n");
@@ -108,111 +108,111 @@ class ModelControllerTest {
         assertTrue(modelController.deleteUserRecord("1"));
     }
 
-    @Test
-    void deleteWantBookRecord() {
-    }
-
-    @Test
-    void deleteRentBookRecord() {
-    }
-
-    @Test
-    void deletePlacedBookRecord() {
-    }
-
-    @Test
-    void searchBookOnBookName() {
-    }
-
-    @Test
-    void searchBookOnBookID() {
-    }
-
-    @Test
-    void searchBookOnBookAuthor() {
-    }
-
-    @Test
-    void searchBookOnBookCategory() {
-    }
-
-    @Test
-    void searchBookOnBookISBN() {
-    }
-
-    @Test
-    void searchRentBookOnBookID() {
-    }
-
-    @Test
-    void searchRentBookOnAccountID() {
-    }
-
-    @Test
-    void searchWantBookOnAccountID() {
-    }
-
-    @Test
-    void searchUserFromWantBookOnISBN() {
-    }
-
-    @Test
-    void searchPlacedBookOnAccountID() {
-    }
-
-    @Test
-    void searchPlacedBookOnBookID() {
-    }
-
-    @Test
-    void searchUserOnAccountID() {
-    }
-
-    @Test
-    void deactivateUser() {
-    }
-
-    @Test
-    void activateUser() {
-    }
-
-    @Test
-    void reserveBook() {
-    }
-
-    @Test
-    void cancelReservedBook() {
-    }
-
-    @Test
-    void cancelPlacedBook() {
-    }
-
-    @Test
-    void refreshExpiredPlacedBook() {
-    }
-
-    @Test
-    void getExpiredRentBook() {
-    }
-
-    @Test
-    void testGetExpiredRentBook() {
-    }
-
-    @Test
-    void rentBookFromUser() {
-    }
-
-    @Test
-    void returnBookFromUser() {
-    }
-
-    @Test
-    void notificationToUser() {
-    }
-
-    @Test
-    void generateAnalysisReport() {
-    }
+//    @Test
+//    void deleteWantBookRecord() {
+//    }
+//
+//    @Test
+//    void deleteRentBookRecord() {
+//    }
+//
+//    @Test
+//    void deletePlacedBookRecord() {
+//    }
+//
+//    @Test
+//    void searchBookOnBookName() {
+//    }
+//
+//    @Test
+//    void searchBookOnBookID() {
+//    }
+//
+//    @Test
+//    void searchBookOnBookAuthor() {
+//    }
+//
+//    @Test
+//    void searchBookOnBookCategory() {
+//    }
+//
+//    @Test
+//    void searchBookOnBookISBN() {
+//    }
+//
+//    @Test
+//    void searchRentBookOnBookID() {
+//    }
+//
+//    @Test
+//    void searchRentBookOnAccountID() {
+//    }
+//
+//    @Test
+//    void searchWantBookOnAccountID() {
+//    }
+//
+//    @Test
+//    void searchUserFromWantBookOnISBN() {
+//    }
+//
+//    @Test
+//    void searchPlacedBookOnAccountID() {
+//    }
+//
+//    @Test
+//    void searchPlacedBookOnBookID() {
+//    }
+//
+//    @Test
+//    void searchUserOnAccountID() {
+//    }
+//
+//    @Test
+//    void deactivateUser() {
+//    }
+//
+//    @Test
+//    void activateUser() {
+//    }
+//
+//    @Test
+//    void reserveBook() {
+//    }
+//
+//    @Test
+//    void cancelReservedBook() {
+//    }
+//
+//    @Test
+//    void cancelPlacedBook() {
+//    }
+//
+//    @Test
+//    void refreshExpiredPlacedBook() {
+//    }
+//
+//    @Test
+//    void getExpiredRentBook() {
+//    }
+//
+//    @Test
+//    void testGetExpiredRentBook() {
+//    }
+//
+//    @Test
+//    void rentBookFromUser() {
+//    }
+//
+//    @Test
+//    void returnBookFromUser() {
+//    }
+//
+//    @Test
+//    void notificationToUser() {
+//    }
+//
+//    @Test
+//    void generateAnalysisReport() {
+//    }
 }

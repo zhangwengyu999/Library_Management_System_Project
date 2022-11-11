@@ -83,13 +83,11 @@ public class WantBook implements SQLModel {
 
     public SQLModel pushToDatabase() throws SQLException,canNotHappenedException {
         DataBase db = DataBase.getDataBase();
-        if (db.contains("WANT_BOOK","ISBN","accountID",wantISBN,accountID)){
-            throw new canNotHappenedException();
+        if (!db.contains("WANT_BOOK","ISBN","accountID",wantISBN,accountID)){
+            String sql = "INSERT INTO WANT_BOOK VALUES(" +accountID  + ",\'" + wantISBN + "\',\'" + getWantDate()+"\')";
+            db.insert(sql);
         }
-        else {
-            String sql = "INSERT INTO WANT_BOOK VALUE(" +accountID  + ",\'" + wantISBN + "\',\'" + getWantDate()+"\')";
-            db.update(sql);
-        }
+
         return this;
     }
 
