@@ -301,8 +301,8 @@ class ModelControllerTest {
     void reserveBook() {
         try {
             assertTrue(modelController.reserveBook("1","0-01"));
-            assertFalse(modelController.reserveBook("1","0-02"));
-            /assertEquals(1,modelController.searchWantBookOnAccountID("1").size());
+            assertFalse(modelController.reserveBook("1","0-03"));
+            assertEquals(3,modelController.searchWantBookOnAccountID("1").size());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

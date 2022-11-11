@@ -143,6 +143,7 @@ public class ModelController {
                 month = Integer.parseInt(temp3[1]);
                 day = Integer.parseInt(temp3[2]);
                 WantBook wantBook = new WantBook(accountID, isbn,year, month, day);
+                userBuffer.get(accountID).increaseReserveCount();
                 try{
                     Queue<WantBook> queue; // Queue of User
                     if (wantBookBuffer.containsKey(wantBook.getWantISBNs())) {
@@ -684,6 +685,8 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
                     sb.append("You have successfully reserved the book with ISBN: ").append(inISBN).append("\n");
+                    user.setNoticeString(sb.toString());
+                    user.increaseReserveCount();
                     addRecord(wantBook);
                 }
                 else {
@@ -716,12 +719,13 @@ public class ModelController {
         }
 
         try{
-            User user = (User)userBuffer.get(inAccountID);
+            User user = userBuffer.get(inAccountID);
             user.decreaseReserveCount();
             deleteWantBookRecord(inISBN, inAccountID);
             StringBuilder sb = new StringBuilder();
             sb.append(user.getNoticeString());
             sb.append("You have successfully cancelled the reservation of the book with ISBN: ").append(inISBN).append("\n");
+            user.setNoticeString(sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return false;

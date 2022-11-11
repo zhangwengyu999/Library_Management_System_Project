@@ -64,6 +64,12 @@ public class User implements SQLModel {
         return false;
     }
 
+    public void setReserveCount(int inNum) {
+        if (inNum>=0) {
+            reserveCount = inNum;
+        }
+    }
+
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
