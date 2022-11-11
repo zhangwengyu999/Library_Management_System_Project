@@ -149,7 +149,7 @@ public class DataBase {
      * @return: true if inObjects are in the inTable's inAttrs
      */
     public boolean contains(String inTable, String inAttr1, String inAttr2, String inObject1, String inObject2) throws SQLException {
-        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr1 + " = \'" + inObject1 + "\' AND " + inAttr2 + " = \'" + inObject2+"\'";
+        String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr1 + " = \'" + inObject1 + "\' AND " + inAttr2 + " = " + inObject2;
         try{
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {

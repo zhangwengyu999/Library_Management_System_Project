@@ -38,6 +38,7 @@ public class ModelController {
         wantBookBuffer = new HashMap<>();
         placedBookBuffer = new HashMap<>();
         db.reConnect();
+        initializeBuffers();
     }
 
     public int getYear() {
@@ -55,7 +56,7 @@ public class ModelController {
     /**
      * Setup and refresh the buffers from DB
      */
-    public void refreshBuffers() {
+    private void initializeBuffers() {
 
 
         // refresh the bookBuffer

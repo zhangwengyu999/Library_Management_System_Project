@@ -11,12 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ModelControllerTest {
     ModelController modelController = new ModelController();
 
-
-    @BeforeEach
-    void refreshBuffers() {
-        modelController.refreshBuffers();
-    }
-
     /**
      * add book data to the DB
      * */

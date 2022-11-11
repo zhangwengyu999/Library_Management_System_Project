@@ -41,8 +41,8 @@ public class PlacedBook extends RentBook implements SQLModel {
     }
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
-        if (!db.contains("HAS_RENT","bookID",bookID)){
-            String sql = "INSERT INTO HAS_PLACED VALUES(" + bookID + "," + accountID +",\'"+ getDate()+"\')";
+        if (!db.contains("HAS_PLACED","bookID",Integer.parseInt(bookID))){
+            String sql = "INSERT INTO HAS_PLACED VALUES(" + accountID + "," + bookID +",\'"+ getDate()+"\')";
             db.insert(sql);
         }
 

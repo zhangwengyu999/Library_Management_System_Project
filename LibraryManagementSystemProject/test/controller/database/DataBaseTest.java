@@ -47,8 +47,8 @@ class DataBaseTest {
     @Test
     void containsTest() {
         try {
-            assertTrue(db.contains("STUDENT","STUDENT_NAME","Mike"));
-            assertFalse(db.contains("STUDENT","STUDENT_NAME","Dog"));
+            assertFalse(db.contains("HAS_RENT","bookID",5));
+//            assertFalse(db.contains("STUDENT","STUDENT_NAME","Dog"));
         }
         catch (Exception e) {
             e.printStackTrace();
