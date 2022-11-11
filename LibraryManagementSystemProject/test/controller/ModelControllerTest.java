@@ -4,6 +4,7 @@ import model.Book;
 import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +18,7 @@ class ModelControllerTest {
         modelController.refreshBuffers();
     }
 
-    @Test
+    @Disabled
     void addRecord() {
         Book book = new Book("2","1010","MyBook","Publisher","Category",0,0);
 //        User user = new User();
@@ -43,7 +44,7 @@ class ModelControllerTest {
 
     @Test
     void deleteBookRecord() {
-        modelController.deleteBookRecord("2");
+        assertTrue(modelController.deleteBookRecord("2"));
     }
 
     @Test

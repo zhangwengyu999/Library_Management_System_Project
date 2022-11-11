@@ -174,7 +174,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-            commit();
+//            commit();
         }
         catch (SQLException e) {
             System.out.println("Update Failed!");
@@ -191,7 +191,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-            commit();
+//            commit();
         }
         catch (SQLException e) {
             System.out.println("Delete Failed!");
@@ -208,7 +208,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-            commit();
+//            commit();
         }
         catch (SQLException e) {
             System.out.println("Insert Failed!");
