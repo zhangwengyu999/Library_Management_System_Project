@@ -100,5 +100,13 @@ public class WantBook implements SQLModel {
             e.printStackTrace();
         }
     }
+
+
+    public boolean equals (WantBook inw) {
+        if (this.getUserAccountID().equals(inw.getUserAccountID()) && this.getWantISBNs().equals(inw.getWantISBNs())) {
+            return true;
+        }
+        return false;
+    }
 }
 

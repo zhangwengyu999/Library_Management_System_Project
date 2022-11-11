@@ -19,7 +19,7 @@ public class ModelController {
     private HashMap<String, Book> bookBuffer; // key: bookId, value: Book object
     private HashMap<String, User> userBuffer; // key: accountID, value: User object
     private HashMap<String, RentBook> rentBookBuffer; // Key: bookId, value: RendBook record
-    private HashMap<String, Queue<WantBook>> wantBookBuffer; // key: ISBN, value: User Queue
+    public HashMap<String, Queue<WantBook>> wantBookBuffer; // key: ISBN, value: User Queue
     private HashMap<String, PlacedBook> placedBookBuffer; // key: bookId, value: PlacedBook record
 
     private final int MAX_RENT_DAY = 14;
@@ -131,7 +131,7 @@ public class ModelController {
         ResultSet resultSet4;
         String sql4 =
                 "SELECT accountID, ISBN, wantTime" +
-                        " FROM WANT_BOOK ORDER BY accountID, wantTime";
+                        " FROM WANT_BOOK ORDER BY wantTime";
         try{
             resultSet4 = db.query(sql4);
             while (resultSet4.next()){
@@ -254,6 +254,11 @@ public class ModelController {
                 queue = new LinkedList<>();
             }
             // add the user to the queue with that ISBN
+            for (WantBook want: queue) {
+                if (want.equals(wantBook)) {
+                    return false;
+                }
+            }
             queue.add(wantBook);
             wantBookBuffer.put(wantBook.getWantISBNs(), queue);
             return true;

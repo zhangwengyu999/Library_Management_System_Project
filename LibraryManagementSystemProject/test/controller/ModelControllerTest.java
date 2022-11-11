@@ -81,6 +81,10 @@ class ModelControllerTest {
         modelController.addRecord(wantBook2);
         modelController.addRecord(wantBook3);
         modelController.addRecord(wantBook4);
+        assertEquals("2",modelController.wantBookBuffer.get("0-04").peek().getUserAccountID());
+        assertEquals("3",modelController.wantBookBuffer.get("0-05").peek().getUserAccountID());
+
+
     }
 
     /**
