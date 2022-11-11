@@ -102,17 +102,24 @@ class ModelControllerTest {
         assertTrue(modelController.deleteUserRecord("1"));
     }
 
-//    @Test
-//    void deleteWantBookRecord() {
-//    }
-//
-//    @Test
-//    void deleteRentBookRecord() {
-//    }
-//
-//    @Test
-//    void deletePlacedBookRecord() {
-//    }
+    @Test
+    void deleteWantBookRecord() {
+        assertTrue(modelController.deleteWantBookRecord("1","0-05"));
+        assertFalse(modelController.deleteWantBookRecord("1","0-05"));
+
+    }
+
+    @Test
+    void deleteRentBookRecord() {
+        assertTrue(modelController.deleteRentBookRecord("1"));
+        assertFalse(modelController.deleteRentBookRecord("1"));
+    }
+
+    @Test
+    void deletePlacedBookRecord() {
+        assertTrue(modelController.deletePlacedBookRecord("2"));
+        assertFalse(modelController.deletePlacedBookRecord("2"));
+    }
 //
 //    @Test
 //    void searchBookOnBookName() {
