@@ -317,6 +317,11 @@ class ModelControllerTest {
         try {
             assertTrue(modelController.cancelReservedBook("1","0-04"));
             assertEquals(1,modelController.searchWantBookOnAccountID("1").size());
+
+            assertTrue(modelController.cancelReservedBook("5","0-05"));
+            assertEquals(0,modelController.searchWantBookOnAccountID("5").size());
+            assertEquals(0,modelController.searchWantBookOnAccountID("3").size());
+            assertEquals(1, modelController.searchPlacedBookOnAccountID("3").size());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
