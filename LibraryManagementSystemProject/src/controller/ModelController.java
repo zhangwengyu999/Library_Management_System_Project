@@ -520,8 +520,8 @@ public class ModelController {
     public List<User> searchUserFromWantBookOnISBN(String inISBN) throws Exception {
         List<User> result = new ArrayList<>();
         if (wantBookBuffer.containsKey(inISBN)){
-            for (SQLModel user : wantBookBuffer.get(inISBN)){
-                result.add((User)user);
+            for (WantBook user : wantBookBuffer.get(inISBN)){
+                result.add(userBuffer.get(user.getUserAccountID()));
             }
         }
         else{

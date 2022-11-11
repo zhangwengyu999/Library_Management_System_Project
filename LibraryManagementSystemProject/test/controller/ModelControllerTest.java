@@ -125,65 +125,177 @@ class ModelControllerTest {
     @Test
     void searchBookOnBookName() {
         try {
-            List<Book> books = modelController.searchBookOnBookName("The Lord of the Rings");
-            assertEquals("The Lord of the Rings", books.get(0).getBookName());
-            assertEquals("1", books.get(0).getBookID());
+            List<Book> books = modelController.searchBookOnBookName("The Hobbit");
+            assertEquals(2,books.size());
+            assertEquals("The Hobbit", books.get(0).getBookName());
+            assertEquals("The Hobbit", books.get(1).getBookName());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-//
-//    @Test
-//    void searchBookOnBookID() {
-//    }
-//
-//    @Test
-//    void searchBookOnBookAuthor() {
-//    }
-//
-//    @Test
-//    void searchBookOnBookCategory() {
-//    }
-//
-//    @Test
-//    void searchBookOnBookISBN() {
-//    }
-//
-//    @Test
-//    void searchRentBookOnBookID() {
-//    }
-//
-//    @Test
-//    void searchRentBookOnAccountID() {
-//    }
-//
-//    @Test
-//    void searchWantBookOnAccountID() {
-//    }
-//
-//    @Test
-//    void searchUserFromWantBookOnISBN() {
-//    }
-//
-//    @Test
-//    void searchPlacedBookOnAccountID() {
-//    }
-//
-//    @Test
-//    void searchPlacedBookOnBookID() {
-//    }
-//
-//    @Test
-//    void searchUserOnAccountID() {
-//    }
-//
-//    @Test
-//    void deactivateUser() {
-//    }
-//
-//    @Test
-//    void activateUser() {
-//    }
+
+    @Test
+    void searchBookOnBookID() {
+        try {
+            List<Book> books = modelController.searchBookOnBookID("6");
+            assertEquals("The Lord of the Rings", books.get(0).getBookName());
+            assertEquals("6", books.get(0).getBookID());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchBookOnBookAuthor() {
+        try {
+            List<Book> books = modelController.searchBookOnBookAuthor("J.R.R. Tolkien");
+            assertEquals(3,books.size());
+            for (Book book : books) {
+                System.out.println(book.getBookName());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchBookOnBookCategory() {
+        try {
+            List<Book> books = modelController.searchBookOnBookCategory("Fantasy");
+            assertEquals(7,books.size());
+            for (Book book : books) {
+                System.out.println(book.getBookName());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchBookOnBookISBN() {
+        try {
+            List<Book> books = modelController.searchBookOnBookISBN("0-03");
+            assertEquals(2,books.size());
+            for (Book book : books) {
+                assertEquals("The Hobbit", book.getBookName());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchRentBookOnBookID() {
+        try {
+            List<RentBook> rentBooks = modelController.searchRentBookOnBookID("7");
+            assertEquals(1,rentBooks.size());
+            for (RentBook rentBook : rentBooks) {
+                assertEquals("7", rentBook.getBookID());
+                assertEquals("4", rentBook.getAccountID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchRentBookOnAccountID() {
+        try {
+            List<RentBook> rentBooks = modelController.searchRentBookOnAccountID("2");
+            assertEquals(1,rentBooks.size());
+            for (RentBook rentBook : rentBooks) {
+                assertEquals("2", rentBook.getAccountID());
+                assertEquals("4", rentBook.getBookID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchWantBookOnAccountID() {
+        try {
+            List<String> wantBooks = modelController.searchWantBookOnAccountID("1");
+            assertEquals(2,wantBooks.size());
+            for (String wantBook : wantBooks) {
+                System.out.println(wantBook);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchUserFromWantBookOnISBN() {
+        try {
+            List<User> wantBooks = modelController.searchUserFromWantBookOnISBN("0-05");
+            assertEquals(2,wantBooks.size());
+            for (User wantBook : wantBooks) {
+                System.out.println(wantBook.getAccountID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchPlacedBookOnAccountID() {
+        try {
+            List<PlacedBook> placedBooks = modelController.searchPlacedBookOnAccountID("3");
+            assertEquals(1,placedBooks.size());
+            for (PlacedBook placedBook : placedBooks) {
+                assertEquals("2", placedBook.getBookID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchPlacedBookOnBookID() {
+        try {
+            List<PlacedBook> placedBooks = modelController.searchPlacedBookOnBookID("5");
+            assertEquals(1,placedBooks.size());
+            for (PlacedBook placedBook : placedBooks) {
+                assertEquals("5", placedBook.getAccountID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void searchUserOnAccountID() {
+        try {
+            List<User> users = modelController.searchUserOnAccountID("1");
+            assertEquals(1,users.size());
+            for (User user : users) {
+                assertEquals("1", user.getAccountID());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void deactivateUser() {
+        modelController.deactivateUser("1");
+        try{
+            assertFalse(modelController.searchUserOnAccountID("1").get(0).getAccountStatus());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void activateUser() {
+        modelController.activateUser("1");
+        try{
+            assertTrue(modelController.searchUserOnAccountID("1").get(0).getAccountStatus());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 //
 //    @Test
 //    void reserveBook() {
