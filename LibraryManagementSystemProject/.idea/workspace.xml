@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
-    <list id="42b3f109-6d1b-4f63-8261-2be4b9d011ef" name="Changes by shanpooo" comment="">
-      <change beforePath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" afterDir="false" />
-    </list>
+    <list id="42b3f109-6d1b-4f63-8261-2be4b9d011ef" name="Changes by shanpooo" comment="" />
     <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
     <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,14 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/test/controller/ModelControllerTest.java">
-      <ranges>
-        <range start1="386" end1="387" start2="386" end2="387" changelist="7b527953-5380-494c-a6ec-7dfde7fd7ba0" />
-        <range start1="396" end1="398" start2="396" end2="404" changelist="42b3f109-6d1b-4f63-8261-2be4b9d011ef" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -214,7 +206,7 @@
       <workItem from="1667994269163" duration="1560000" />
       <workItem from="1668150387059" duration="10164000" />
       <workItem from="1668181919612" duration="440000" />
-      <workItem from="1668213070195" duration="3666000" />
+      <workItem from="1668213070195" duration="6041000" />
     </task>
     <task id="LOCAL-00001" summary="refresh update">
       <created>1667995898748</created>
