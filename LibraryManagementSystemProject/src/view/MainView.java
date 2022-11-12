@@ -30,21 +30,23 @@ public class MainView {
         System.out.println("    - [C] Delete Book");
         System.out.println("    - [D] Delete User");
         System.out.println("- Operation on User");
-        System.out.println("    - [E] Rent a Book");
-        System.out.println("    - [F] Want a Book");
-        System.out.println("    - [G] Cancel a reserve Book");
-        System.out.println("    - [H] Cancel a placed book");
-        System.out.println("    - [I] Search a Book");
-        System.out.println("    - [J] Return a Book");
-        System.out.println("    - [K] Search a User");
+        System.out.println("    - [E] Rent a Book from Library");
+        System.out.println("    - [F] Rent a Book from Placed");
+        System.out.println("    - [G] Want a Book");
+        System.out.println("    - [H] Cancel a Reserve Book");
+        System.out.println("    - [I] Cancel a Placed book");
+        System.out.println("    - [J] Search a Book");
+        System.out.println("    - [K] Return a Book");
+        System.out.println("    - [L] Search a User");
         System.out.println("- Data Refresh");
-        System.out.println("    - [L] Refresh ");
-        System.out.println("    - [M] Search a Book");
+        System.out.println("    - [M] Refresh Expired Placed Book");
+        System.out.println("    - [N] Refresh Deactivate User");
         System.out.println("- Data View");
-        System.out.println("    - [N] View All Book");
+        System.out.println("    - [O] View All Book");
         System.out.println("    - [P] View All Rent Book");
         System.out.println("    - [Q] View All Want Book");
         System.out.println("    - [R] View All Placed Book");
+        System.out.println("- [X] Reset from Database");
         System.out.println("- [-1] Exit System");
     }
 
@@ -163,9 +165,12 @@ public class MainView {
     }
 
     public void emptyPage() {
-        System.out.println("The search answer list is empty");
+        System.out.println("The return list is empty");
     }
 
+    public void showListPage() {
+        System.out.println("The return list:");
+    }
 
     public void analysisReportPage() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());

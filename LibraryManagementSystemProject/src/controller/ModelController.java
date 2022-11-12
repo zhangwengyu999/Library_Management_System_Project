@@ -771,8 +771,6 @@ public class ModelController {
         return true;
     }
 
-
-
     public boolean cancelPlacedBook(String inBookID, String inAccountID) {
         try {
             searchPlacedBookOnAccountID(inAccountID);
