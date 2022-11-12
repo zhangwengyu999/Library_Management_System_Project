@@ -963,7 +963,7 @@ public class ModelController {
             if (rentBookBuffer.containsKey(bookID)) {
                 Book book = bookBuffer.get(bookID);
                 Queue<WantBook> wantBookUsers = wantBookBuffer.get(book.getISBN());
-                if (wantBookUsers.size() > 0) {
+                if (wantBookUsers != null && wantBookUsers.size() > 0) {
                     User nextUser = userBuffer.get(wantBookUsers.peek().getUserAccountID());
                     try {
                         PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), bookID, year, month, day);
@@ -980,11 +980,11 @@ public class ModelController {
                         e.printStackTrace();
                     }
                 }
-
-                deleteRentBookRecord(bookID);
                 User user = userBuffer.get(rentBookBuffer.get(bookID).getAccountID());
+                deleteRentBookRecord(bookID);
                 if (!user.getAccountStatus() && getExpiredRentBook(user.getAccountID()).size() == 0) {
                     user.setAccountStatus(true);
+                    user.pushToDatabase();
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
                     sb.append("[").append(getDate()).append("]: ");
