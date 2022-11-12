@@ -389,18 +389,23 @@ class ModelControllerTest {
             System.out.println(e.getMessage());
         }
     }
-//
-//
-//
-//    @Test
-//    void rentBookFromUser() {
-//        try{
-//            assertTrue(modelController.rentBookFromUser());
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+
+
+
+    @Test
+    void rentBookFromUser() {
+        try{
+            modelController.rentBookFromUser("1","3");
+            assertFalse(modelController.rentBookFromUser("2","1"));
+            assertEquals(1,modelController.searchRentBookOnBookID("1").size());
+            assertEquals(1,modelController.searchRentBookOnBookID("3").size());
+            assertEquals(2,modelController.searchRentBookOnAccountID("1").size());
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 //
