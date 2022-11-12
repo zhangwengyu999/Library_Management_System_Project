@@ -77,14 +77,21 @@ class ModelControllerTest {
     void addWantBookRecord() {
         WantBook wantBook1 = new WantBook("1","0-05",2022, 11, 1);
         WantBook wantBook2 = new WantBook("3","0-05",2022, 10, 30);
+        WantBook wantBook5 = new WantBook("4","0-05",2022, 11, 2);
+
         WantBook wantBook3 = new WantBook("1","0-04",2022, 11, 1);
         WantBook wantBook4 = new WantBook("2","0-04",2022, 10, 30);
+        WantBook wantBook6 = new WantBook("5","0-04",2022, 10, 28);
+
         modelController.addRecord(wantBook1);
         modelController.addRecord(wantBook2);
         modelController.addRecord(wantBook3);
         modelController.addRecord(wantBook4);
+        modelController.addRecord(wantBook5);
+        modelController.addRecord(wantBook6);
+
         assertEquals("2",modelController.wantBookBuffer.get("0-04").peek().getUserAccountID());
-        // assertEquals("3",modelController.wantBookBuffer.get("0-05").peek().getUserAccountID());
+        assertEquals("3",modelController.wantBookBuffer.get("0-05").peek().getUserAccountID());
     }
 
     /**
