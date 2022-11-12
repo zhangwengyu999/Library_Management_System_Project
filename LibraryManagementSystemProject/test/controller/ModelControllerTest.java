@@ -378,10 +378,17 @@ class ModelControllerTest {
         }
     }
 
-    //
-//    @Test
-//    void refreshExpiredPlacedBook() {
-//    }
+
+    @Test
+    void refreshExpiredPlacedBook() {
+        try {
+            modelController.refreshExpiredPlacedBook();
+            assertEquals(0, modelController.searchPlacedBookOnBookID("2").size());
+            assertEquals(0, modelController.searchPlacedBookOnBookID("5").size());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 //
 //
 //

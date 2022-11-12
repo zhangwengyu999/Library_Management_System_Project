@@ -784,7 +784,6 @@ public class ModelController {
     public void refreshExpiredPlacedBook(){
         for (PlacedBook placedBook: placedBookBuffer.values()){
             try{
-                placedBook = (PlacedBook) placedBook;
                 int year = placedBook.getDateArray()[0];
                 int month = placedBook.getDateArray()[1];
                 int day = placedBook.getDateArray()[2];
