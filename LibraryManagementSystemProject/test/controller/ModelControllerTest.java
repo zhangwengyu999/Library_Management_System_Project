@@ -366,11 +366,10 @@ class ModelControllerTest {
     }
 
     @Test
+    @Order(24)
     void returnBookFromUser() {
         try {
             assertTrue(modelController.returnBookFromUser("4")); // bookID
-            assertEquals(0,modelController.searchRentBookOnAccountID("5").size());
-            assertEquals(0,modelController.searchRentBookOnBookID("4").size());
             assertEquals(1, modelController.searchPlacedBookOnBookID("4").size());
             assertEquals(1, modelController.searchUserFromWantBookOnISBN("0-04").size());
 

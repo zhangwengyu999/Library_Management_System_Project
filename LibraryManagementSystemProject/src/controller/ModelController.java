@@ -882,7 +882,7 @@ public class ModelController {
                 Book book = bookBuffer.get(bookID);
                 Queue<WantBook> wantBookUsers = wantBookBuffer.get(book.getISBN());
                 if (wantBookUsers.size() > 0) {
-                    User nextUser = userBuffer.get(wantBookUsers.peek());
+                    User nextUser = userBuffer.get(wantBookUsers.peek().getUserAccountID());
                     try {
                         PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), bookID, year, month, day);
                         book.addWantBookCount();
