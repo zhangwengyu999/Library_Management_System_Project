@@ -63,7 +63,7 @@ class ModelControllerTest {
     void addRentBookRecord() {
         RentBook rentBook1 = new RentBook("1","1",2022,10,30);
         RentBook rentBook2 = new RentBook("4","7",2022,11,2);
-        RentBook rentBook3 = new RentBook("2","4",2022,11,5);
+        RentBook rentBook3 = new RentBook("5","4",2022,11,5);
         modelController.addRecord(rentBook1);
         modelController.addRecord(rentBook2);
         modelController.addRecord(rentBook3);
@@ -365,23 +365,32 @@ class ModelControllerTest {
         }
     }
 
+    @Test
+    void returnBookFromUser() {
+        try {
+            assertTrue(modelController.returnBookFromUser("4")); // bookID
+            assertEquals(0,modelController.searchRentBookOnAccountID("5").size());
+            assertEquals(0,modelController.searchRentBookOnBookID("4").size());
+            assertEquals(1, modelController.searchPlacedBookOnBookID("4").size());
+            assertEquals(1, modelController.searchUserFromWantBookOnISBN("0-04").size());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     //
 //    @Test
 //    void refreshExpiredPlacedBook() {
 //    }
 //
 //
-//    @Test
-//    void testGetExpiredRentBook() {
-//    }
 //
 //    @Test
 //    void rentBookFromUser() {
 //    }
 //
-//    @Test
-//    void returnBookFromUser() {
-//    }
+
 //
 //    @Test
 //    void notificationToUser() {

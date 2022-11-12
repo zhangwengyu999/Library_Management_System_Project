@@ -642,6 +642,7 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
                     sb.append("Your account has been activated.\n");
+                    user.setNoticeString(sb.toString());
                     user.pushToDatabase();
                     return true;
                 }
@@ -795,6 +796,8 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     sb.append(searchUserOnAccountID(placedBook.getAccountID()).get(0).getNoticeString());
                     sb.append("The book with ISBN: ").append(placedBook.getBookID()).append(" which placed in library is expired.\n");
+                    User user = userBuffer.get(placedBook.getAccountID());
+                    user.setNoticeString(sb.toString());
                 }
             }
             catch (Exception e){
@@ -813,7 +816,6 @@ public class ModelController {
         List<RentBook> output = new ArrayList<>();
         for (RentBook rentBook: rentBookBuffer.values()) {
             try {
-                rentBook = (RentBook) rentBook;
                 int y = rentBook.getDateArray()[0];
                 int m = rentBook.getDateArray()[1];
                 int d = rentBook.getDateArray()[2];
@@ -823,7 +825,9 @@ public class ModelController {
                     mainView.outOfMaxRentDayNotification(rentBook.getBookID(), rentBook.getAccountID());
                     StringBuilder sb = new StringBuilder();
                     sb.append(searchUserOnAccountID(rentBook.getAccountID()).get(0).getNoticeString());
-                    sb.append("The book with ISBN: ").append(rentBook.getBookID()).append(" you rent is expired.\n");
+                    sb.append("The book with Book ID: ").append(rentBook.getBookID()).append(" you rent is expired.\n");
+                    User user = userBuffer.get(rentBook.getAccountID());
+                    user.setNoticeString(sb.toString());
                     output.add(rentBook);
                 }
             }
@@ -856,6 +860,8 @@ public class ModelController {
                         StringBuilder sb = new StringBuilder();
                         sb.append(searchUserFromWantBookOnISBN(book.getISBN()).get(0).getNoticeString());
                         sb.append("The book with ISBN: ").append(book.getISBN()).append(" is rented by ").append(accountID).append("\n");
+                        User user = userBuffer.get(accountID);
+                        user.setNoticeString(sb.toString());
                         addRecord(rentBook);
                         return true;
                     } catch (Exception e) {
@@ -875,8 +881,8 @@ public class ModelController {
             if (rentBookBuffer.containsKey(bookID)) {
                 Book book = bookBuffer.get(bookID);
                 Queue<WantBook> wantBookUsers = wantBookBuffer.get(book.getISBN());
-                User nextUser = userBuffer.get(wantBookUsers.poll());
-                if (nextUser != null) {
+                if (wantBookUsers.size() > 0) {
+                    User nextUser = userBuffer.get(wantBookUsers.peek());
                     try {
                         PlacedBook placedBook = new PlacedBook(nextUser.getAccountID(), bookID, year, month, day);
                         book.addWantBookCount();
@@ -885,6 +891,8 @@ public class ModelController {
                         sb.append("The book with ISBN: ").append(book.getISBN()).append(" is available now.\n");
                         nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
+                        deleteWantBookRecord(book.getISBN(), nextUser.getAccountID());
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
