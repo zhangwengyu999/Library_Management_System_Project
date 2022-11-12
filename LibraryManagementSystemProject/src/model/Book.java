@@ -73,8 +73,8 @@ public class Book implements SQLModel {
 //    }
 
     // show related information
-    public String showInfo(Book book){
-        return book.getISBN() + " " + book.getBookName() + " " + book.getAuthor() + " " + book.getCategory() + " " + book.getBookRentNum() + " " + book.getBookWantNum();
+    public String showInfo(){
+        return "[Book ID]:"+bookID+ " [Book ISBN]: " + ISBN + " [Book Name]: " + bookName + " [Author]: " + author + " [Category]: " + category + " [Time of Rent]: " + bookRentNum + " [Time of Want]: " + getBookWantNum();
     }
 
     // setter

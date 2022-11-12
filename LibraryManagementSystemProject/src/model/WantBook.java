@@ -24,6 +24,9 @@ public class WantBook implements SQLModel {
         this.size = 0;
     }
 
+    public String showInfo(){
+        return " [Account ID]: " + accountID + " [ISBN]: " + wantISBN + " [Year]: " + wantYear + " [Month]: " + wantMonth + " [Day]: " + wantDay;
+    }
 
     public void SetUserAccountID(String inAccountID) {
         this.accountID = inAccountID;
