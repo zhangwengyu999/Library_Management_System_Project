@@ -29,7 +29,7 @@ public class ModelController {
     private int month = 11;
     private int day = 4;
 
-    DataBase db = DataBase.getDataBase();
+    private DataBase db = DataBase.getDataBase();
 
     public ModelController() {
         bookBuffer = new HashMap<>();
@@ -39,6 +39,14 @@ public class ModelController {
         placedBookBuffer = new HashMap<>();
         db.reConnect();
         initializeBuffers();
+    }
+
+    public void closeDB() {
+        try {
+            db.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public int getYear() {
@@ -63,7 +71,7 @@ public class ModelController {
     /**
      * Setup and refresh the buffers from DB
      */
-    private void initializeBuffers() {
+    public void initializeBuffers() {
 
 
         // refresh the bookBuffer
@@ -802,6 +810,8 @@ public class ModelController {
                 sb1.append("[").append(getDate()).append("]: ");
                 sb1.append("The book with ISBN: ").append(isbn).append(" is available now.\n");
                 nextUser.setNoticeString(sb1.toString());
+                book.addWantBookCount();
+                book.pushToDatabase();
                 addRecord(placedBook);
                 deleteWantBookRecord(isbn,nextWantUser.getUserAccountID());
             }
@@ -940,6 +950,7 @@ public class ModelController {
                     RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
                     try {
                         book.addRentBookCount();
+                        book.pushToDatabase();
                         StringBuilder sb = new StringBuilder();
                         User user = userBuffer.get(accountID);
                         sb.append(user.getNoticeString());
@@ -976,6 +987,8 @@ public class ModelController {
                         sb.append("The book with BookID: ").append(book.getISBN()).append(" is available now.\n");
                         nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
+                        book.addWantBookCount();
+                        book.pushToDatabase();
                         deleteWantBookRecord(book.getISBN(), nextUser.getAccountID());
 
                     } catch (Exception e) {
@@ -1009,6 +1022,7 @@ public class ModelController {
                     deletePlacedBookRecord(bookID);
                     RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
                     bookBuffer.get(bookID).addRentBookCount();
+                    bookBuffer.get(bookID).pushToDatabase();
                     addRecord(rentBook);
                     StringBuilder sb = new StringBuilder();
                     User user = userBuffer.get(accountID);

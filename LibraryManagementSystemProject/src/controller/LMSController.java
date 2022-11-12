@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LMSController {
-    private static final ModelController modelController = new ModelController();
+    private static ModelController modelController = new ModelController();
     private static final MainView mainView = new MainView();
 
     public static String inputListener() {
@@ -56,7 +56,7 @@ public class LMSController {
                             mainView.inputUserPage();
                             String accountID = inputListener();
                             if (accountID.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                            User user = new User(accountID, true, "");
+                            User user = new User(accountID, true, "Notification \n");
                             if (modelController.addRecord(user)) {
                                 mainView.successPage();
                                 break;
@@ -91,7 +91,7 @@ public class LMSController {
                     } else if (mainOption.equals("E")) {
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
-                        User user = new User(userAccountID);
+                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
                         if (user.getAccountStatus()) {
                             while (true) {
                                 mainView.processUserRentPage();
@@ -111,7 +111,7 @@ public class LMSController {
                     } else if (mainOption.equals("F")) {
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
-                        User user = new User(userAccountID);
+                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
                         if (user.getAccountStatus()) {
                             while (true) {
                                 mainView.processUserRentPage();
@@ -131,7 +131,7 @@ public class LMSController {
                     } else if (mainOption.equals("G")) {
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
-                        User user = new User(userAccountID);
+                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
                         if (user.getAccountStatus()) {
                             while (true) {
                                 mainView.processUserWantPage();
@@ -150,7 +150,7 @@ public class LMSController {
                     } else if (mainOption.equals("H")) {
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
-                        User user = new User(userAccountID);
+                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
                         if (user.getAccountStatus()) {
                             while (true) {
                                 mainView.processUserCancelReservePage();
@@ -169,7 +169,7 @@ public class LMSController {
                     } else if (mainOption.equals("I")) {
                         mainView.inputUserPage();
                         String userAccountID = inputListener();
-                        User user = new User(userAccountID);
+                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
                         if (user.getAccountStatus()) {
                             while (true) {
                                 mainView.processUserCancelPlacedPage();
@@ -331,13 +331,18 @@ public class LMSController {
                         } catch (Exception e){
                             e.printStackTrace();
                         }
-                    } else if (mainOption.equals("-1")) { // back to previous
+                    } else if (mainOption.equals("X")) { // back to previous
+                        modelController = new ModelController();
+                    }
+                    else if (mainOption.equals("-1")) { // back to previous
+                        modelController.closeDB();
                         System.exit(0);
                     } else {
                         mainView.errorPage();
                     }
                 }
-            } else if (input.equals("E")) {
+            } else if (input.equals("-1")) {
+                modelController.closeDB();
                 System.exit(0);
             } else {
                 mainView.errorPage();
