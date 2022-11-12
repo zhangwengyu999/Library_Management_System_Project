@@ -946,16 +946,31 @@ public class ModelController {
         return false;
     }
 
-    public void notificationToUser(String ISBN, User inUser) {
-
-//        ISBN = book.getISBN();
-//        status = book.getStatus();
-//        if (searchBookOnBookISBN(ISBN) != null) {
-
-//        }
+    public boolean rentBookFromPlacedBook(String bookID, String accountID) {
+        try {
+            if (placedBookBuffer.containsKey(bookID)) {
+                if (placedBookBuffer.get(bookID).getAccountID().equals(accountID)) {
+                    deletePlacedBookRecord(bookID);
+                    RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
+                    addRecord(rentBook);
+                    StringBuilder sb = new StringBuilder();
+                    User user = userBuffer.get(accountID);
+                    sb.append(user.getNoticeString());
+                    sb.append("You can take the book with bookID: ").append(bookID).append("from placed book.");
+                    user.setNoticeString(sb.toString());
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-    public void generateAnalysisReport() {
 
-    }
+//    public void generateAnalysisReport() {
+//
+//    }
 }
