@@ -53,6 +53,13 @@ public class ModelController {
         return day;
     }
 
+    public String getDate() {
+        String yyyy = year+"";
+        String mm = month<10?"0"+month:month+"";
+        String dd = day<10?"0"+day:day+"";
+        return yyyy+"-"+mm+"-"+dd;
+    }
+
     /**
      * Setup and refresh the buffers from DB
      */
@@ -634,6 +641,7 @@ public class ModelController {
                     user.setAccountStatus(false);
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
                     sb.append("Your account has been deactivated.\n");
                     user.setNoticeString(sb.toString());
                     user.pushToDatabase();
@@ -661,6 +669,7 @@ public class ModelController {
                     user.setAccountStatus(true);
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
                     sb.append("Your account has been activated.\n");
                     user.setNoticeString(sb.toString());
                     user.pushToDatabase();
@@ -711,6 +720,7 @@ public class ModelController {
                 if (temp<MAX_WANT_BOOK) {
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
                     sb.append("You have successfully reserved the book with ISBN: ").append(inISBN).append("\n");
                     user.setNoticeString(sb.toString());
                     user.increaseReserveCount();
@@ -751,6 +761,7 @@ public class ModelController {
             deleteWantBookRecord(inISBN, inAccountID);
             StringBuilder sb = new StringBuilder();
             sb.append(user.getNoticeString());
+            sb.append("[").append(getDate()).append("]: ");
             sb.append("You have successfully cancelled the reservation of the book with ISBN: ").append(inISBN).append("\n");
             user.setNoticeString(sb.toString());
         } catch (Exception e) {
@@ -773,8 +784,10 @@ public class ModelController {
             List<Book> books = searchBookOnBookID(inBookID);
             Book book = books.get(0);
             StringBuilder sb = new StringBuilder();
-            sb.append("The book with BookID: ").append(book.getBookID()).append(" is canceled for placed now.\n");
             User nowUser = userBuffer.get(inAccountID);
+            sb.append(nowUser.getNoticeString());
+            sb.append("[").append(getDate()).append("]: ");
+            sb.append("The book with BookID: ").append(book.getBookID()).append(" is canceled for placed now.\n");
             nowUser.setNoticeString(sb.toString());
             deletePlacedBookRecord(inBookID);
             String isbn = book.getISBN();
@@ -788,6 +801,7 @@ public class ModelController {
                 StringBuilder sb1 = new StringBuilder();
                 User nextUser = userBuffer.get(nextWantUser.getUserAccountID());
                 sb1.append(nextUser.getNoticeString());
+                sb1.append("[").append(getDate()).append("]: ");
                 sb1.append("The book with ISBN: ").append(isbn).append(" is available now.\n");
                 nextUser.setNoticeString(sb1.toString());
                 addRecord(placedBook);
@@ -816,9 +830,10 @@ public class ModelController {
                     MainView mainView = new MainView();
                     mainView.outOfMaxPlacedDayNotification(placedBook.getBookID(),placedBook.getAccountID());
                     StringBuilder sb = new StringBuilder();
-                    sb.append(searchUserOnAccountID(placedBook.getAccountID()).get(0).getNoticeString());
-                    sb.append("The book with ISBN: ").append(placedBook.getBookID()).append(" which placed in library is expired.\n");
                     User user = userBuffer.get(placedBook.getAccountID());
+                    sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
+                    sb.append("The book with ISBN: ").append(placedBook.getBookID()).append(" which placed in library is expired.\n");
                     user.setNoticeString(sb.toString());
                 }
             }
@@ -846,9 +861,10 @@ public class ModelController {
                     MainView mainView = new MainView();
                     mainView.outOfMaxRentDayNotification(rentBook.getBookID(), rentBook.getAccountID());
                     StringBuilder sb = new StringBuilder();
-                    sb.append(searchUserOnAccountID(rentBook.getAccountID()).get(0).getNoticeString());
-                    sb.append("The book with Book ID: ").append(rentBook.getBookID()).append(" you rent is expired.\n");
                     User user = userBuffer.get(rentBook.getAccountID());
+                    sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
+                    sb.append("The book with Book ID: ").append(rentBook.getBookID()).append(" you rent is expired.\n");
                     user.setNoticeString(sb.toString());
                     output.add(rentBook);
                 }
@@ -880,9 +896,10 @@ public class ModelController {
                     try {
                         book.addRentBookCount();
                         StringBuilder sb = new StringBuilder();
-                        sb.append(searchUserFromWantBookOnISBN(book.getISBN()).get(0).getNoticeString());
-                        sb.append("The book with ISBN: ").append(book.getISBN()).append(" is rented by ").append(accountID).append("\n");
                         User user = userBuffer.get(accountID);
+                        sb.append(user.getNoticeString());
+                        sb.append("[").append(getDate()).append("]: ");
+                        sb.append("The book with ISBN: ").append(book.getISBN()).append(" is rented by ").append(accountID).append("\n");
                         user.setNoticeString(sb.toString());
                         addRecord(rentBook);
                         return true;
@@ -910,6 +927,7 @@ public class ModelController {
                         book.addWantBookCount();
                         StringBuilder sb = new StringBuilder();
                         sb.append(nextUser.getNoticeString());
+                        sb.append("[").append(getDate()).append("]: ");
                         sb.append("The book with ISBN: ").append(book.getISBN()).append(" is available now.\n");
                         nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
