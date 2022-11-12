@@ -423,6 +423,20 @@ class ModelControllerTest {
         }
     }
 
+    @Test
+    void testActivateAfterReturn() {
+        try{
+            User user = modelController.searchUserOnAccountID("7").get(0);
+            assertFalse(user.getAccountStatus());
+            assertEquals(1, modelController.getExpiredRentBook(user.getAccountID()).size());
+            modelController.returnBookFromUser("6");
+            assertTrue(user.getAccountStatus());
+            assertEquals(0, modelController.getExpiredRentBook(user.getAccountID()).size());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 //
 //    @Test
