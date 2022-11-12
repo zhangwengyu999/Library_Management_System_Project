@@ -877,12 +877,55 @@ public class ModelController {
     }
 
     /**
+     * deactivates the user account due to overdue rent books
+     * and return the list of deactivated users
+     * @return
+     */
+    public List<User> deactivateUserForExpiredRentBook() {
+        List<User> output = new ArrayList<>();
+        List<RentBook> expiredRentBook = getExpiredRentBook();
+        for (RentBook rentBook: expiredRentBook) {
+            try {
+                User user = userBuffer.get(rentBook.getAccountID());
+                user.setAccountStatus(false);
+                output.add(user);
+                StringBuilder sb = new StringBuilder();
+                sb.append(user.getNoticeString());
+                sb.append("[").append(getDate()).append("]: ");
+                sb.append("Your account is deactivated for overdue books\n");
+                user.setNoticeString(sb.toString());
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return output;
+    }
+
+    /**
      * check the expired rent books of a user and return the list of expired rent books
      * @param inAccountID: the user who wants to check the expired rent books
      * @return List<RentBook> expired rent Book of this user
      */
     public List<RentBook> getExpiredRentBook(String inAccountID) {
-        return null;
+        List<RentBook> output = new ArrayList<>();
+        for (RentBook rentBook: rentBookBuffer.values()) {
+            try {
+                if (rentBook.getAccountID().equals(inAccountID)) {
+                    int y = rentBook.getDateArray()[0];
+                    int m = rentBook.getDateArray()[1];
+                    int d = rentBook.getDateArray()[2];
+                    int rentDays = DayCalculator.dayApart(d, m, y, day, month, year);
+                    if (rentDays > MAX_RENT_DAY) {
+                        output.add(rentBook);
+                    }
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return output;
     }
 
 
@@ -937,7 +980,17 @@ public class ModelController {
                         e.printStackTrace();
                     }
                 }
+
                 deleteRentBookRecord(bookID);
+                User user = userBuffer.get(rentBookBuffer.get(bookID).getAccountID());
+                if (!user.getAccountStatus() && getExpiredRentBook(user.getAccountID()).size() == 0) {
+                    user.setAccountStatus(true);
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
+                    sb.append("Your account is activated back.\n");
+                    user.setNoticeString(sb.toString());
+                }
                 return true;
             }
         }

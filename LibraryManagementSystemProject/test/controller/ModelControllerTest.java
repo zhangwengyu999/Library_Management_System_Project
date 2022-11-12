@@ -64,9 +64,13 @@ class ModelControllerTest {
         RentBook rentBook1 = new RentBook("1","1",2022,10,30);
         RentBook rentBook2 = new RentBook("4","7",2022,11,2);
         RentBook rentBook3 = new RentBook("5","4",2022,11,5);
+        RentBook rentBook4 = new RentBook("7","6",2022,11,5);
+
         modelController.addRecord(rentBook1);
         modelController.addRecord(rentBook2);
         modelController.addRecord(rentBook3);
+        modelController.addRecord(rentBook4);
+
     }
 
     /**
