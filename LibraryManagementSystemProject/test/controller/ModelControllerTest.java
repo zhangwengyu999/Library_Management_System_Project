@@ -45,7 +45,7 @@ class ModelControllerTest {
         User user4 = new User("4",true,"Notification \n");
         User user5 = new User("5",true,"Notification \n");
         User user6 = new User("6",false,"Notification \n");
-        User user7 = new User("7",false,"Notification \n");
+        User user7 = new User("7",true,"Notification \n");
         modelController.addRecord(user1);
         modelController.addRecord(user2);
         modelController.addRecord(user3);
@@ -433,6 +433,18 @@ class ModelControllerTest {
             assertTrue(user.getAccountStatus());
             assertEquals(0, modelController.getExpiredRentBook(user.getAccountID()).size());
         }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void testDeactivateUserForExpiredRentBook() {
+        try {
+            User user = modelController.searchUserOnAccountID("7").get(0);
+            assertTrue(user.getAccountStatus());
+            modelController.deactivateUserForExpiredRentBook();
+            assertFalse(user.getAccountStatus());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

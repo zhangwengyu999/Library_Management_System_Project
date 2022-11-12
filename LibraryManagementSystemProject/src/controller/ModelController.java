@@ -814,6 +814,9 @@ public class ModelController {
     }
 
 
+    /**
+     * put expired placed book to available and notice their user
+     */
     public void refreshExpiredPlacedBook(){
         List<PlacedBook> list = new ArrayList<>();
         for (PlacedBook placedBook: placedBookBuffer.values()){
@@ -888,6 +891,7 @@ public class ModelController {
             try {
                 User user = userBuffer.get(rentBook.getAccountID());
                 user.setAccountStatus(false);
+                user.pushToDatabase();
                 output.add(user);
                 StringBuilder sb = new StringBuilder();
                 sb.append(user.getNoticeString());
