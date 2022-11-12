@@ -376,15 +376,12 @@ public class ModelController {
      * @return List<Book>: a list of book with the name inName
      * @throws Exception: if the book is not found
      * */
-    public List<Book> searchBookOnBookName(String inName) throws Exception {
+    public List<Book> searchBookOnBookName(String inName) {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getBookName().equals(inName)) {
                 result.add((Book)book);
             }
-        }
-        if (result.size() == 0) {
-            throw new Exception("No book found!");
         }
         return result;
     }
@@ -394,13 +391,10 @@ public class ModelController {
      * @param inBookID: the ISBN of the book
      * return List<Book>: a list of book with the id
      */
-    public List<Book> searchBookOnBookID(String inBookID) throws Exception {
+    public List<Book> searchBookOnBookID(String inBookID) {
         List<Book> result = new ArrayList<>();
         if (bookBuffer.containsKey(inBookID)) {
             result.add((Book)bookBuffer.get(inBookID));
-        }
-        if (result.size() == 0) {
-            throw new Exception("No book found!");
         }
         return result;
     }
@@ -410,15 +404,12 @@ public class ModelController {
      * @param inAuthor: the author of the book
      * return List<Book>: a list of book with the author
      */
-    public List<Book> searchBookOnBookAuthor(String inAuthor) throws Exception {
+    public List<Book> searchBookOnBookAuthor(String inAuthor) {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getAuthor().equals(inAuthor)) {
                 result.add((Book)book);
             }
-        }
-        if (result.size() == 0) {
-            throw new Exception("No book found!");
         }
         return result;
     }
@@ -427,15 +418,12 @@ public class ModelController {
      * @param inCategory: the category of the book
      * return List<Book>: a list of book with the category
      */
-    public List<Book> searchBookOnBookCategory(String inCategory) throws Exception {
+    public List<Book> searchBookOnBookCategory(String inCategory) {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getCategory().equals(inCategory)) {
                 result.add((Book)book);
             }
-        }
-        if (result.size() == 0) {
-            throw new Exception("No book found!");
         }
         return result;
     }
@@ -445,15 +433,12 @@ public class ModelController {
      * @param inISBN: the ISBN of the book
      * return List<Book>: a list of book with the category
      */
-    public List<Book> searchBookOnBookISBN(String inISBN) throws Exception {
+    public List<Book> searchBookOnBookISBN(String inISBN) {
         List<Book> result = new ArrayList<>();
         for (SQLModel book : bookBuffer.values()) {
             if (((Book) book).getISBN().equals(inISBN)) {
                 result.add((Book)book);
             }
-        }
-        if (result.size() == 0) {
-            throw new Exception("No book found!");
         }
         return result;
     }
@@ -466,14 +451,12 @@ public class ModelController {
      * @return List<RentBook>: a list of rent book with the bookID
      * @throws Exception if the rent book is not found
      */
-    public List<RentBook> searchRentBookOnBookID(String inBookID) throws Exception {
+    public List<RentBook> searchRentBookOnBookID(String inBookID) {
         List<RentBook> result = new ArrayList<>();
         if (rentBookBuffer.containsKey(inBookID)){
             result.add((RentBook)rentBookBuffer.get(inBookID));
         }
-        else{
-            throw new Exception("This book is not rent by other.");
-        }
+
         return result;
     }
 
@@ -483,16 +466,14 @@ public class ModelController {
      * @return List<RentBook>: a list of rent book with the accountID
      * @throws Exception if the rent book is not found
      */
-    public List<RentBook> searchRentBookOnAccountID(String inAccountID) throws Exception {
+    public List<RentBook> searchRentBookOnAccountID(String inAccountID) {
         List<RentBook> result = new ArrayList<>();
         for (SQLModel rentBook : rentBookBuffer.values()) {
             if (((RentBook) rentBook).getAccountID().equals(inAccountID)) {
                 result.add((RentBook) rentBook);
             }
         }
-        if (result.size() == 0) {
-            throw new Exception("This user didn't rent any books.");
-        }
+
         return result;
     }
 
@@ -504,7 +485,7 @@ public class ModelController {
      * @return List<WantBook>: a list of want book ISBN
      * @throws Exception if the want book is not found
      */
-    public List<String> searchWantBookOnAccountID(String inAccountID) throws Exception {
+    public List<String> searchWantBookOnAccountID(String inAccountID) {
         List<String> result = new ArrayList<>();
         for (String isbn : wantBookBuffer.keySet()) {
             for (WantBook wantBook: wantBookBuffer.get(isbn)) {
@@ -514,9 +495,7 @@ public class ModelController {
                 }
             }
         }
-        if (result.size() == 0) {
-            throw new Exception("This user didn't reserve any books.");
-        }
+
         return result;
     }
 
@@ -526,15 +505,12 @@ public class ModelController {
      * @return List<User>: a list of user want the book
      * @throws Exception if the want book is not found
      */
-    public List<User> searchUserFromWantBookOnISBN(String inISBN) throws Exception {
+    public List<User> searchUserFromWantBookOnISBN(String inISBN) {
         List<User> result = new ArrayList<>();
         if (wantBookBuffer.containsKey(inISBN)){
             for (WantBook user : wantBookBuffer.get(inISBN)){
                 result.add(userBuffer.get(user.getUserAccountID()));
             }
-        }
-        else{
-            throw new Exception("This book is not unwanted by any users.");
         }
         return result;
     }
@@ -548,15 +524,12 @@ public class ModelController {
      * @return List<PlacedBook>: a list of placed book with the accountID
      * @throws Exception
      */
-    public List<PlacedBook> searchPlacedBookOnAccountID(String inAccountID) throws Exception {
+    public List<PlacedBook> searchPlacedBookOnAccountID(String inAccountID) {
         List<PlacedBook> result = new ArrayList<>();
         for (SQLModel placedBook : placedBookBuffer.values()) {
             if (((PlacedBook) placedBook).getAccountID().equals(inAccountID)) {
                 result.add((PlacedBook) placedBook);
             }
-        }
-        if (result.size() == 0) {
-            throw new Exception("This user didn't placed any books.");
         }
         return result;
     }
@@ -567,14 +540,12 @@ public class ModelController {
      * @return List<PlacedBook>: a list of placed book with the bookID
      * @throws Exception
      */
-    public List<PlacedBook> searchPlacedBookOnBookID(String inBookID) throws Exception {
+    public List<PlacedBook> searchPlacedBookOnBookID(String inBookID) {
         List<PlacedBook> result = new ArrayList<>();
         if (placedBookBuffer.containsKey(inBookID)){
             result.add((PlacedBook) placedBookBuffer.get(inBookID));
         }
-        else{
-            throw new Exception("This book is not placed by any users.");
-        }
+
         return result;
     }
 
@@ -587,13 +558,10 @@ public class ModelController {
      * @return List<User>: the user with the accountID
      * @throws Exception
      */
-    public List<User> searchUserOnAccountID(String inAccountID) throws Exception {
+    public List<User> searchUserOnAccountID(String inAccountID) {
         List<User> result = new ArrayList<>();
         if (userBuffer.containsKey(inAccountID)){
             result.add((User)userBuffer.get(inAccountID));
-        }
-        else{
-            throw new Exception("No user found.");
         }
         return result;
     }
@@ -752,16 +720,15 @@ public class ModelController {
         try{
             List<Book> books = searchBookOnBookID(inBookID);
             Book book = books.get(0);
-            String isbn = book.getISBN();
-            int size = searchUserFromWantBookOnISBN(isbn).size();
             StringBuilder sb = new StringBuilder();
-            sb.append(searchUserFromWantBookOnISBN(isbn).get(0).getNoticeString());
-            sb.append("The book with ISBN: ").append(isbn).append(" is canceled for placed now.\n");
+            sb.append("The book with BookID: ").append(book.getBookID()).append(" is canceled for placed now.\n");
             User nowUser = userBuffer.get(inAccountID);
             nowUser.setNoticeString(sb.toString());
             deletePlacedBookRecord(inBookID);
+            String isbn = book.getISBN();
+            int size = searchUserFromWantBookOnISBN(isbn).size();
 
-             if (size > 0){
+            if (size > 0){
                 WantBook nextWantUser = wantBookBuffer.get(isbn).peek();
                 PlacedBook placedBook = new PlacedBook(nextWantUser.getUserAccountID(), inBookID, year, month, day);
                 MainView mainView = new MainView();
@@ -782,7 +749,11 @@ public class ModelController {
 
 
     public void refreshExpiredPlacedBook(){
+        List<PlacedBook> list = new ArrayList<>();
         for (PlacedBook placedBook: placedBookBuffer.values()){
+            list.add(placedBook);
+        }
+        for (PlacedBook placedBook: list){
             try{
                 int year = placedBook.getDateArray()[0];
                 int month = placedBook.getDateArray()[1];

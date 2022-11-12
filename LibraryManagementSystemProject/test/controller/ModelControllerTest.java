@@ -384,7 +384,7 @@ class ModelControllerTest {
         try {
             modelController.refreshExpiredPlacedBook();
             assertEquals(0, modelController.searchPlacedBookOnBookID("2").size());
-            assertEquals(0, modelController.searchPlacedBookOnBookID("5").size());
+            assertEquals(1, modelController.searchPlacedBookOnBookID("5").size());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -394,8 +394,14 @@ class ModelControllerTest {
 //
 //    @Test
 //    void rentBookFromUser() {
+//        try{
+//            assertTrue(modelController.rentBookFromUser());
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
 //    }
-//
+
 
 //
 //    @Test
