@@ -370,6 +370,17 @@ public class ModelController {
 
 
     // --------------- Search on Book ---------------
+
+    /**
+     * get all the books in the buffer
+     * @return all the books in the buffer
+     */
+    public List<Book> getAllBooks() {
+        List<Book> books = new ArrayList<>();
+        books.addAll(bookBuffer.values());
+        return books;
+    }
+
     /**
      * Search book on name inName
      * @param inName: the name of the book
@@ -445,6 +456,17 @@ public class ModelController {
 
 
     // --------------- Search on Rent Book ---------------
+
+    /**
+     * get all the rent books in the buffer
+     * @return all the rent books in the buffer
+     */
+    public List<RentBook> getAllRentBooks() {
+        List<RentBook> rentBooks = new ArrayList<>();
+        rentBooks.addAll(rentBookBuffer.values());
+        return rentBooks;
+    }
+
     /**
      * Search rent book on bookID
      * @param inBookID the bookID of the rent book
@@ -479,6 +501,17 @@ public class ModelController {
 
     // --------------- Search on Want Book ---------------
 
+    /**
+     * get all the want books in the buffer
+     * @return all the want books in the buffer
+     */
+    public List<WantBook> getAllWantBooks() {
+        List<WantBook> out = new ArrayList<>();
+        for (Queue<WantBook> wantBooks: wantBookBuffer.values()) {
+            out.addAll(wantBooks);
+        }
+        return out;
+    }
     /**
      * Search want book on accountID
      * @param inAccountID the accountID of the user want the book
@@ -519,6 +552,15 @@ public class ModelController {
     // --------------- Search on Placed Book ---------------
 
     /**
+     * get all the placed books in the buffer
+     * @return all the placed books in the buffer
+     */
+    public List<PlacedBook> getAllPlacedBooks() {
+        List<PlacedBook> out = new ArrayList<>();
+        out.addAll(placedBookBuffer.values());
+        return out;
+    }
+    /**
      * Search placed book on accountID
      * @param inAccountID the accountID of the user that placed the book for
      * @return List<PlacedBook>: a list of placed book with the accountID
@@ -551,6 +593,16 @@ public class ModelController {
 
 
     // --------------- Search on User ---------------
+
+    /**
+     * get all the users in the buffer
+     * @return all the users in the buffer
+     */
+    public List<User> getAllUsers() {
+        List<User> out = new ArrayList<>();
+        out.addAll(userBuffer.values());
+        return out;
+    }
 
     /**
      * Search user on accountID

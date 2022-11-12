@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ModelControllerTest.java" afterDir="false" />
     </list>
     <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
@@ -215,7 +212,9 @@
       <workItem from="1667905583920" duration="13115000" />
       <workItem from="1667963298078" duration="819000" />
       <workItem from="1667994269163" duration="1560000" />
-      <workItem from="1668150387059" duration="966000" />
+      <workItem from="1668150387059" duration="10164000" />
+      <workItem from="1668181919612" duration="440000" />
+      <workItem from="1668213070195" duration="3666000" />
     </task>
     <task id="LOCAL-00001" summary="refresh update">
       <created>1667995898748</created>
