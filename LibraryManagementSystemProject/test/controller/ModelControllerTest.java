@@ -407,6 +407,18 @@ class ModelControllerTest {
         }
     }
 
+    @Test
+    void rentBookFromPlacedBook(){
+        try{
+            modelController.rentBookFromPlacedBook("3","2");
+            assertEquals(0,modelController.searchPlacedBookOnAccountID("3").size());
+            assertEquals(1,modelController.searchRentBookOnAccountID("3").size());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 //
 //    @Test

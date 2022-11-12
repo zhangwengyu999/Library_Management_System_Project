@@ -27,7 +27,7 @@ public class ModelController {
     private final int MAX_WANT_BOOK = 8;
     private int year = 2022;
     private int month = 11;
-    private int day = 30;
+    private int day = 4;
 
     DataBase db = DataBase.getDataBase();
 
@@ -927,6 +927,7 @@ public class ModelController {
                         book.addWantBookCount();
                         StringBuilder sb = new StringBuilder();
                         sb.append(nextUser.getNoticeString());
+                        sb.append("[").append(getDate()).append("]: ");
                         sb.append("The book with BookID: ").append(book.getISBN()).append(" is available now.\n");
                         nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
@@ -946,16 +947,18 @@ public class ModelController {
         return false;
     }
 
-    public boolean rentBookFromPlacedBook(String bookID, String accountID) {
+    public boolean rentBookFromPlacedBook(String accountID,String bookID) {
         try {
             if (placedBookBuffer.containsKey(bookID)) {
                 if (placedBookBuffer.get(bookID).getAccountID().equals(accountID)) {
                     deletePlacedBookRecord(bookID);
                     RentBook rentBook = new RentBook(accountID, bookID, year, month, day);
+                    bookBuffer.get(bookID).addRentBookCount();
                     addRecord(rentBook);
                     StringBuilder sb = new StringBuilder();
                     User user = userBuffer.get(accountID);
                     sb.append(user.getNoticeString());
+                    sb.append("[").append(getDate()).append("]: ");
                     sb.append("You can take the book with bookID: ").append(bookID).append("from placed book.");
                     user.setNoticeString(sb.toString());
                     return true;
