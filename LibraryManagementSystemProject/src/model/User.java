@@ -91,7 +91,7 @@ public class User implements SQLModel {
 
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
-        if (db.contains("USER_ACCOUNT","accountID",accountID)){
+        if (db.contains("USER_ACCOUNT","accountID",Integer.parseInt(accountID))){
             String temp = accountStatus ? "T" : "F";
             String sql = "UPDATE USER_ACCOUNT SET accountStatus = \'" + temp + "\'"+ ","+
                     "NOTIFICATION = \'" + noticeString + "\'"+

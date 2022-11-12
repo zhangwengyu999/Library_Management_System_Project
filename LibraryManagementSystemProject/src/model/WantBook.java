@@ -81,7 +81,7 @@ public class WantBook implements SQLModel {
         return this;
     }
 
-    public SQLModel pushToDatabase() throws SQLException,canNotHappenedException {
+    public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (!db.contains("WANT_BOOK","ISBN","accountID",wantISBN,accountID)){
             String sql = "INSERT INTO WANT_BOOK VALUES(" +accountID  + ",\'" + wantISBN + "\',\'" + getWantDate()+"\')";
@@ -91,7 +91,7 @@ public class WantBook implements SQLModel {
         return this;
     }
 
-    public void deleteFromDatabase () throws SQLException {
+    public void deleteFromDatabase () {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM WANT_BOOK WHERE ISBN = \'" + wantISBN + "\' AND accountID = " + accountID;
         try {

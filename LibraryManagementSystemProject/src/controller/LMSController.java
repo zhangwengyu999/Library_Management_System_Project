@@ -3,6 +3,8 @@ package controller;
 import model.User;
 import model.Book;
 import view.MainView;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LMSController {

@@ -128,7 +128,7 @@ public class Book implements SQLModel {
     // for JDBC
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
-        if (db.contains("BOOK", "bookID", bookID)){
+        if (db.contains("BOOK", "bookID", Integer.parseInt(bookID))){
             String sql = "UPDATE BOOK SET ISBN = \'" + ISBN + "\', bookName = \'" + bookName + "\', author = \'" + author +
                     "\', bookCategory = \'" + category + "\', bookRentNum = \'" + bookRentNum + "\', bookWantNum = \'" + bookWantNum +
                         "\' WHERE bookID = " + bookID;

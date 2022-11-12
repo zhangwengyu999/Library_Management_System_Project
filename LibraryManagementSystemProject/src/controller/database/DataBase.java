@@ -106,7 +106,7 @@ public class DataBase {
     public boolean contains(String inTable, String inAttr, String inObject) throws SQLException {
         String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = \'" + inObject+"\'";
         try{
-            System.out.println(sql); //
+//            System.out.println(sql); //
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
                 return true;
@@ -125,7 +125,7 @@ public class DataBase {
     public boolean contains(String inTable, String inAttr, int inObject) throws SQLException {
         String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = " + inObject;
         try{
-            System.out.println(sql); //
+//            System.out.println(sql); //
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
                 return true;

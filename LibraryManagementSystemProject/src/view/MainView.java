@@ -122,8 +122,16 @@ public class MainView {
         System.out.println("Execute unsuccessfully");
     }
 
-    public void addBookPage() {
-        System.out.println("Please enter bookID, ISBN, bookName, bookPublisher, bookCategory respectively:");
+//    public void addBookPage() {
+//        System.out.println("Please enter bookID, ISBN, bookName, bookPublisher, bookCategory respectively:");
+//    }
+
+    public void addBookPage(){
+        System.out.println("Please enter book ID: \n");
+        System.out.println("Please enter book ISBN: \n");
+        System.out.println("Please enter book name: \n");
+        System.out.println("Please enter book publisher: \n");
+        System.out.println("Please enter book category: \n");
     }
 
     public void inputUserPage() {
