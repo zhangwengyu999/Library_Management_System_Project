@@ -4,7 +4,6 @@ import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
 public class MainView {
-    String managerAccountID;
     int countBookNum;
     int countPeopleBorrowed;
     int countBorrowedBook;
@@ -19,63 +18,44 @@ public class MainView {
         System.out.println();
         System.out.println("Please select the following options in [x]:");
         System.out.println("- [L] Manager Login");
-        System.out.println("- [E] Exit System");
+        System.out.println("- [-1] Exit System");
 
     }
     public void mainPage() {
-        System.out.println("Welcome Manager [" + managerAccountID + "]");
+        System.out.println("Welcome Manager");
         System.out.println("Please select the following options in [x]:");
-        System.out.println("- [O] Operation on System");
-        System.out.println("- [U] User Operation");
-        System.out.println("- [R] Return a Book");
-        System.out.println("- [S] Search a Book");
-        System.out.println("- [E] Exit System");
-    }
-
-    public void DBOperationSelectPage() {
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [A] Add information");
-        System.out.println("- [D] Delete information");
-        System.out.println("- [Back] Back to previous page");
-    }
-
-    public void DBAddOperationPage(){
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [B] Add Book");
-        System.out.println("- [U] Add User");
-        System.out.println("- [Back] Back to previous page");
-    }
-
-    public void DBDeleteOperationPage(){
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [B] Delete Book");
-        System.out.println("- [U] Delete User");
-        System.out.println("- [Back] Back to previous page");
-
-    }
-
-    public void processUserOptionPage() {
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [R] Rent a Book");
-        System.out.println("- [W] Want a Book");
-        System.out.println("- [C] Cancel a Book");
-        System.out.println("- [Back] Back to previous page");
-
+        System.out.println("- Operation on System");
+        System.out.println("    - [A] Add Book");
+        System.out.println("    - [B] Add User");
+        System.out.println("    - [C] Delete Book");
+        System.out.println("    - [D] Delete User");
+        System.out.println("- Operation on User");
+        System.out.println("    - [E] Rent a Book from Library");
+        System.out.println("    - [F] Rent a Book from Placed");
+        System.out.println("    - [G] Want a Book");
+        System.out.println("    - [H] Cancel a Reserve Book");
+        System.out.println("    - [I] Cancel a Placed book");
+        System.out.println("    - [J] Search a Book");
+        System.out.println("    - [K] Return a Book");
+        System.out.println("    - [L] Search a User");
+        System.out.println("- Data Refresh");
+        System.out.println("    - [M] Refresh Expired Placed Book");
+        System.out.println("    - [N] Refresh Deactivate User");
+        System.out.println("- Data View");
+        System.out.println("    - [O] View All Book");
+        System.out.println("    - [P] View All Rent Book");
+        System.out.println("    - [Q] View All Want Book");
+        System.out.println("    - [R] View All Placed Book");
+        System.out.println("- [X] Reset from Database");
+        System.out.println("- [-1] Exit System");
     }
 
     public void processUserSearchPage() {
         System.out.println("Please select the following options in [x]:");
-        System.out.println("- [I] Search a Book by ISBN");
-        System.out.println("- [N] Search a Book by Name");
-        System.out.println("- [A] Search a Book by Author");
-        System.out.println("- [C] Search a Book by Category");
-        System.out.println("- [Back] Back to previous page");
-    }
-
-    public void processUserCancelBook() {
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [R] Cancel a reserve book");
-        System.out.println("- [P] Cancel a placed book");
+        System.out.println("- [A] Search a Book by ISBN");
+        System.out.println("- [B] Search a Book by Name");
+        System.out.println("- [C] Search a Book by Author");
+        System.out.println("- [D] Search a Book by Category");
         System.out.println("- [Back] Back to previous page");
     }
 
@@ -97,6 +77,7 @@ public class MainView {
     public void processUserCancelReservePage() {
         System.out.println("Please input ISBN:");
     }
+
     public void processUserCancelPlacedPage() {
         System.out.println("Please input bookID:");
     }
@@ -122,44 +103,43 @@ public class MainView {
         System.out.println("Execute unsuccessfully");
     }
 
-//    public void addBookPage() {
-//        System.out.println("Please enter bookID, ISBN, bookName, bookPublisher, bookCategory respectively:");
-//    }
-
     public void addBookPage(){
-        System.out.println("Please enter book ID: \n");
-        System.out.println("Please enter book ISBN: \n");
-        System.out.println("Please enter book name: \n");
-        System.out.println("Please enter book publisher: \n");
-        System.out.println("Please enter book category: \n");
+        System.out.println("- [Back] Back to previous page");
+        System.out.println("Please enter book ID:");
+        System.out.println("Please enter book ISBN:");
+        System.out.println("Please enter book name:");
+        System.out.println("Please enter book publisher:");
+        System.out.println("Please enter book category:");
     }
 
     public void inputUserPage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter accountID");
     }
 
     public void inputISBNPage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter the book ISBN");
     }
 
     public void inputNamePage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter the book name");
     }
 
     public void inputAuthorPage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter the author name");
     }
 
     public void inputCategoryPage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter the book category");
     }
 
     public void inputBookIDPage() {
+        System.out.println("- [Back] Back to previous page");
         System.out.println("Please enter the bookID");
-    }
-
-    public void enterPage() {
-        System.out.println("Please enter related information");
     }
 
     // when the book return by a user and the isbn is somebody want, notify the person who want the book
@@ -184,8 +164,13 @@ public class MainView {
         System.out.println("You are supposed to reserve this book by another application!");
     }
 
+    public void emptyPage() {
+        System.out.println("The return list is empty");
+    }
 
-
+    public void showListPage() {
+        System.out.println("The return list:");
+    }
 
     public void analysisReportPage() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());

@@ -101,6 +101,10 @@ public class RentBook implements SQLModel {
         return this.accountID;
     }
 
+    // Show the related information of RentBook
+    public String showInfo() {
+        return "[Account ID]:" + accountID + " [Book ID]: " + bookID + " [Year]: "+ year + " [Month]: " + month  +" [Day]: "+day;
+    }
 
 //    public SQLModel pullFromDataBase() throws SQLException {
 //        DataBase db = DataBase.getDataBase();

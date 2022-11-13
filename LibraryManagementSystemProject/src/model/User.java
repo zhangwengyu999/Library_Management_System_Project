@@ -48,6 +48,10 @@ public class User implements SQLModel {
         return reserveCount;
     }
 
+    public String showInfo(){
+        return "[Account ID]: " + getAccountID() + " [Account Status]: " + getAccountStatus() +" [Notice String]: " + getNoticeString();
+    }
+
     public boolean increaseReserveCount() {
         if (reserveCount < MAX_WANT_BOOK) {
             reserveCount++;
