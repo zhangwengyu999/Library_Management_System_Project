@@ -15,12 +15,13 @@ public class MainView {
 
     public void welcomePage() {
         System.out.println("----------------------------------------------------------------");
-        System.out.println("        Welcome to the Library Management System(LMS)!");
+        System.out.println("        Welcome to the Library Management System (LMS)!");
+        System.out.println("             COMP2411 Database System (Fall 2022)");
+        System.out.println("                       Project Group 4");
         System.out.println();
         System.out.println("- [L] Manager Login");
         System.out.println("- [-1] Exit System");
         System.out.print(">>> Please select the above options x in [x]:");
-
     }
 
     public void mainPageWelcome(){

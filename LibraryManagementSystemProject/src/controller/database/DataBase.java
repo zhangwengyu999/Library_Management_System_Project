@@ -53,7 +53,7 @@ public class DataBase {
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             connection = (OracleConnection)DriverManager.getConnection(url,username,pwd);
-            System.out.println("DB Connected!");
+            //System.out.println("DB Connected!");
         }
         catch (SQLException e) {
             System.out.println("DB Connection Failed!");
