@@ -348,7 +348,7 @@ public class LMSController {
                                 mainView.errorPage();
                             }
                         }
-                    } else if (mainOption.equals("K")) {
+                    } else if (mainOption.equals("L")) {
                         while (true) {
                             mainView.processUserReturnPage();
                             String inBookID = inputListener();
@@ -363,7 +363,7 @@ public class LMSController {
                                 mainView.unSuccessPage();
                             }
                         }
-                    } else if (mainOption.equals("L")) {
+                    } else if (mainOption.equals("K")) {
                         mainView.inputUserPage();
                         String inAccountID = inputListener();
                         try {

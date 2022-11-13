@@ -44,8 +44,8 @@ public class MainView {
         System.out.println("    - [H] Cancel a Reserve Book");
         System.out.println("    - [I] Cancel a Placed book");
         System.out.println("    - [J] Search a Book");
-        System.out.println("    - [K] Return a Book");
-        System.out.println("    - [L] Search a User");
+        System.out.println("    - [K] Search a User");
+        System.out.println("    - [L] Return a Book");
         System.out.println("- Data Refresh");
         System.out.println("    - [M] Refresh Expired Placed Book");
         System.out.println("    - [N] Refresh Deactivate User");
@@ -143,24 +143,27 @@ public class MainView {
 
     // when the book return by a user and the isbn is somebody want, notify the person who want the book
     public void canBeRentNotification(String ISBN, String accountID) {
-        System.out.println("Dear User " +accountID);
-        System.out.println("The book (ISBN: "+ISBN+") you want now is available, you can get it in library by yourself!");
-        System.out.println("Remember the MAX_PLACED_DAY is 7 day, you have better to get it in time");
-        System.out.println("Or you are supposed to reserve this book by another application!");
+        System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
+        System.out.println("    \"Dear User " +accountID);
+        System.out.println("    The book (ISBN: "+ISBN+") you want now is available, you can get it in library by yourself!");
+        System.out.println("    Remember the MAX_PLACED_DAY is 7 day, you have better to get it in time");
+        System.out.println("    Or you are supposed to reserve this book by another application!\"]");
     }
 
     // A book can be rent for up to 14 day
     public void outOfMaxRentDayNotification(String bookID, String accountID) {
-        System.out.println("Dear User " +accountID);
-        System.out.println("The book (ID: "+bookID+") has been rent is out of the MAX_RENT_DAY!");
-        System.out.println("Your account will be banned until you return the book!");
+        System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
+        System.out.println("    \"Dear User " +accountID);
+        System.out.println("    The book (ID: "+bookID+") has been rent is out of the MAX_RENT_DAY!");
+        System.out.println("    Your account will be banned until you return the book!\"]");
     }
 
     // A book can be reserved for up to 7 days
     public void outOfMaxPlacedDayNotification(String bookID, String accountID) {
-        System.out.println("Dear User " +accountID);
-        System.out.println("The book (ID: "+bookID+") has been placed on library out of the MAX_PLACED_DAY!");
-        System.out.println("You are supposed to reserve this book by another application!");
+        System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
+        System.out.println("    \"Dear User " +accountID);
+        System.out.println("    The book (ID: "+bookID+") has been placed on library out of the MAX_PLACED_DAY!");
+        System.out.println("    You are supposed to reserve this book by another application!\"]");
     }
 
     public void emptyPage() {
