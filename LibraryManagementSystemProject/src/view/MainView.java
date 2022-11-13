@@ -1,5 +1,6 @@
 package view;
 
+import java.rmi.dgc.Lease;
 import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
@@ -51,8 +52,9 @@ public class MainView {
         System.out.println("    - [P] View All Rent Book");
         System.out.println("    - [Q] View All Want Book");
         System.out.println("    - [R] View All Placed Book");
-        System.out.println("- [S] Analysis Report");
-        System.out.println("- [T] Set Current Date");
+        System.out.println("    - [S] View All User");
+        System.out.println("- [T] Analysis Report");
+        System.out.println("- [U] Set Current Date");
         System.out.println("- [X] Reset from Database");
         System.out.println("- [-1] Exit System");
         System.out.println("----------------------------------------------------------------");
@@ -180,40 +182,67 @@ public class MainView {
         System.out.print("Here is(are) information about ");
     }
 
-    public void analysisReportPage(int totalBookNumber, int totalRentBookNumber, List<Book> mostRentBook, List<Book> leastRentBook, List<Book> mostWantBook, List<Book> leastWantBook, List<Book> mostRentBookByCategory, List<Book> mostRentBookByAuthor) {
+    public void analysisReportPage(int totalBookNumber, int totalRentBookNumber, List<String> mostRentBookISBN, List<Book> mostRentBookID,
+                                   List<String> leastRentBookISBN, List<Book> leastRentBookID, List<String> mostWantBookISBN, List<Book> mostWantBookID,
+                                   List<String> leastWantBookISBN, List<Book> leastWantBookID, List<String> mostRentBookISBNByCategory, List<String> mostRentBookISBNByAuthor,
+                                   List<String> mostWantBookISBNByCategory, List<String> mostWantBookISBNByAuthor) {
         String timeStamp = modelController.getDate();
 
         System.out.println("----------------------------------------------------------------");
-        System.out.println("           " + "ANALYSIS REPORT");
-        System.out.println("  " + "Create Time: " + timeStamp);
+        System.out.println("                    " + "ANALYSIS REPORT");
+        System.out.println("                " + "Create Time: " + timeStamp);
         System.out.println("----------------------------------------------------------------");
-        System.out.println("      " + "Books Status Information");
+        System.out.println("                " + "Books Status Information");
         System.out.println("----------------------------------------------------------------");
         System.out.println("Total Number of Books: " + totalBookNumber);
         System.out.println("Total Number of Books Already Borrowed: " + totalRentBookNumber);
-        System.out.println("Most Rent BookID: ");
-        for (Book book : mostRentBook){
+        System.out.println("Most Rent Book: ");
+        for (String line : mostRentBookISBN){
+            System.out.println("  -"+line);
+        }
+        System.out.println("Most Rent Book Instance: ");
+        for (Book book : mostRentBookID){
             System.out.println("  - "+book.showInfo());
         }
-        System.out.println("Least Rent BookID: ");
-        for (Book book: leastRentBook) {
+        System.out.println("Least Rent Book: ");
+        for (String line: leastRentBookISBN){
+            System.out.println("  - "+line);
+        }
+        System.out.println("Least Rent Book Instance: ");
+        for (Book book: leastRentBookID) {
             System.out.println("  - "+book.showInfo());
         }
-        System.out.println("Most Want BookID: ");
-        for (Book book : mostWantBook){
+        System.out.println("Most Want Book: ");
+        for (String line : mostWantBookISBN) {
+            System.out.println("  - "+line);
+        }
+        System.out.println("Most Want Book Instance: ");
+        for (Book book : mostWantBookID){
             System.out.println("  - "+book.showInfo());
         }
-        System.out.println("Least Want BookID: ");
-        for (Book book: leastWantBook) {
+        System.out.println("Least Want Book");
+        for (String line : leastWantBookISBN){
+            System.out.println("  - "+line);
+        }
+        System.out.println("Least Want Book Instance: ");
+        for (Book book : leastWantBookID) {
             System.out.println("  - "+book.showInfo());
         }
-        System.out.println("Most Borrowed Book By Category: ");
-        for (Book book: mostRentBookByCategory) {
-            System.out.println("  - "+book.showInfo());
+        System.out.println("Most Rent Book By Category: ");
+        for (String line : mostRentBookISBNByCategory) {
+            System.out.println("  - "+line);
         }
-        System.out.println("Most Borrowed Book By Author: ");
-        for (Book book: mostRentBookByAuthor) {
-            System.out.println("  - "+book.showInfo());
+        System.out.println("Most Rent Book By Author: ");
+        for (String line : mostRentBookISBNByAuthor) {
+            System.out.println("  - "+line);
+        }
+        System.out.println("Most Want Book By Category: ");
+        for (String line : mostWantBookISBNByCategory) {
+            System.out.println("  - "+line);
+        }
+        System.out.println("Most Want Book By Author: ");
+        for (String line : mostWantBookISBNByAuthor) {
+            System.out.println("  - "+line);
         }
     }
 }

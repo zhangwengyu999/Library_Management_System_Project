@@ -25,9 +25,9 @@ public class ModelController {
     private final int MAX_RENT_DAY = 14;
     private final int MAX_PLACED_DAY = 7;
     private final int MAX_WANT_BOOK = 8;
-    private int year = 2022;
-    private int month = 11;
-    private int day = 4;
+    private int year;
+    private int month;
+    private int day;
 
     private DataBase db = DataBase.getDataBase();
 
@@ -650,7 +650,7 @@ public class ModelController {
     public boolean deactivateUser(String inAccountID) {
         if (userBuffer.containsKey(inAccountID)) {
             try{
-                User user = (User) userBuffer.get(inAccountID);
+                User user = userBuffer.get(inAccountID);
                 if (user.getAccountStatus()) {
                     user.setAccountStatus(false);
                     StringBuilder sb = new StringBuilder();
@@ -719,6 +719,9 @@ public class ModelController {
         }
 
         boolean canBeReserved = true;
+        if (!userBuffer.containsKey(inAccountID) || foundBooks.size() == 0) { // check if the ISBN is in the library
+            canBeReserved = false;
+        }
         for (Book book : foundBooks) {
             if (!rentBookBuffer.containsKey(book.getBookID()) && !placedBookBuffer.containsKey(book.getBookID())) {
                 canBeReserved = false;
@@ -762,6 +765,16 @@ public class ModelController {
         // if (!reserveBook(inISBN, inUser.getAccountID())) return false;
 
         // check whether the book is reserved by the user
+        List<Book> foundBooks;
+        try{
+            foundBooks = searchBookOnBookISBN(inISBN);
+        }
+        catch (Exception e){
+            return false;
+        }
+        if (!userBuffer.containsKey(inAccountID) || foundBooks.size() == 0) { // check if the ISBN is in the library
+           return false;
+        }
         try {
             searchWantBookOnAccountID(inAccountID);
         } catch (Exception e) {
@@ -786,6 +799,11 @@ public class ModelController {
     }
 
     public boolean cancelPlacedBook(String inBookID, String inAccountID) {
+
+        if (!userBuffer.containsKey(inAccountID) || !bookBuffer.containsKey(inBookID)) {
+            return false;
+        }
+
         try {
             searchPlacedBookOnAccountID(inAccountID);
         } catch (Exception e) {
@@ -926,7 +944,12 @@ public class ModelController {
      * @return List<RentBook> expired rent Book of this user
      */
     public List<RentBook> getExpiredRentBook(String inAccountID) {
+
+
         List<RentBook> output = new ArrayList<>();
+        if (!userBuffer.containsKey(inAccountID)) {
+            return output;
+        }
         for (RentBook rentBook: rentBookBuffer.values()) {
             try {
                 if (rentBook.getAccountID().equals(inAccountID)) {
@@ -948,6 +971,9 @@ public class ModelController {
 
 
     public boolean rentBookFromUser(String accountID, String bookID) {
+        if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
+            return false;
+        }
         List<Book> searchRentBooks;
         try {
             searchRentBooks = searchBookOnBookID(bookID);
@@ -978,6 +1004,9 @@ public class ModelController {
     }
 
     public boolean returnBookFromUser(String bookID) {
+        if (!bookBuffer.containsKey(bookID)) {
+            return false;
+        }
         try {
             if (rentBookBuffer.containsKey(bookID)) {
                 Book book = bookBuffer.get(bookID);
@@ -1022,6 +1051,9 @@ public class ModelController {
     }
 
     public boolean rentBookFromPlacedBook(String accountID,String bookID) {
+        if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
+            return false;
+        }
         try {
             if (placedBookBuffer.containsKey(bookID)) {
                 if (placedBookBuffer.get(bookID).getAccountID().equals(accountID)) {
