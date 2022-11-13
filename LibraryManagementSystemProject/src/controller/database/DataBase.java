@@ -53,7 +53,7 @@ public class DataBase {
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             connection = (OracleConnection)DriverManager.getConnection(url,username,pwd);
-            System.out.println("DB Connection OK!");
+            System.out.println("DB Connected!");
         }
         catch (SQLException e) {
             System.out.println("DB Connection Failed!");
@@ -68,7 +68,7 @@ public class DataBase {
     public void closeConnection() throws SQLException {
         try{
             connection.close();
-            System.out.println("Close OK!");
+            System.out.println("DB Connection Closed!");
         }
         catch (SQLException e) {
             System.out.println("Close Failed!");
@@ -120,7 +120,8 @@ public class DataBase {
         return false;
     }
 
-    /** change to int
+    /**
+     * change to int
      */
     public boolean contains(String inTable, String inAttr, int inObject) throws SQLException {
         String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = " + inObject;

@@ -20,19 +20,19 @@ public class LMSController {
         while(true) {
             mainView.welcomePage();
             String input = inputListener();
-            mainView.mainPageWelcome();
-
-            // compulsory set date
-            System.out.println("Please set today's date first");
-            System.out.print(">>> Please enter the Year: ");
-            String y = inputListener();
-            System.out.print(">>> Please enter the Month: ");
-            String m = inputListener();
-            System.out.print(">>> Please enter the Day: ");
-            String d = inputListener();
-            modelController.setDate(y, m, d);
             // Set date done
             if (input.equals("L")) {
+                mainView.mainPageWelcome();
+                // compulsory set date
+                System.out.println("Please set today's date first");
+                System.out.print(">>> Please enter the Year: ");
+                String y = inputListener();
+                System.out.print(">>> Please enter the Month: ");
+                String m = inputListener();
+                System.out.print(">>> Please enter the Day: ");
+                String d = inputListener();
+                modelController.setDate(y, m, d);
+
                 while (true) {
                     mainView.mainPage();
                     String mainOption = inputListener();
