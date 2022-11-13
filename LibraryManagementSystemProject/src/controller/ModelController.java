@@ -37,6 +37,9 @@ public class ModelController {
         rentBookBuffer = new HashMap<>();
         wantBookBuffer = new HashMap<>();
         placedBookBuffer = new HashMap<>();
+        year = 2019;
+        month = 1;
+        day = 1;
         db.reConnect();
         initializeBuffers();
     }

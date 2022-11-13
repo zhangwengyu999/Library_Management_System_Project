@@ -4,13 +4,14 @@ import java.rmi.dgc.Lease;
 import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
+import controller.LMSController;
 import controller.ModelController;
 import model.Book;
 import java.util.*;
 
 public class MainView {
 
-    ModelController modelController = new ModelController();
+    ModelController modelController = LMSController.getModelController();
 
     public void welcomePage() {
         System.out.println("----------------------------------------------------------------");
@@ -113,15 +114,6 @@ public class MainView {
 
     public void unSuccessPage() {
         System.out.println("Execute unsuccessfully\n");
-    }
-
-    public void addBookPage(){
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter book ID:");
-        System.out.println("Please enter book ISBN:");
-        System.out.println("Please enter book name:");
-        System.out.println("Please enter book publisher:");
-        System.out.println("Please enter book category:");
     }
 
     public void inputUserPage() {
