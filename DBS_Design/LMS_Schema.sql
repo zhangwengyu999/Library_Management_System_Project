@@ -102,12 +102,12 @@ INSERT INTO WANT_BOOK VALUES (2, '0-04', '2022-10-30');
 -- 2 want 0-04
 
 INSERT INTO HAS_RENT VALUES (1, 1, '2022-10-30');
-INSERT INTO HAS_RENT VALUES (4, 7, '2022-11-2');
-INSERT INTO HAS_RENT VALUES (5, 4, '2022-11-5');
+INSERT INTO HAS_RENT VALUES (4, 7, '2022-11-02');
+INSERT INTO HAS_RENT VALUES (5, 4, '2022-11-05');
 INSERT INTO HAS_RENT VALUES (7, 6, '2022-09-01');
 
-INSERT INTO HAS_PLACED VALUES (3, 2, '2022-11-1');
-INSERT INTO HAS_PLACED VALUES (5, 5, '2022-11-3');
+INSERT INTO HAS_PLACED VALUES (3, 2, '2022-11-01');
+INSERT INTO HAS_PLACED VALUES (5, 5, '2022-11-03');
 
 -- INSERT INTO BOOK_STATUS VALUES (1, '2022-11-01', 'T', 'F', 'F');
 -- INSERT INTO BOOK_STATUS VALUES (2, '2022-10-03', 'F', 'F', 'T');
@@ -236,3 +236,45 @@ WHERE BOOK.ISBN = WANT_BOOK.ISBN
 --     AND BOOK_STATUS.bookID = BOOK.bookID 
 --     AND BOOK_STATUS.isReturned = 'F' 
 --     AND WANT_BOOK.accountID = ?;
+
+
+
+
+---------------------
+-- SELECT bookName, ISBN, author, bookCategory, SUM(bookRentNum)
+-- FROM BOOK
+-- GROUP BY bookName, ISBN, author, bookCategory
+-- HAVING SUM(bookRentNum) > 0
+
+-- MostRentBook: Correct
+-- SELECT bookName, ISBN, author, bookCategory, SUM(bookRentNum)
+-- FROM BOOK
+-- GROUP BY bookName, ISBN, author, bookCategory
+-- HAVING SUM(bookRentNum) >= ALL(SELECT SUM(bookRentNum) FROM book GROUP BY ISBN)
+
+-- MostRentBook: Wrong
+-- SELECT A.bookName, A.ISBN, A.author, A.bookCategory, SUM(A.bookRentNum)
+-- FROM book A
+-- GROUP BY A.ISBN
+-- HAVING SUM(A.bookRentNum) >= ALL(SELECT SUM(B.bookRentNum) FROM book B GROUP BY B.ISBN)
+----------------------
+
+-- getMostRentBookISBNByCategory()
+SELECT bookRentNum, bookCategory, ISBN
+FROM BOOK
+GROUP BY ISBN
+HAVING bookRentNum >= ALL(SELECT bookRentNum FROM BOOK GROUP BY bookCategory, ISBN)
+
+
+
+
+
+SELECT bookName, ISBN, author, bookCategory, SUM(bookWantNum)
+FROM book
+GROUP BY bookName, ISBN, author, bookCategory
+HAVING SUM(bookWantNum) >= ALL(SELECT SUM(B.bookWantNum)
+FROM book B
+GROUP BY B.bookCategory , B.ISBN
+WHERE B.bookCategory = bookCategory);
+
+
