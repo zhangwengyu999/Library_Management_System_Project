@@ -3,27 +3,32 @@ package view;
 import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 
+import controller.ModelController;
+import model.Book;
+import java.util.*;
+
 public class MainView {
-    int countBookNum;
-    int countPeopleBorrowed;
-    int countBorrowedBook;
-    int countPeopleWanted;
-    int countWantedBook;
-    int countDeactivatedAccount;
-    int countAccount;
+
+    ModelController modelController = new ModelController();
 
     public void welcomePage() {
         System.out.println("----------------------------------------------------------------");
         System.out.println("        Welcome to the Library Management System(LMS)!");
         System.out.println();
-        System.out.println("Please select the following options in [x]:");
         System.out.println("- [L] Manager Login");
         System.out.println("- [-1] Exit System");
+        System.out.print(">>> Please select the above options x in [x]:");
 
     }
+
+    public void mainPageWelcome(){
+        System.out.println("----------------------Welcome Manager-----------------------");
+
+    }
+
     public void mainPage() {
-        System.out.println("Welcome Manager");
-        System.out.println("Please select the following options in [x]:");
+        System.out.println("\n----------------------------------------------------------------");
+        System.out.println("----------------------Today is "+modelController.getDate()+"-----------------------");
         System.out.println("- Operation on System");
         System.out.println("    - [A] Add Book");
         System.out.println("    - [B] Add User");
@@ -46,40 +51,42 @@ public class MainView {
         System.out.println("    - [P] View All Rent Book");
         System.out.println("    - [Q] View All Want Book");
         System.out.println("    - [R] View All Placed Book");
+        System.out.println("- [S] Analysis Report");
+        System.out.println("- [T] Set Current Date");
         System.out.println("- [X] Reset from Database");
         System.out.println("- [-1] Exit System");
+        System.out.println("----------------------------------------------------------------");
+        System.out.print(">>> Please select the above options x in [x]: ");
     }
 
     public void processUserSearchPage() {
-        System.out.println("Please select the following options in [x]:");
-        System.out.println("- [A] Search a Book by ISBN");
+        System.out.println("\n- [A] Search a Book by ISBN");
         System.out.println("- [B] Search a Book by Name");
         System.out.println("- [C] Search a Book by Author");
         System.out.println("- [D] Search a Book by Category");
         System.out.println("- [Back] Back to previous page");
+        System.out.println("----------------------------------------------------------------");
+        System.out.print(">>> Please select the above options x in [x]: ");
     }
 
     public void processUserRentPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please input the book ID which want to rent:");
+        System.out.print(">>> Please input the book ID to rent (or 'Back' to back): ");
     }
 
     public void processUserReturnPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please input the return Book ID:");
+        System.out.print(">>> Please input the return Book ID (or 'Back' to back): ");
     }
 
     public void processUserWantPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please input ISBN:");
+        System.out.print(">>> Please input ISBN (or 'Back' to back): ");
     }
 
     public void processUserCancelReservePage() {
-        System.out.println("Please input ISBN:");
+        System.out.print(">>> Please input ISBN: ");
     }
 
     public void processUserCancelPlacedPage() {
-        System.out.println("Please input bookID:");
+        System.out.print(">>> Please input bookID: ");
     }
 
     public void errorPage() {
@@ -91,16 +98,19 @@ public class MainView {
     }
     
     public void linePage() {
-        System.out.println("----------------------------------------------------------------\n" +
-                "----------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public void breakPointPage() {
+        System.out.print(">>> Press Enter/Return to continue:");
     }
 
     public void successPage() {
-        System.out.println("Execute successfully");
+        System.out.println("Execute successfully\n");
     }
 
     public void unSuccessPage() {
-        System.out.println("Execute unsuccessfully");
+        System.out.println("Execute unsuccessfully\n");
     }
 
     public void addBookPage(){
@@ -113,53 +123,47 @@ public class MainView {
     }
 
     public void inputUserPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter accountID");
+        System.out.print(">>> Please enter accountID (or 'Back' to back): ");
     }
 
     public void inputISBNPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter the book ISBN");
+        System.out.print(">>> Please enter the book ISBN (or 'Back' to back): ");
     }
 
     public void inputNamePage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter the book name");
+        System.out.print(">>> Please enter the book name (or 'Back' to back): ");
     }
 
     public void inputAuthorPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter the author name");
+        System.out.print(">>> Please enter the author name (or 'Back' to back): ");
     }
 
     public void inputCategoryPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter the book category");
+        System.out.print(">>> Please enter the book category (or 'Back' to back): ");
     }
 
     public void inputBookIDPage() {
-        System.out.println("- [Back] Back to previous page");
-        System.out.println("Please enter the bookID");
+        System.out.print(">>> Please enter the bookID (or 'Back' to back): ");
     }
 
     // when the book return by a user and the isbn is somebody want, notify the person who want the book
     public void canBeRentNotification(String ISBN, String accountID) {
-        System.out.println("Dear" +accountID);
-        System.out.println("The book (ISBN:"+ISBN+") you want now is available, you can get it in library by yourself!");
+        System.out.println("Dear User " +accountID);
+        System.out.println("The book (ISBN: "+ISBN+") you want now is available, you can get it in library by yourself!");
         System.out.println("Remember the MAX_PLACED_DAY is 7 day, you have better to get it in time");
         System.out.println("Or you are supposed to reserve this book by another application!");
     }
 
     // A book can be rent for up to 14 day
     public void outOfMaxRentDayNotification(String bookID, String accountID) {
-        System.out.println("Dear" +accountID);
+        System.out.println("Dear User " +accountID);
         System.out.println("The book (ID: "+bookID+") has been rent is out of the MAX_RENT_DAY!");
         System.out.println("Your account will be banned until you return the book!");
     }
 
     // A book can be reserved for up to 7 days
     public void outOfMaxPlacedDayNotification(String bookID, String accountID) {
-        System.out.println("Dear" +accountID);
+        System.out.println("Dear User " +accountID);
         System.out.println("The book (ID: "+bookID+") has been placed on library out of the MAX_PLACED_DAY!");
         System.out.println("You are supposed to reserve this book by another application!");
     }
@@ -169,31 +173,47 @@ public class MainView {
     }
 
     public void showListPage() {
-        System.out.println("The return list:");
+        System.out.println("----------------------------------------------------------------");
     }
 
-    public void analysisReportPage() {
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    public void showTitle(){
+        System.out.print("Here is(are) information about ");
+    }
 
-        System.out.println("-------------------------------------");
+    public void analysisReportPage(int totalBookNumber, int totalRentBookNumber, List<Book> mostRentBook, List<Book> leastRentBook, List<Book> mostWantBook, List<Book> leastWantBook, List<Book> mostRentBookByCategory, List<Book> mostRentBookByAuthor) {
+        String timeStamp = modelController.getDate();
+
+        System.out.println("----------------------------------------------------------------");
         System.out.println("           " + "ANALYSIS REPORT");
         System.out.println("  " + "Create Time: " + timeStamp);
-        System.out.println("-------------------------------------");
+        System.out.println("----------------------------------------------------------------");
         System.out.println("      " + "Books Status Information");
-        System.out.println("-------------------------------------");
-        System.out.println("Number of Books: " +  countBookNum);
-        System.out.println("Number of People Borrowed Books: " + countPeopleBorrowed);
-        System.out.println("Number of Borrowed Books: " + countBorrowedBook);
-        System.out.println("Number of User who has Wanted Books: " + countPeopleWanted);
-        System.out.println("Number of Wanted Books: " + countWantedBook);
-        System.out.println("-------------------------------------");
-        System.out.println("      " + "Accounts Status Analysis");
-        System.out.println("-------------------------------------");
-        System.out.println("Number of Accounts: " + countAccount);
-        System.out.println("Number of Deactivated Accounts: " + countDeactivatedAccount);
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Total Number of Books: " + totalBookNumber);
+        System.out.println("Total Number of Books Already Borrowed: " + totalRentBookNumber);
+        System.out.println("Most Rent BookID: ");
+        for (Book book : mostRentBook){
+            System.out.println("  - "+book.showInfo());
+        }
+        System.out.println("Least Rent BookID: ");
+        for (Book book: leastRentBook) {
+            System.out.println("  - "+book.showInfo());
+        }
+        System.out.println("Most Want BookID: ");
+        for (Book book : mostWantBook){
+            System.out.println("  - "+book.showInfo());
+        }
+        System.out.println("Least Want BookID: ");
+        for (Book book: leastWantBook) {
+            System.out.println("  - "+book.showInfo());
+        }
+        System.out.println("Most Borrowed Book By Category: ");
+        for (Book book: mostRentBookByCategory) {
+            System.out.println("  - "+book.showInfo());
+        }
+        System.out.println("Most Borrowed Book By Author: ");
+        for (Book book: mostRentBookByAuthor) {
+            System.out.println("  - "+book.showInfo());
+        }
     }
 }

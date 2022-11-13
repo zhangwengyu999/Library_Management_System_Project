@@ -68,6 +68,12 @@ public class ModelController {
         return yyyy+"-"+mm+"-"+dd;
     }
 
+    public void setDate(String inYear, String inMonth, String inDay) {
+        this.year = Integer.parseInt(inYear);
+        this.month = Integer.parseInt(inMonth);
+        this.day = Integer.parseInt(inDay);
+    }
+
     /**
      * Setup and refresh the buffers from DB
      */
