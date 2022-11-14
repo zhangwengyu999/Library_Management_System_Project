@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="GrpZCegqyQvZPx4EdK1o" name="Page-1">
-        <mxGraphModel dx="2392" dy="3060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="490" dy="1566" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -904,6 +904,117 @@
                 </mxCell>
                 <mxCell id="509" value="Reserve_Count" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1480" y="-810" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="527" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;" edge="1" parent="1" source="511" target="517">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1910" y="1140"/>
+                            <mxPoint x="1910" y="1140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="529" value="View Render" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="527">
+                    <mxGeometry x="-0.0897" y="-2" relative="1" as="geometry">
+                        <mxPoint x="2" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="528" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;" edge="1" parent="1" source="511" target="519">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1770" y="1250"/>
+                            <mxPoint x="1900" y="1250"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="531" value="Stage Change and Control" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="528">
+                    <mxGeometry x="-0.1955" y="3" relative="1" as="geometry">
+                        <mxPoint x="30" y="-7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="511" value="Controller" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#6CCFF6;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;strokeColor=#00ADEF;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="1">
+                    <mxGeometry x="1700" y="1125" width="140" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="512" value="Database Controller&#10;Model Controller&#10;LMS Controller&#10;Data Process" style="text;strokeColor=#00ADEF;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="511">
+                    <mxGeometry y="26" width="140" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="515" value="Classname" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#6CCFF6;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;strokeColor=#00ADEF;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="1">
+                    <mxGeometry x="1840" y="894" width="140" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="516" value="+ field: type" style="text;strokeColor=#00ADEF;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="515">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="525" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;" edge="1" parent="1" source="517" target="520">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="533" value="State Query" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="525">
+                    <mxGeometry x="-0.084" relative="1" as="geometry">
+                        <mxPoint x="35" y="-19" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="526" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;" edge="1" parent="1" source="517" target="512">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1870" y="1151"/>
+                            <mxPoint x="1870" y="1151"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="530" value="User Event" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="526">
+                    <mxGeometry x="0.1768" y="3" relative="1" as="geometry">
+                        <mxPoint x="6" y="6" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="517" value="View" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#6CCFF6;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;strokeColor=#00ADEF;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="1">
+                    <mxGeometry x="1935" y="1125" width="140" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="518" value="LMS MainView" style="text;strokeColor=#00ADEF;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="517">
+                    <mxGeometry y="26" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="523" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;" edge="1" parent="1" source="519" target="518">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1960" y="1210"/>
+                            <mxPoint x="1960" y="1210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="532" value="Change Notification" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="523">
+                    <mxGeometry x="0.0286" relative="1" as="geometry">
+                        <mxPoint x="-20" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="537" style="rounded=0;html=1;entryX=1;entryY=0.15;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Tahoma;fontColor=none;exitX=-0.014;exitY=0.286;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="520" target="521">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="539" value="push" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="537">
+                    <mxGeometry x="-0.1287" y="1" relative="1" as="geometry">
+                        <mxPoint x="-3" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="519" value="Model" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#6CCFF6;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;strokeColor=#00ADEF;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="1">
+                    <mxGeometry x="1830" y="1270" width="140" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="520" value="SQLModel Interface&#10;Book&#10;User&#10;RentBook&#10;WantBook&#10;PlacedBook" style="text;strokeColor=#00ADEF;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeWidth=2;fontFamily=Tahoma;" vertex="1" parent="519">
+                    <mxGeometry y="26" width="140" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="536" style="rounded=0;html=1;fontFamily=Tahoma;fontColor=none;exitX=1;exitY=0.85;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.745;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="521" target="520">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="540" value="pull" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="536">
+                    <mxGeometry x="-0.1192" y="2" relative="1" as="geometry">
+                        <mxPoint x="6" y="11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="541" style="edgeStyle=none;rounded=0;html=1;fontFamily=Tahoma;fontColor=none;entryX=0.215;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="521" target="512">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="542" value="get query result" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Tahoma;fontColor=none;" vertex="1" connectable="0" parent="541">
+                    <mxGeometry x="0.1422" y="1" relative="1" as="geometry">
+                        <mxPoint x="1" y="15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="521" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fontFamily=Tahoma;fillColor=default;fontColor=none;noLabel=1;strokeColor=#00ADEF;" vertex="1" parent="1">
+                    <mxGeometry x="1700" y="1315" width="60" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
