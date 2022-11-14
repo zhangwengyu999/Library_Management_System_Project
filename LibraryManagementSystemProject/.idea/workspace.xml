@@ -7,12 +7,17 @@
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/LMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LMSController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
     </list>
-    <list id="a2fb52fd-cd5f-4567-9254-74facbfeed91" name="Changes by lmh" comment="" />
+    <list id="a7f9e23b-2b96-449b-b0c6-1fc554c66f08" name="Changes by lmh" comment="" />
     <list id="cb18edcf-fe4a-425a-a92d-8090dff8478c" name="Changes by physics" comment="" />
-    <list id="42b3f109-6d1b-4f63-8261-2be4b9d011ef" name="Changes by shanpooo" comment="" />
-    <list id="603faea2-3af3-4a0d-8b59-60374dabccdc" name="Changes by Y" comment="" />
+    <list id="85be7427-49da-4751-82e7-4e29b5a27a19" name="Changes by Y" comment="" />
     <list id="19ba69da-419c-4446-b903-ff8733e99a8b" name="Y 进行的变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,30 +48,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/21098431d/COMP2411/Library_Management_System_Project/LibraryManagementSystemProject&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/21098431d/COMP2411/Library_Management_System_Project/LibraryManagementSystemProject",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propCompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="view" />
@@ -74,16 +79,26 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="controller.database" />
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ModelControllerTest.addWantBookRecord">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+  <component name="RunManager" selected="Application.LMSController">
+    <configuration name="LMSController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="controller.LMSController" />
       <module name="LibraryManagementSystemProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,37 +167,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModelControllerTest.returnBookFromUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LibraryManagementSystemProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ModelControllerTest" />
-      <option name="METHOD_NAME" value="returnBookFromUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.LMSController" />
       <item itemvalue="JUnit.ModelControllerTest.addPlacedBookRecord" />
       <item itemvalue="JUnit.ModelControllerTest.addRentBookRecord" />
       <item itemvalue="JUnit.ModelControllerTest.addWantBookRecord" />
       <item itemvalue="JUnit.ModelControllerTest.refreshExpiredPlacedBook" />
-      <item itemvalue="JUnit.ModelControllerTest.returnBookFromUser" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LMSController" />
         <item itemvalue="JUnit.ModelControllerTest.addWantBookRecord" />
         <item itemvalue="JUnit.ModelControllerTest.refreshExpiredPlacedBook" />
         <item itemvalue="JUnit.ModelControllerTest.addPlacedBookRecord" />
         <item itemvalue="JUnit.ModelControllerTest.addRentBookRecord" />
-        <item itemvalue="JUnit.ModelControllerTest.returnBookFromUser" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +204,12 @@
       <workItem from="1667994269163" duration="1560000" />
       <workItem from="1668150387059" duration="10164000" />
       <workItem from="1668181919612" duration="440000" />
-      <workItem from="1668213070195" duration="6041000" />
+      <workItem from="1668213070195" duration="8452000" />
+      <workItem from="1668250764275" duration="1389000" />
+      <workItem from="1668299110062" duration="24207000" />
+      <workItem from="1668330566859" duration="5632000" />
+      <workItem from="1668390721145" duration="1925000" />
+      <workItem from="1668417130578" duration="4574000" />
     </task>
     <task id="LOCAL-00001" summary="refresh update">
       <created>1667995898748</created>
