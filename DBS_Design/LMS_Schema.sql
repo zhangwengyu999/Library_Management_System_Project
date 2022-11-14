@@ -1,9 +1,15 @@
-DROP TABLE USER_ACCOUNT;
-DROP TABLE BOOK;
-DROP TABLE WANT_BOOK;
-DROP TABLE HAS_RENT;
+-- DROP TABLE USER_ACCOUNT;
+-- DROP TABLE BOOK;
+-- DROP TABLE WANT_BOOK;
+-- DROP TABLE HAS_RENT;
 -- DROP TABLE BOOK_STATUS;
 -- DROP TABLE USER_NOTIFICATION;
+
+DElETE FROM USER_ACCOUNT;
+DElETE FROM BOOK;
+DElETE FROM WANT_BOOK;
+DElETE FROM HAS_RENT;
+DElETE FROM HAS_PLACED;
 
 CREATE TABLE USER_ACCOUNT(
     accountID NUMBER(10) NOT NULL,
@@ -49,95 +55,75 @@ CREATE TABLE HAS_PLACED(
     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
 );
 
--- CREATE TABLE BOOK_STATUS(
---     bookID NUMBER(15) NOT NULL, 
---     statusTime VARCHAR(10) NOT NULL,
---     isRent CHAR(1) CHECK (isRent in ( 'T', 'F' )) NOT NULL,
---     isAvailable CHAR(1) CHECK (isAvailable in ( 'T', 'F' )) NOT NULL,
---     isPlaced CHAR(1) CHECK (isPlaced in ( 'T', 'F' )) NOT NULL,
---     FOREIGN KEY (bookID) REFERENCES BOOK(bookID)
--- );
 
--- CREATE TABLE USER_NOTIFICATION(
---     noticeID NUMBER(10) NOT NULL,
---     accountID NUMBER(10) NOT NULL,
---     bookID NUMBER(15), 
---     notificationTime VARCHAR(10) NOT NULL,
---     userMessage VARCHAR(100) NOT NULL,
---     PRIMARY KEY (noticeID),
---     FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
---     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
--- );
 
-INSERT INTO USER_ACCOUNT VALUES (0001, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0002, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0003, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0004, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0005, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0006, 'F', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (0007, 'F', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1001, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1002, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1003, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1004, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1005, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1006, 'T', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1007, 'F', 'Notification \n');
 
-INSERT INTO BOOK VALUES (202211010000001, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy', 1, 0);
+INSERT INTO BOOK VALUES (10001, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy', 12, 10);
 -- rent
-INSERT INTO BOOK VALUES (202211010000002, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy', 0, 1);   
+INSERT INTO BOOK VALUES (10002, '0-02', 'Harry Potter and the Philosopher Stone', 'J.K. Rowling', 'Fantasy', 31, 2);   
 -- placed
-INSERT INTO BOOK VALUES (202211010000003, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 0, 0);
+INSERT INTO BOOK VALUES (10003, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 3, 12);
 -- available
-INSERT INTO BOOK VALUES (202211010000004, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy', 1, 0);
+INSERT INTO BOOK VALUES (10004, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis', 'Fantasy', 5, 0);
 -- rent
-INSERT INTO BOOK VALUES (202211010000005, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 1);
+INSERT INTO BOOK VALUES (10005, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 10);
 -- placed
-INSERT INTO BOOK VALUES (202211010000006, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', 0, 0);
+INSERT INTO BOOK VALUES (10006, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', 5, 5);
 -- available
-INSERT INTO BOOK VALUES (202211010000007, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 1, 0);
+INSERT INTO BOOK VALUES (10007, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 23, 1);
 -- rent
-INSERT INTO BOOK VALUES (202211140000001, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10008, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 12, 5);
 --available
-INSERT INTO BOOK VALUES (202211140000002, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 0, 1);
+INSERT INTO BOOK VALUES (10009, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 2, 1);
 --placed
-INSERT INTO BOOK VALUES (202211140000003, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 1, 0);
+INSERT INTO BOOK VALUES (10010, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 23, 9);
 --rent
-INSERT INTO BOOK VALUES (202211140000004, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10011, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 2, 5);
 --available
-INSERT INTO BOOK VALUES (202211140000005, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 0, 1);
+INSERT INTO BOOK VALUES (10012, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 12, 1);
 --placed
-INSERT INTO BOOK VALUES (202211140000006, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 1, 0);
+INSERT INTO BOOK VALUES (10013, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 10, 2);
 --rent
-INSERT INTO BOOK VALUES (202211140000007, '1-09', 'The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10014, '1-09', 'The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', 'Story', 13, 5);
 --available
-INSERT INTO BOOK VALUES (202211140000010, '1-10', 'The Adventures of Tom Sawyer', 'Mark Twain', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10015, '1-10', 'The Adventures of Tom Sawyer', 'Mark Twain', 'Story', 10, 9);
 --available
-INSERT INTO BOOK VALUES (202211140000011, '1-11', 'The Adventures of Huckleberry Finn', 'Mark Twain', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10016, '1-11', 'The Adventures of Huckleberry Finn', 'Mark Twain', 'Story', 7, 6);
 --available
-INSERT INTO BOOK VALUES (202211140000012, '1-10', 'The Adventures of Tom Sawyer', 'Mark Twain', 'Novel', 0, 0);
+INSERT INTO BOOK VALUES (10017, '1-10', 'The Adventures of Tom Sawyer', 'Mark Twain', 'Story', 13, 4);
 --available
 
 
-
-
-INSERT INTO WANT_BOOK VALUES (0001, '0-05', '2022-11-01'); 
+INSERT INTO WANT_BOOK VALUES (1001, '0-05', '2022-11-1'); 
 -- 1 want 0-05
-INSERT INTO WANT_BOOK VALUES (0003, '0-05', '2022-10-30'); 
+INSERT INTO WANT_BOOK VALUES (1003, '0-05', '2022-10-30'); 
 -- 3 want 0-05
-INSERT INTO WANT_BOOK VALUES (0001, '0-04', '2022-11-01'); 
+INSERT INTO WANT_BOOK VALUES (1001, '0-04', '2022-11-1'); 
 -- 1 want 0-04
-INSERT INTO WANT_BOOK VALUES (0002, '0-04', '2022-10-30'); 
+INSERT INTO WANT_BOOK VALUES (1002, '0-04', '2022-10-30'); 
 -- 2 want 0-04
-INSERT INTO WANT_BOOK VALUES (0003, '1-07', '2022-11-02');
+INSERT INTO WANT_BOOK VALUES (1003, '1-07', '2022-11-2');
 -- 3 want 1-07
-INSERT INTO WANT_BOOK VALUES (0004, '1-08', '2022-11-04');
+INSERT INTO WANT_BOOK VALUES (1004, '1-08', '2022-11-4');
 -- 4 want 1-08
 
-INSERT INTO HAS_RENT VALUES (0001, 202211010000001, '2022-10-30');
-INSERT INTO HAS_RENT VALUES (0004, 202211010000007, '2022-11-2');
-INSERT INTO HAS_RENT VALUES (0005, 202211010000004, '2022-11-5');
-INSERT INTO HAS_RENT VALUES (0007, 202211140000003, '2022-09-1');
-INSERT INTO HAS_RENT VALUES (0006, 202211140000006, '2022-10-30');
+INSERT INTO HAS_RENT VALUES (1001, 10001, '2022-10-30');
+INSERT INTO HAS_RENT VALUES (1004, 10007, '2022-11-2');
+INSERT INTO HAS_RENT VALUES (1005, 10004, '2022-11-5');
+INSERT INTO HAS_RENT VALUES (1007, 10010, '2022-9-1');
+INSERT INTO HAS_RENT VALUES (1006, 10013, '2022-10-30');
 
-INSERT INTO HAS_PLACED VALUES (0003, 202211010000002, '2022-11-1');
-INSERT INTO HAS_PLACED VALUES (0005, 202211010000005, '2022-11-3');
-INSERT INTO HAS_PLACED VALUES (0007, 202211140000002, '2022-11-5');
-INSERT INTO HAS_PLACED VALUES (0006, 202211140000005, '2022-11-5');
+INSERT INTO HAS_PLACED VALUES (1003, 10002, '2022-11-1');
+INSERT INTO HAS_PLACED VALUES (1005, 10005, '2022-11-3');
+INSERT INTO HAS_PLACED VALUES (1007, 10009, '2022-11-5');
+INSERT INTO HAS_PLACED VALUES (1006, 10012, '2022-11-5');
 
 
 -- INSERT INTO BOOK_STATUS VALUES (1, '2022-11-01', 'T', 'F', 'F');
@@ -270,3 +256,22 @@ WHERE BOOK.ISBN = WANT_BOOK.ISBN
 
 
 
+-- CREATE TABLE BOOK_STATUS(
+--     bookID NUMBER(15) NOT NULL, 
+--     statusTime VARCHAR(10) NOT NULL,
+--     isRent CHAR(1) CHECK (isRent in ( 'T', 'F' )) NOT NULL,
+--     isAvailable CHAR(1) CHECK (isAvailable in ( 'T', 'F' )) NOT NULL,
+--     isPlaced CHAR(1) CHECK (isPlaced in ( 'T', 'F' )) NOT NULL,
+--     FOREIGN KEY (bookID) REFERENCES BOOK(bookID)
+-- );
+
+-- CREATE TABLE USER_NOTIFICATION(
+--     noticeID NUMBER(10) NOT NULL,
+--     accountID NUMBER(10) NOT NULL,
+--     bookID NUMBER(15), 
+--     notificationTime VARCHAR(10) NOT NULL,
+--     userMessage VARCHAR(100) NOT NULL,
+--     PRIMARY KEY (noticeID),
+--     FOREIGN KEY (bookID) REFERENCES BOOK(bookID),
+--     FOREIGN KEY (accountID) REFERENCES USER_ACCOUNT(accountID)
+-- );
