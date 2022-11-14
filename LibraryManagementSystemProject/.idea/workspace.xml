@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b527953-5380-494c-a6ec-7dfde7fd7ba0" name="Changes" comment="refresh update">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DBS_Design/LMS_Schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../DBS_Design/LMS_Schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/LMSController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagementSystemProject/controller/ModelController.class" afterDir="false" />
