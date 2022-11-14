@@ -75,7 +75,7 @@ INSERT INTO BOOK VALUES (10004, '0-04', 'The Chronicles of Narnia', 'C.S. Lewis'
 -- rent
 INSERT INTO BOOK VALUES (10005, '0-05', 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 'Fantasy', 1, 10);
 -- placed
-INSERT INTO BOOK VALUES (10006, '0-06', 'The Little Prince', 'Antoine de Saint-Exupéry', 'Fantasy', 5, 5);
+INSERT INTO BOOK VALUES (10006, '0-06', 'The Little Prince', 'Antoine de Saint', 'Fantasy', 5, 5);
 -- available
 INSERT INTO BOOK VALUES (10007, '0-03', 'The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 23, 1);
 -- rent
