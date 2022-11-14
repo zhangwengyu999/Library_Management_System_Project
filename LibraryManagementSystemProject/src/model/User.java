@@ -19,7 +19,18 @@ public class User implements SQLModel {
     public User(String accountID, boolean accountStatus, String noticeString) {
         this.accountID = accountID;
         this.accountStatus = accountStatus;
-        this.noticeString = noticeString;
+        this.noticeString = StringFilter(noticeString);
+    }
+
+    private String StringFilter(String inString) {
+        String[] strList = new String[]{"'", "\"", "\\", ";", "=", ">", "<","*"};
+        String newStr = "_";
+        for (String str : strList) {
+            if (inString.contains(str)) {
+                inString = inString.replace(str, newStr);
+            }
+        }
+        return inString;
     }
 
     public String getAccountID() {

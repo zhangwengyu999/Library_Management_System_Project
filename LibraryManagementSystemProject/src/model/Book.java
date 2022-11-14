@@ -19,12 +19,23 @@ public class Book implements SQLModel {
 
     public Book(String bookID, String ISBN, String bookName, String author, String category, int bookRentNum, int bookWantNum) {
         this.bookID = bookID;
-        this.ISBN = ISBN;
-        this.bookName = bookName;
-        this.author = author;
-        this.category = category;
+        this.ISBN = StringFilter(ISBN);
+        this.bookName = StringFilter(bookName);
+        this.author = StringFilter(author);
+        this.category = StringFilter(category);
         this.bookRentNum = bookRentNum;
         this.bookWantNum = bookWantNum;
+    }
+
+    private String StringFilter(String inString) {
+        String[] strList = new String[]{"'", "\"", "\\", ";", "=", ">", "<","*"};
+        String newStr = "_";
+        for (String str : strList) {
+            if (inString.contains(str)) {
+                inString = inString.replace(str, newStr);
+            }
+        }
+        return inString;
     }
 
 

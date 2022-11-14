@@ -224,6 +224,9 @@ public class ModelController {
      */
     public boolean addRecord(Book book) {
         try{
+            if (!isInteger(book.getBookID())){
+                return false;
+            }
             book.pushToDatabase();
             bookBuffer.put(book.getBookID(), book);
             return true;
@@ -239,6 +242,9 @@ public class ModelController {
      */
     public boolean addRecord(User user) {
         try {
+            if (!isInteger(user.getAccountID())){
+                return false;
+            }
             user.pushToDatabase();
             userBuffer.put(user.getAccountID(),user);
             return true;
@@ -254,6 +260,9 @@ public class ModelController {
      */
     public boolean addRecord(RentBook rentBook) {
         try {
+            if (!isInteger(rentBook.getAccountID()) || !isInteger(rentBook.getBookID())){
+                return false;
+            }
             rentBook.pushToDatabase();
             rentBookBuffer.put(rentBook.getBookID(),rentBook);
             return true;
@@ -268,6 +277,10 @@ public class ModelController {
      */
     public boolean addRecord(WantBook wantBook) {
         try {
+
+            if (!isInteger(wantBook.getUserAccountID())){
+                return false;
+            }
             wantBook.pushToDatabase();
 
             Queue<WantBook> queue; // Queue of User
@@ -296,6 +309,10 @@ public class ModelController {
      * @param placedBook: the placedBook to add
      */
     public boolean addRecord(PlacedBook placedBook) {
+
+        if (!isInteger(placedBook.getAccountID()) || !isInteger(placedBook.getBookID())){
+            return false;
+        }
         try {
             placedBook.pushToDatabase();
             placedBookBuffer.put(placedBook.getBookID(),placedBook);
@@ -312,6 +329,9 @@ public class ModelController {
      * @param inBookID: the book to remove
      */
     public boolean deleteBookRecord(String inBookID) {
+        if (!bookBuffer.containsKey(inBookID)) {
+            return false;
+        }
         try {
             bookBuffer.get(inBookID).deleteFromDatabase();
             bookBuffer.remove(inBookID);
@@ -327,6 +347,9 @@ public class ModelController {
      * @param inAccountID: the user to remove
      */
     public boolean deleteUserRecord(String inAccountID) {
+        if (!userBuffer.containsKey(inAccountID)) {
+            return false;
+        }
         try {
             userBuffer.get(inAccountID).deleteFromDatabase();
             userBuffer.remove(inAccountID);
@@ -343,6 +366,9 @@ public class ModelController {
      * @param inAccountID: the want user with the accountID
      */
     public boolean deleteWantBookRecord(String inISBN, String inAccountID) {
+        if (!wantBookBuffer.containsKey(inISBN)) {
+            return false;
+        }
         try {
             Queue<WantBook> queue = wantBookBuffer.get(inISBN);
             Queue<WantBook> out = new LinkedList<>();
@@ -368,6 +394,9 @@ public class ModelController {
      * @param inBookID: the placed book with the bookID
      */
     public boolean deleteRentBookRecord(String inBookID) {
+        if (!rentBookBuffer.containsKey(inBookID)) {
+            return false;
+        }
         try {
             rentBookBuffer.get(inBookID).deleteFromDatabase();
             rentBookBuffer.remove(inBookID);
@@ -383,6 +412,9 @@ public class ModelController {
      */
 
     public boolean deletePlacedBookRecord(String inBookID) {
+        if (!placedBookBuffer.containsKey(inBookID)) {
+            return false;
+        }
         try {
             placedBookBuffer.get(inBookID).deleteFromDatabase();
             placedBookBuffer.remove(inBookID);
@@ -1081,9 +1113,14 @@ public class ModelController {
         }
         return false;
     }
-
-
-//    public void generateAnalysisReport() {
-//
-//    }
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException e) {
+            return false;
+        } catch(NullPointerException e) {
+            return false;
+        }
+        return true;
+    }
 }
