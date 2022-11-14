@@ -1,6 +1,5 @@
 package controller;
 
-import controller.database.DataBase;
 import model.*;
 import view.MainView;
 
@@ -14,6 +13,10 @@ public class LMSController {
     public static String inputListener() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+
+    public static ModelController getModelController() {
+        return modelController;
     }
 
     public static void main(String[] args) {
@@ -38,19 +41,19 @@ public class LMSController {
                     String mainOption = inputListener();
                     if (mainOption.equals("A")) {
                         while (true) {
-                            System.out.println("Please enter book ID (- [Back] for Back):");
+                            System.out.print("Please enter book ID (- [Back] for Back):");
                             String inBookID = inputListener();
                             if (inBookID.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                            System.out.println("Please enter book ISBN (- [Back] for Back):");
+                            System.out.print("Please enter book ISBN (- [Back] for Back):");
                             String inBookISBN = inputListener();
                             if (inBookISBN.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                            System.out.println("Please enter book name (- [Back] for Back):");
+                            System.out.print("Please enter book name (- [Back] for Back):");
                             String inBookName = inputListener();
                             if (inBookName.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                            System.out.println("Please enter book author (- [Back] for Back):");
+                            System.out.print("Please enter book author (- [Back] for Back):");
                             String inBookAuthor = inputListener();
                             if (inBookAuthor.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                            System.out.println("Please enter book category (- [Back] for Back):");
+                            System.out.print("Please enter book category (- [Back] for Back):");
                             String inBookCategory = inputListener();
                             if (inBookCategory.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
                             Book book = new Book(inBookID, inBookISBN, inBookName, inBookAuthor, inBookCategory,0,0);
@@ -112,11 +115,16 @@ public class LMSController {
                             }
                         }
                     } else if (mainOption.equals("E")) {
-                        mainView.inputUserPage();
-                        String userAccountID = inputListener();
-                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
-                        if (user.getAccountStatus()) {
-                            while (true) {
+                        while (true) {
+                            mainView.inputUserPage();
+                            String userAccountID = inputListener();
+                            if (userAccountID.equals("Back"))
+                                break; // back to previous page (assumption: there is no input value named "Back")
+                            if (modelController.searchUserOnAccountID(userAccountID).size() == 0) {
+                                continue;
+                            }
+                            User user = modelController.searchUserOnAccountID(userAccountID).get(0);
+                            if (user.getAccountStatus()) {
                                 mainView.processUserRentPage();
                                 String inBookID = inputListener();
                                 if (inBookID.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
@@ -129,19 +137,27 @@ public class LMSController {
                                 } else {
                                     mainView.unSuccessPage();
                                 }
+
+                            } else {
+                                mainView.accountBannedPage();
                             }
-                        } else {
-                            mainView.accountBannedPage();
                         }
+
                     } else if (mainOption.equals("F")) {
-                        mainView.inputUserPage();
-                        String userAccountID = inputListener();
-                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
-                        if (user.getAccountStatus()) {
-                            while (true) {
+                        while (true) {
+                            mainView.inputUserPage();
+                            String userAccountID = inputListener();
+                            if (userAccountID.equals("Back"))
+                                break; // back to previous page (assumption: there is no input value named "Back")
+                            if (modelController.searchUserOnAccountID(userAccountID).size() == 0) {
+                                continue;
+                            }
+                            User user = modelController.searchUserOnAccountID(userAccountID).get(0);
+                            if (user.getAccountStatus()) {
                                 mainView.processUserRentPage();
                                 String inBookID = inputListener();
-                                if (inBookID.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
+                                if (inBookID.equals("Back"))
+                                    break; // back to previous page (assumption: there is no input value named "Back")
                                 if (modelController.rentBookFromPlacedBook(userAccountID, inBookID)) { //used rentBookFromUser return boolean
                                     mainView.successPage();
                                     mainView.linePage();
@@ -151,16 +167,22 @@ public class LMSController {
                                 } else {
                                     mainView.unSuccessPage();
                                 }
+                            } else {
+                                mainView.accountBannedPage();
                             }
-                        } else {
-                            mainView.accountBannedPage();
                         }
+
                     } else if (mainOption.equals("G")) {
-                        mainView.inputUserPage();
-                        String userAccountID = inputListener();
-                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
-                        if (user.getAccountStatus()) {
-                            while (true) {
+                        while (true) {
+                            mainView.inputUserPage();
+                            String userAccountID = inputListener();
+                            if (userAccountID.equals("Back"))
+                                break; // back to previous page (assumption: there is no input value named "Back")
+                            if (modelController.searchUserOnAccountID(userAccountID).size() == 0) {
+                                continue;
+                            }
+                            User user = modelController.searchUserOnAccountID(userAccountID).get(0);
+                            if (user.getAccountStatus()) {
                                 mainView.processUserWantPage();
                                 String inISBN = inputListener();
                                 if (inISBN.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
@@ -173,20 +195,26 @@ public class LMSController {
                                 } else {
                                     mainView.unSuccessPage();
                                 }
+                            } else {
+                                mainView.accountBannedPage();
                             }
-                        } else {
-                            mainView.accountBannedPage();
                         }
                     } else if (mainOption.equals("H")) {
-                        mainView.inputUserPage();
-                        String userAccountID = inputListener();
-                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
-                        if (user.getAccountStatus()) {
-                            while (true) {
+                        while (true) {
+                            mainView.inputUserPage();
+                            String userAccountID = inputListener();
+                            if (userAccountID.equals("Back"))
+                                break; // back to previous page (assumption: there is no input value named "Back")
+                            if (modelController.searchUserOnAccountID(userAccountID).size() == 0) {
+                                continue;
+                            }
+                            User user = modelController.searchUserOnAccountID(userAccountID).get(0);
+                            if (user.getAccountStatus()) {
                                 mainView.processUserCancelReservePage();
                                 String inISBN = inputListener();
-                                if (inISBN.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                                if (modelController.cancelReservedBook(inISBN,userAccountID)) {
+                                if (inISBN.equals("Back"))
+                                    break; // back to previous page (assumption: there is no input value named "Back")
+                                if (modelController.cancelReservedBook(inISBN, userAccountID)) {
                                     mainView.successPage();
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -195,20 +223,27 @@ public class LMSController {
                                 } else {
                                     mainView.unSuccessPage();
                                 }
+                            } else {
+                                mainView.unSuccessPage();
                             }
-                        } else {
-                            mainView.unSuccessPage();
                         }
+
                     } else if (mainOption.equals("I")) {
-                        mainView.inputUserPage();
-                        String userAccountID = inputListener();
-                        User user = modelController.searchUserOnAccountID(userAccountID).get(0);
-                        if (user.getAccountStatus()) {
-                            while (true) {
+                        while (true) {
+                            mainView.inputUserPage();
+                            String userAccountID = inputListener();
+                            if (userAccountID.equals("Back"))
+                                break; // back to previous page (assumption: there is no input value named "Back")
+                            if (modelController.searchUserOnAccountID(userAccountID).size() == 0) {
+                                continue;
+                            }
+                            User user = modelController.searchUserOnAccountID(userAccountID).get(0);
+                            if (user.getAccountStatus()) {
                                 mainView.processUserCancelPlacedPage();
                                 String inBookID = inputListener();
-                                if (inBookID.equals("Back")) break; // back to previous page (assumption: there is no input value named "Back")
-                                if (modelController.cancelPlacedBook(inBookID,userAccountID)) {
+                                if (inBookID.equals("Back"))
+                                    break; // back to previous page (assumption: there is no input value named "Back")
+                                if (modelController.cancelPlacedBook(inBookID, userAccountID)) {
                                     mainView.successPage();
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -217,9 +252,9 @@ public class LMSController {
                                 } else {
                                     mainView.unSuccessPage();
                                 }
-                            }
-                        } else {
+                            } else {
                             mainView.unSuccessPage();
+                            }
                         }
                     } else if (mainOption.equals("J")) {
                         while (true) {
@@ -229,13 +264,16 @@ public class LMSController {
                                 mainView.inputISBNPage();
                                 String inISBN = inputListener();
                                 try {
-                                    if (modelController.searchBookOnBookISBN(inISBN).size() == 0)
+                                    if (modelController.searchBookOnBookISBN(inISBN).size() == 0) {
                                         mainView.emptyPage();
-                                    mainView.showListPage();
-                                    mainView.showTitle();
-                                    System.out.println("book(s) search on ISBN:");
-                                    for (Book book : modelController.searchBookOnBookISBN(inISBN)) {
-                                        System.out.println(book.showInfo());
+                                    }
+                                    else {
+                                        mainView.showListPage();
+                                        mainView.showTitle();
+                                        System.out.println("book(s) search on ISBN:");
+                                        for (Book book : modelController.searchBookOnBookISBN(inISBN)) {
+                                            System.out.println(book.showInfo());
+                                        }
                                     }
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -247,13 +285,15 @@ public class LMSController {
                                 mainView.inputNamePage();
                                 String inName = inputListener();
                                 try {
-                                    if (modelController.searchBookOnBookName(inName).size() == 0)
+                                    if (modelController.searchBookOnBookName(inName).size() == 0) {
                                         mainView.emptyPage();
-                                    mainView.showListPage();
-                                    mainView.showTitle();
-                                    System.out.println("book(s) search on book name:");
-                                    for (Book book : modelController.searchBookOnBookName(inName)) {
-                                        System.out.println(book.showInfo());
+                                    } else {
+                                        mainView.showListPage();
+                                        mainView.showTitle();
+                                        System.out.println("book(s) search on book name:");
+                                        for (Book book : modelController.searchBookOnBookName(inName)) {
+                                            System.out.println(book.showInfo());
+                                        }
                                     }
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -265,13 +305,15 @@ public class LMSController {
                                 mainView.inputAuthorPage();
                                 String inAuthor = inputListener();
                                 try {
-                                    if (modelController.searchBookOnBookAuthor(inAuthor).size() == 0)
+                                    if (modelController.searchBookOnBookAuthor(inAuthor).size() == 0) {
                                         mainView.emptyPage();
-                                    mainView.showListPage();
-                                    mainView.showTitle();
-                                    System.out.println("book(s) search on author name:");
-                                    for (Book book : modelController.searchBookOnBookAuthor(inAuthor)) {
-                                        System.out.println(book.showInfo());
+                                    } else {
+                                        mainView.showListPage();
+                                        mainView.showTitle();
+                                        System.out.println("book(s) search on author name:");
+                                        for (Book book : modelController.searchBookOnBookAuthor(inAuthor)) {
+                                            System.out.println(book.showInfo());
+                                        }
                                     }
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -283,13 +325,16 @@ public class LMSController {
                                 mainView.inputCategoryPage();
                                 String inCategory = inputListener();
                                 try {
-                                    if (modelController.searchBookOnBookCategory(inCategory).size() == 0)
+                                    if (modelController.searchBookOnBookCategory(inCategory).size() == 0) {
                                         mainView.emptyPage();
-                                    mainView.showListPage();
-                                    mainView.showTitle();
-                                    System.out.println("book(s) search on category:");
-                                    for (Book book : modelController.searchBookOnBookCategory(inCategory)) {
-                                        System.out.println(book.showInfo());
+                                    }
+                                    else {
+                                        mainView.showListPage();
+                                        mainView.showTitle();
+                                        System.out.println("book(s) search on category:");
+                                        for (Book book : modelController.searchBookOnBookCategory(inCategory)) {
+                                            System.out.println(book.showInfo());
+                                        }
                                     }
                                     mainView.linePage();
                                     mainView.breakPointPage();
@@ -303,7 +348,7 @@ public class LMSController {
                                 mainView.errorPage();
                             }
                         }
-                    } else if (mainOption.equals("K")) {
+                    } else if (mainOption.equals("L")) {
                         while (true) {
                             mainView.processUserReturnPage();
                             String inBookID = inputListener();
@@ -318,17 +363,19 @@ public class LMSController {
                                 mainView.unSuccessPage();
                             }
                         }
-                    } else if (mainOption.equals("L")) {
+                    } else if (mainOption.equals("K")) {
                         mainView.inputUserPage();
                         String inAccountID = inputListener();
                         try {
-                            if (modelController.searchUserOnAccountID(inAccountID).size() == 0)
+                            if (modelController.searchUserOnAccountID(inAccountID).size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("book(s) search on account ID:");
-                            for (User user : modelController.searchUserOnAccountID(inAccountID)) {
-                                System.out.println(user.showInfo());
+                            } else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("book(s) search on account ID:");
+                                for (User user : modelController.searchUserOnAccountID(inAccountID)) {
+                                    System.out.println(user.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -344,13 +391,16 @@ public class LMSController {
                         String breakPoint = inputListener();
                     } else if (mainOption.equals("N")) {
                         try {
-                            if (modelController.deactivateUserForExpiredRentBook().size() == 0)
+                            if (modelController.deactivateUserForExpiredRentBook().size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("expired rent book(s):");
-                            for (User user : modelController.deactivateUserForExpiredRentBook()) {
-                                System.out.println(user.showInfo());
+                            }
+                            else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("expired rent book(s):");
+                                for (User user : modelController.deactivateUserForExpiredRentBook()) {
+                                    System.out.println(user.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -360,13 +410,15 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("O")) {
                         try {
-                            if (modelController.getAllBooks().size() == 0)
+                            if (modelController.getAllBooks().size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("all book(s):");
-                            for (Book book : modelController.getAllBooks()) {
-                                System.out.println(book.showInfo());
+                            } else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("all book(s):");
+                                for (Book book : modelController.getAllBooks()) {
+                                    System.out.println(book.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -376,13 +428,15 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("P")) {
                         try {
-                            if (modelController.getAllRentBooks().size() == 0)
+                            if (modelController.getAllRentBooks().size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("all rent book(s):");
-                            for (RentBook rentBook : modelController.getAllRentBooks()) {
-                                System.out.println(rentBook.showInfo());
+                            } else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("all rent book(s):");
+                                for (RentBook rentBook : modelController.getAllRentBooks()) {
+                                    System.out.println(rentBook.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -392,13 +446,16 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("Q")) {
                         try {
-                            if (modelController.getAllWantBooks().size() == 0)
+                            if (modelController.getAllWantBooks().size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("all want book(s):");
-                            for (WantBook wantBook : modelController.getAllWantBooks()) {
-                                System.out.println(wantBook.showInfo());
+                            }
+                            else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("all want book(s):");
+                                for (WantBook wantBook : modelController.getAllWantBooks()) {
+                                    System.out.println(wantBook.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -408,13 +465,16 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("R")) {
                         try {
-                            if (modelController.getAllPlacedBooks().size() == 0)
+                            if (modelController.getAllPlacedBooks().size() == 0) {
                                 mainView.emptyPage();
-                            mainView.showListPage();
-                            mainView.showTitle();
-                            System.out.println("all placed book(s):");
-                            for (PlacedBook placedBook : modelController.getAllPlacedBooks()) {
-                                System.out.println(placedBook.showInfo());
+                            }
+                            else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("all placed book(s):");
+                                for (PlacedBook placedBook : modelController.getAllPlacedBooks()) {
+                                    System.out.println(placedBook.showInfo());
+                                }
                             }
                             mainView.linePage();
                             mainView.breakPointPage();
@@ -424,16 +484,17 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("S")) {
                         try {
-                            int totalBookNumber = dataProcess.getTotalBookNumber();
-                            int totalRentBookNumber = dataProcess.getTotalRentBook();
-                            List<Book> mostRentBook = dataProcess.getMostRentBookID();
-                            List<Book> leastRentBook = dataProcess.getLeastRentBookID();
-                            List<Book> mostWantBook = dataProcess.getMostWantBookID();
-                            List<Book> leastWantBook = dataProcess.getLeastWantBookID();
-                            List<Book> mostRentBookByCategory = dataProcess.getMostRentBookByCategory();
-                            List<Book> mostRentBookByAuthor = dataProcess.getMostRentBookByAuthor();
-                            mainView.analysisReportPage(totalBookNumber, totalRentBookNumber, mostRentBook, leastRentBook,
-                                    mostWantBook, leastWantBook, mostRentBookByCategory, mostRentBookByAuthor);
+                            if (modelController.getAllUsers().size() == 0) {
+                                mainView.emptyPage();
+                            }
+                            else {
+                                mainView.showListPage();
+                                mainView.showTitle();
+                                System.out.println("all user(s):");
+                                for (User user : modelController.getAllUsers()) {
+                                    System.out.println(user.showInfo());
+                                }
+                            }
                             mainView.linePage();
                             mainView.breakPointPage();
                             String breakPoint = inputListener();
@@ -441,6 +502,32 @@ public class LMSController {
                             e.printStackTrace();
                         }
                     } else if (mainOption.equals("T")) {
+                        try {
+                            int totalBookNumber = dataProcess.getTotalBookNumber();
+                            int totalRentBookNumber = dataProcess.getTotalRentBook();
+                            List<String> mostRentBookISBN = dataProcess.getMostRentBookISBN();
+                            List<Book> mostRentBookID = dataProcess.getMostRentBookID();
+                            List<String> leastRentBookISBN = dataProcess.getLeastRentBookISBN();
+                            List<Book> leastRentBookID = dataProcess.getLeastRentBookID();
+                            List<String> mostWantBookISBN = dataProcess.getMostWantBookISBN();
+                            List<Book> mostWantBookID = dataProcess.getMostWantBookID();
+                            List<String> leastWantBookISBN = dataProcess.getLeastWantBookISBN();
+                            List<Book> leastWantBookID = dataProcess.getLeastWantBookID();
+                            List<String> mostRentBookISBNByCategory = dataProcess.getMostRentBookISBNByCategory();
+                            List<String> mostRentBookISBNByAuthor = dataProcess.getMostRentBookISBNByAuthor();
+                            List<String> mostWantBookISBNByCategory = dataProcess.getMostWantBookISBNByCategory();
+                            List<String> mostWantBookISBNByAuthor = dataProcess.getMostWantBookISBNByAuthor();
+                            mainView.analysisReportPage(totalBookNumber, totalRentBookNumber, mostRentBookISBN, mostRentBookID,
+                                    leastRentBookISBN, leastRentBookID, mostWantBookISBN, mostWantBookID,
+                                    leastWantBookISBN, leastWantBookID, mostRentBookISBNByCategory, mostRentBookISBNByAuthor,
+                                    mostWantBookISBNByCategory, mostWantBookISBNByAuthor);
+                            mainView.linePage();
+                            mainView.breakPointPage();
+                            String breakPoint = inputListener();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else if (mainOption.equals("U")) {
                         System.out.print(">>> Please enter the Year: ");
                         String yy = inputListener();
                         System.out.print(">>> Please enter the Month: ");
