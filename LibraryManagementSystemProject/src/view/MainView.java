@@ -146,7 +146,7 @@ public class MainView {
         System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
         System.out.println("    \"Dear User " +accountID);
         System.out.println("    The book (ISBN: "+ISBN+") you want now is available, you can get it in library by yourself!");
-        System.out.println("    Remember the MAX_PLACED_DAY is 7 day, you have better to get it in time");
+        System.out.println("    Remember the MAX PLACED DAY is 7 day, you have better to get it in time");
         System.out.println("    Or you are supposed to reserve this book by another application!\"]");
     }
 
@@ -154,7 +154,7 @@ public class MainView {
     public void outOfMaxRentDayNotification(String bookID, String accountID) {
         System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
         System.out.println("    \"Dear User " +accountID);
-        System.out.println("    The book (ID: "+bookID+") has been rent is out of the MAX_RENT_DAY!");
+        System.out.println("    The book (ID: "+bookID+") has been rent is out of the MAX RENT DAY 14 days!");
         System.out.println("    Your account will be banned until you return the book!\"]");
     }
 
@@ -162,7 +162,7 @@ public class MainView {
     public void outOfMaxPlacedDayNotification(String bookID, String accountID) {
         System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
         System.out.println("    \"Dear User " +accountID);
-        System.out.println("    The book (ID: "+bookID+") has been placed on library out of the MAX_PLACED_DAY!");
+        System.out.println("    The book (ID: "+bookID+") has been placed on library out of the MAX PLACED DAY - 7 days!");
         System.out.println("    You are supposed to reserve this book by another application!\"]");
     }
 

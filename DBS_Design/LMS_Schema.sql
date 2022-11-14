@@ -11,6 +11,8 @@ DElETE FROM WANT_BOOK;
 DElETE FROM HAS_RENT;
 DElETE FROM HAS_PLACED;
 
+-- UPDATE USER_ACCOUNT SET notification = 'Notification \n ';
+
 CREATE TABLE USER_ACCOUNT(
     accountID NUMBER(10) NOT NULL,
     accountStatus CHAR(1) CHECK (accountStatus in ( 'T', 'F' )) NOT NULL,
@@ -57,13 +59,13 @@ CREATE TABLE HAS_PLACED(
 
 
 
-INSERT INTO USER_ACCOUNT VALUES (1001, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1002, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1003, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1004, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1005, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1006, 'T', 'Notification \n');
-INSERT INTO USER_ACCOUNT VALUES (1007, 'F', 'Notification \n');
+INSERT INTO USER_ACCOUNT VALUES (1001, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1002, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1003, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1004, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1005, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1006, 'T', 'Notification \n ');
+INSERT INTO USER_ACCOUNT VALUES (1007, 'F', 'Notification \n ');
 
 INSERT INTO BOOK VALUES (10001, '0-01', 'The Lord of the Rings', 'J.R.R. Tolkien', 'Fantasy', 12, 10);
 -- rent

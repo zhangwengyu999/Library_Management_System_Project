@@ -106,7 +106,7 @@ public class LMSController {
                                 System.out.println("Account ID should be an integer, please try again!");
                                 continue;
                             }
-                            User user = new User(accountID, true, "Notification \n");
+                            User user = new User(accountID, true, "Notification \n ");
                             if (modelController.addRecord(user)) {
                                 mainView.successPage();
                                 mainView.linePage();
@@ -612,13 +612,28 @@ public class LMSController {
                             e.printStackTrace();
                         }
                     } else if (mainOption.equals("U")) {
-                        System.out.print(">>> Please enter the Year: ");
-                        String yy = inputListener();
-                        System.out.print(">>> Please enter the Month: ");
-                        String mm = inputListener();
-                        System.out.print(">>> Please enter the Day: ");
-                        String dd = inputListener();
-                        modelController.setDate(yy, mm, dd);
+                        while(true) {
+                            System.out.print(">>> Please enter the Year: ");
+                            String y = inputListener();
+                            if (!isInteger(y)) {
+                                System.out.println("Invalid input, please enter again");
+                                continue;
+                            }
+                            System.out.print(">>> Please enter the Month: ");
+                            String m = inputListener();
+                            if (!isInteger(m)) {
+                                System.out.println("Invalid input, please enter again");
+                                continue;
+                            }
+                            System.out.print(">>> Please enter the Day: ");
+                            String d = inputListener();
+                            if (!isInteger(d)) {
+                                System.out.println("Invalid input, please enter again");
+                                continue;
+                            }
+                            modelController.setDate(y, m, d);
+                            break;
+                        }
                         mainView.successPage();
                         mainView.linePage();
                         mainView.breakPointPage();
