@@ -23,7 +23,7 @@ public class User implements SQLModel {
     }
 
     private String StringFilter(String inString) {
-        String[] strList = new String[]{"'", "\"", "\\", ";", "=", ">", "<","*"};
+        String[] strList = new String[]{"'", "\"", ";", "=", ">", "<","*"};
         String newStr = "_";
         for (String str : strList) {
             if (inString.contains(str)) {

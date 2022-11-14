@@ -85,11 +85,11 @@ INSERT INTO BOOK VALUES (10009, '1-07', 'Pride and Prejudice', 'Jane Austen', 'N
 --placed
 INSERT INTO BOOK VALUES (10010, '1-07', 'Pride and Prejudice', 'Jane Austen', 'Novel', 23, 9);
 --rent
-INSERT INTO BOOK VALUES (10011, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 2, 5);
+INSERT INTO BOOK VALUES (10011, '1-08', 'Butterball', 'Henry-Albert-Guy de Maupassant', 'Novel', 2, 5);
 --available
-INSERT INTO BOOK VALUES (10012, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 12, 1);
+INSERT INTO BOOK VALUES (10012, '1-08', 'Butterball', 'Henry-Albert-Guy de Maupassant', 'Novel', 12, 1);
 --placed
-INSERT INTO BOOK VALUES (10013, '1-08', 'Butterball', 'Henry-René-Albert-Guy de Maupassant', 'Novel', 10, 2);
+INSERT INTO BOOK VALUES (10013, '1-08', 'Butterball', 'Henry-Albert-Guy de Maupassant', 'Novel', 10, 2);
 --rent
 INSERT INTO BOOK VALUES (10014, '1-09', 'The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', 'Story', 13, 5);
 --available
