@@ -766,7 +766,11 @@ public class ModelController {
         if (canBeReserved) {
             WantBook wantBook = new WantBook(inAccountID, inISBN, year, month, day);
             try{
-                User user = (User)userBuffer.get(inAccountID);
+                User user = userBuffer.get(inAccountID);
+                if (!user.getAccountStatus()) {
+                    System.out.println("Deactivated account, no function allowed, return expired books first");
+                    return false;
+                }
                 int temp = user.getReserveCount();
                 // check the reserve count < MAX_WANT_BOOK
                 if (temp<MAX_WANT_BOOK) {
@@ -779,6 +783,7 @@ public class ModelController {
                     addRecord(wantBook);
                 }
                 else {
+                    System.out.println("You have reached the maximum number of reservations.");
                     return false;
                 }
             }
@@ -1009,6 +1014,10 @@ public class ModelController {
         if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
             return false;
         }
+        if (!userBuffer.get(accountID).getAccountStatus()) {
+            System.out.println("Deactivated account, no function allowed, return expired books first");
+            return false;
+        }
         List<Book> searchRentBooks;
         try {
             searchRentBooks = searchBookOnBookID(bookID);
@@ -1092,6 +1101,10 @@ public class ModelController {
         if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
             return false;
         }
+        if (!userBuffer.get(accountID).getAccountStatus()) {
+            System.out.println("Deactivated account, no function allowed, return expired books first");
+            return false;
+        }
         try {
             if (placedBookBuffer.containsKey(bookID)) {
                 if (placedBookBuffer.get(bookID).getAccountID().equals(accountID)) {
@@ -1116,7 +1129,7 @@ public class ModelController {
         }
         return false;
     }
-    public static boolean isInteger(String s) {
+    private static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
         } catch(NumberFormatException e) {
