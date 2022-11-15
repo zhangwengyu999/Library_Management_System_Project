@@ -1,6 +1,10 @@
 package controller;
 
-// Cite from COMP1011 A1 Q4 (2022).
+/**
+ * “Assignment 1 Question 4 Answer”, COMP 1011 Programming Fundamental, Jan, 2022.
+ * @author COMP 1011 Programming Fundamental
+ */
+
 // s = start, e = end
 public class DayCalculator {
     public static int dayApart(int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {

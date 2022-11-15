@@ -9,13 +9,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ModelController {
-
-//    private List<Book> books;
-//    private List<User> users;
-//    private List<RentBook> rentBooks;
-//    private List<WantBook> wantBooks;
-//    private List<PlacedBook> placedBooks;
-
     private HashMap<String, Book> bookBuffer; // key: bookId, value: Book object
     private HashMap<String, User> userBuffer; // key: accountID, value: User object
     private HashMap<String, RentBook> rentBookBuffer; // Key: bookId, value: RendBook record
@@ -37,9 +30,6 @@ public class ModelController {
         rentBookBuffer = new HashMap<>();
         wantBookBuffer = new HashMap<>();
         placedBookBuffer = new HashMap<>();
-//        year = 2019;
-//        month = 1;
-//        day = 1;
         db.reConnect();
         initializeBuffers();
     }
@@ -50,18 +40,6 @@ public class ModelController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getDay() {
-        return day;
     }
 
     public String getDate() {
@@ -81,8 +59,6 @@ public class ModelController {
      * Setup and refresh the buffers from DB
      */
     public void initializeBuffers() {
-
-
         // refresh the bookBuffer
         ResultSet resultSet;
         String sql =
@@ -461,7 +437,7 @@ public class ModelController {
     public List<Book> searchBookOnBookID(String inBookID) {
         List<Book> result = new ArrayList<>();
         if (bookBuffer.containsKey(inBookID)) {
-            result.add((Book)bookBuffer.get(inBookID));
+            result.add(bookBuffer.get(inBookID));
         }
         return result;
     }
@@ -532,7 +508,7 @@ public class ModelController {
     public List<RentBook> searchRentBookOnBookID(String inBookID) {
         List<RentBook> result = new ArrayList<>();
         if (rentBookBuffer.containsKey(inBookID)){
-            result.add((RentBook)rentBookBuffer.get(inBookID));
+            result.add(rentBookBuffer.get(inBookID));
         }
 
         return result;
@@ -641,7 +617,7 @@ public class ModelController {
     public List<PlacedBook> searchPlacedBookOnBookID(String inBookID) {
         List<PlacedBook> result = new ArrayList<>();
         if (placedBookBuffer.containsKey(inBookID)){
-            result.add((PlacedBook) placedBookBuffer.get(inBookID));
+            result.add(placedBookBuffer.get(inBookID));
         }
 
         return result;
@@ -669,7 +645,7 @@ public class ModelController {
     public List<User> searchUserOnAccountID(String inAccountID) {
         List<User> result = new ArrayList<>();
         if (userBuffer.containsKey(inAccountID)){
-            result.add((User)userBuffer.get(inAccountID));
+            result.add(userBuffer.get(inAccountID));
         }
         return result;
     }
@@ -713,7 +689,7 @@ public class ModelController {
     public boolean activateUser(String inAccountID) {
         if (userBuffer.containsKey(inAccountID)) {
             try{
-                User user = (User) userBuffer.get(inAccountID);
+                User user =  userBuffer.get(inAccountID);
                 if (!user.getAccountStatus()) {
                     user.setAccountStatus(true);
                     StringBuilder sb = new StringBuilder();
@@ -749,7 +725,6 @@ public class ModelController {
             foundBooks = searchBookOnBookISBN(inISBN);
         }
         catch (Exception e){
-//            System.out.println(e.getMessage());
             return false;
         }
 
@@ -788,13 +763,10 @@ public class ModelController {
                 }
             }
             catch (Exception e){
-                // e.printStackTrace();
                 return false;
             }
             return true;
         } else {
-            // ...
-            // System.out.println("The book is not available now, please find it in the library.");
             return false;
         }
     }
@@ -818,7 +790,6 @@ public class ModelController {
         try {
             searchWantBookOnAccountID(inAccountID);
         } catch (Exception e) {
-            // e.printStackTrace();
             return false;
         }
 
@@ -847,7 +818,6 @@ public class ModelController {
         try {
             searchPlacedBookOnAccountID(inAccountID);
         } catch (Exception e) {
-            // e.printStackTrace();
             return false;
         }
         try{

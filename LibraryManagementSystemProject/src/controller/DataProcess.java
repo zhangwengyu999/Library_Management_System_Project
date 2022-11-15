@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 
-
-
 public class DataProcess {
     ModelController modelController = new ModelController();
 
@@ -80,10 +78,6 @@ public class DataProcess {
         }
         return result;
     }
-
-    // "[Book ID]:"+bookID+ " [Book ISBN]: " + ISBN + " [Book Name]: " + bookName + " [Author]: " + author + " [Category]: " + category + " [Times of Rent]: " + bookRentNum + " [Time of Want]: " + getBookWantNum();
-    //
-    // SELECT bookName, ISBN, author, bookCategory, SUM(bookRentNum) FROM book GROUP BY bookName, ISBN, author, bookCategory, HAVING (SUM(bookRentNum) >= ALL(SELECT SUM(B.bookRentNum) FROM book B GROUP BY B.ISBN));
 
     /**
      *
@@ -289,25 +283,6 @@ public class DataProcess {
     }
 
 
-
-
-// SELECT N, I, C, S FROM (SELECT B.bookName AS N, B.ISBN AS I, B.bookCategory AS C, SUM(B.bookRentNum) AS S FROM book B GROUP BY B.bookName, B.bookCategory,B.ISBN) WHERE S >= ALL(SELECT DS FROM (SELECT D.ISBN AS DI, D.bookCategory AS DC, SUM(D.bookRentNum) AS DS FROM book D GROUP BY D.bookCategory,D.ISBN) WHERE C = DC);
-
-//  SELECT I, C, S
-//  FROM (
-//       SELECT B.ISBN AS I, B.bookCategory AS C, SUM(B.bookRentNum) AS S
-//       FROM book B
-//       GROUP BY B.bookCategory,B.ISBN
-//        )
-//  WHERE S >= ALL(SELECT DS
-//                  FROM(
-//                      SELECT D.ISBN AS DI, D.bookCategory AS DC, SUM(D.bookRentNum) AS DS
-//                      FROM book D
-//                      GROUP BY D.bookCategory,D.ISBN
-//                      )
-//                  WHERE C = DC);
-
-
     public List<String> getMostRentBookISBNByAuthor() throws SQLException {
         List<String> result = new ArrayList<>();
         DataBase db = DataBase.getDataBase();
@@ -378,16 +353,4 @@ public class DataProcess {
         return result;
     }
 
-
-    /*
-    BOOK
-    1. Total number of books
-    2. Most rented books (favourite)
-    3. Least rented books (least favourite)
-    4. Average number of books borrowed per day/week/month/year
-    5. Borrowed books
-    6. Most borrowed books by category
-    7. Most borrowed books by author
-
-    */
 }

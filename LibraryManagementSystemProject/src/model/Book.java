@@ -15,8 +15,6 @@ public class Book implements SQLModel {
     private int bookRentNum = 0;
     private int bookWantNum = 0;
 
-    public Book() {}
-
     public Book(String bookID, String ISBN, String bookName, String author, String category, int bookRentNum, int bookWantNum) {
         this.bookID = bookID;
         this.ISBN = StringFilter(ISBN);
@@ -76,12 +74,6 @@ public class Book implements SQLModel {
 
     public void deleteWantBookCount() {bookWantNum--;}
 
-//    public String getTime() {
-//        String yyyy = year+"";
-//        String mm = month<10?"0"+month:month+"";
-//        String dd = day<10?"0"+day:day+"";
-//        return yyyy+"-"+mm+"-"+dd;
-//    }
 
     // show related information
     public String showInfo(){

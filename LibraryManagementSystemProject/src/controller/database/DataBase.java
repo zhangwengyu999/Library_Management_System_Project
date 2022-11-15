@@ -1,6 +1,4 @@
 package controller.database;
-import java.io.*;
-import java.io.Console;
 import java.sql.*;
 import oracle.jdbc.driver.*;
 import oracle.sql.*;
@@ -175,7 +173,6 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-//            commit();
         }
         catch (SQLException e) {
             System.out.println("Update Failed!");
@@ -192,7 +189,6 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-//            commit();
         }
         catch (SQLException e) {
             System.out.println("Delete Failed!");
@@ -209,7 +205,6 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(inSql);
-//            commit();
         }
         catch (SQLException e) {
             System.out.println("Insert Failed!");
