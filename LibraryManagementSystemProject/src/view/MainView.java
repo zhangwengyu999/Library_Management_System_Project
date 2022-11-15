@@ -194,7 +194,7 @@ public class MainView {
         System.out.println("Total Number of Books Already Borrowed: " + totalRentBookNumber);
         System.out.println("Most Rent Book: ");
         for (String line : mostRentBookISBN){
-            System.out.println("  -"+line);
+            System.out.println("  - "+line);
         }
         System.out.println("Most Rent Book Instance: ");
         for (Book book : mostRentBookID){

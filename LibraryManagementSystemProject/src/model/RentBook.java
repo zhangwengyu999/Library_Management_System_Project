@@ -85,13 +85,7 @@ public class RentBook implements SQLModel {
             e.printStackTrace();
         }
     }
-    public void setBook(String inBookID) {
-        this.bookID = inBookID;
-    }
 
-    public void setUser(String inAccountID) {
-        this.accountID = inAccountID;
-    }
 
     public String getBookID() {
         return this.bookID;
@@ -106,9 +100,4 @@ public class RentBook implements SQLModel {
         return "[Account ID]:" + accountID + " [Book ID]: " + bookID + " [Year]: "+ year + " [Month]: " + month  +" [Day]: "+day;
     }
 
-//    public SQLModel pullFromDataBase() throws SQLException {
-//        DataBase db = DataBase.getDataBase();
-//        ResultSet resultSet;
-//        String sql = "SELECT * FROM BOOK WHERE bookID = " ;
-//    }
 }

@@ -448,14 +448,4 @@ class ModelControllerTest {
             e.printStackTrace();
         }
     }
-
-
-//
-//    @Test
-//    void notificationToUser() {
-//    }
-//
-//    @Test
-//    void generateAnalysisReport() {
-//    }
 }

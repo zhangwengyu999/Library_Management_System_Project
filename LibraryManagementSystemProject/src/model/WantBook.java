@@ -28,9 +28,6 @@ public class WantBook implements SQLModel {
         return " [Account ID]: " + accountID + " [ISBN]: " + wantISBN + " [Year]: " + wantYear + " [Month]: " + wantMonth + " [Day]: " + wantDay;
     }
 
-    public void SetUserAccountID(String inAccountID) {
-        this.accountID = inAccountID;
-    }
 
     public String getUserAccountID() {
         return this.accountID;
@@ -46,12 +43,6 @@ public class WantBook implements SQLModel {
         String mm = wantMonth<10?"0"+wantMonth:wantMonth+"";
         String dd = wantDay<10?"0"+wantDay:wantDay+"";
         return yyyy+"-"+mm+"-"+dd;
-    }
-
-    public void setWantDate(int[] inDate) {
-        this.wantYear = inDate[0];
-        this.wantMonth = inDate[1];
-        this.wantDay = inDate[2];
     }
 
     public SQLModel pullFromDatabase() throws SQLException {
