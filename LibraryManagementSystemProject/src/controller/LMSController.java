@@ -296,7 +296,7 @@ public class LMSController {
                                     mainView.unSuccessPage();
                                 }
                             } else {
-                                mainView.unSuccessPage();
+                                mainView.accountBannedPage();
                             }
                         }
 
@@ -336,7 +336,7 @@ public class LMSController {
                                     mainView.unSuccessPage();
                                 }
                             } else {
-                            mainView.unSuccessPage();
+                                mainView.accountBannedPage();
                             }
                         }
                     } else if (mainOption.equals("J")) {
@@ -475,14 +475,15 @@ public class LMSController {
                         String breakPoint = inputListener();
                     } else if (mainOption.equals("N")) {
                         try {
-                            if (modelController.deactivateUserForExpiredRentBook().size() == 0) {
+                            List<User> out = modelController.deactivateUserForExpiredRentBook();
+                            if (out.size() == 0) {
                                 mainView.emptyPage();
                             }
                             else {
                                 mainView.showListPage();
                                 mainView.showTitle();
-                                System.out.println("expired rent book(s):");
-                                for (User user : modelController.deactivateUserForExpiredRentBook()) {
+                                System.out.println("expired rent book(s) and associated user(s):");
+                                for (User user : out) {
                                     System.out.println(user.showInfo());
                                 }
                             }

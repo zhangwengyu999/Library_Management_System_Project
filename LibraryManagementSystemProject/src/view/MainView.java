@@ -98,7 +98,7 @@ public class MainView {
     }
 
     public void accountBannedPage() {
-        System.out.println("Sorry, this account has been banned and cannot be operated");
+        System.out.println("Deactivated account, no function allowed, return expired books first");
     }
     
     public void linePage() {
