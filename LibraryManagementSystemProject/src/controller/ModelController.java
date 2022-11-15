@@ -690,8 +690,8 @@ public class ModelController {
                     user.setAccountStatus(false);
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("Your account has been deactivated.\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("Your account has been deactivated.");
                     user.setNoticeString(sb.toString());
                     user.pushToDatabase();
                     return true;
@@ -718,8 +718,8 @@ public class ModelController {
                     user.setAccountStatus(true);
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("Your account has been activated.\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("Your account has been activated.");
                     user.setNoticeString(sb.toString());
                     user.pushToDatabase();
                     return true;
@@ -776,8 +776,8 @@ public class ModelController {
                 if (temp<MAX_WANT_BOOK) {
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("You have successfully reserved the book with ISBN: ").append(inISBN).append("\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("You have successfully reserved the book with ISBN: ").append(inISBN);
                     user.setNoticeString(sb.toString());
                     user.increaseReserveCount();
                     addRecord(wantBook);
@@ -828,8 +828,8 @@ public class ModelController {
             deleteWantBookRecord(inISBN, inAccountID);
             StringBuilder sb = new StringBuilder();
             sb.append(user.getNoticeString());
-            sb.append("[").append(getDate()).append("]: ");
-            sb.append("You have successfully cancelled the reservation of the book with ISBN: ").append(inISBN).append("\n\t");
+            sb.append("\n\t[").append(getDate()).append("]: ");
+            sb.append("You have successfully cancelled the reservation of the book with ISBN: ").append(inISBN);
             user.setNoticeString(sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
@@ -856,8 +856,8 @@ public class ModelController {
             StringBuilder sb = new StringBuilder();
             User nowUser = userBuffer.get(inAccountID);
             sb.append(nowUser.getNoticeString());
-            sb.append("[").append(getDate()).append("]: ");
-            sb.append("The book with BookID: ").append(book.getBookID()).append(" is canceled for placed now.\n\t");
+            sb.append("\n\t[").append(getDate()).append("]: ");
+            sb.append("The book with BookID: ").append(book.getBookID()).append(" is canceled for placed now.");
             nowUser.setNoticeString(sb.toString());
             deletePlacedBookRecord(inBookID);
             String isbn = book.getISBN();
@@ -871,8 +871,8 @@ public class ModelController {
                 StringBuilder sb1 = new StringBuilder();
                 User nextUser = userBuffer.get(nextWantUser.getUserAccountID());
                 sb1.append(nextUser.getNoticeString());
-                sb1.append("[").append(getDate()).append("]: ");
-                sb1.append("The book with ISBN: ").append(isbn).append(" is available now.\n\t");
+                sb1.append("\n\t[").append(getDate()).append("]: ");
+                sb1.append("The book with ISBN: ").append(isbn).append(" is available now.");
                 nextUser.setNoticeString(sb1.toString());
                 book.addWantBookCount();
                 book.pushToDatabase();
@@ -907,8 +907,8 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     User user = userBuffer.get(placedBook.getAccountID());
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("The book with bookID: ").append(placedBook.getBookID()).append(" which placed in library is expired.\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("The book with bookID: ").append(placedBook.getBookID()).append(" which placed in library is expired.");
                     user.setNoticeString(sb.toString());
                 }
             }
@@ -938,8 +938,8 @@ public class ModelController {
                     StringBuilder sb = new StringBuilder();
                     User user = userBuffer.get(rentBook.getAccountID());
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("The book with Book ID: ").append(rentBook.getBookID()).append(" you rent is expired.\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("The book with Book ID: ").append(rentBook.getBookID()).append(" you rent is expired.");
                     user.setNoticeString(sb.toString());
                     output.add(rentBook);
                 }
@@ -971,8 +971,8 @@ public class ModelController {
                 output.add(user);
                 StringBuilder sb = new StringBuilder();
                 sb.append(user.getNoticeString());
-                sb.append("[").append(getDate()).append("]: ");
-                sb.append("Your account is deactivated for overdue books\n\t");
+                sb.append("\n\t[").append(getDate()).append("]: ");
+                sb.append("Your account is deactivated for overdue books");
                 user.setNoticeString(sb.toString());
             }
             catch (Exception e) {
@@ -1034,8 +1034,8 @@ public class ModelController {
                         StringBuilder sb = new StringBuilder();
                         User user = userBuffer.get(accountID);
                         sb.append(user.getNoticeString());
-                        sb.append("[").append(getDate()).append("]: ");
-                        sb.append("The book with BookID: ").append(book.getBookID()).append(" is rented by ").append(accountID).append("\n\t");
+                        sb.append("\n\t[").append(getDate()).append("]: ");
+                        sb.append("The book with BookID: ").append(book.getBookID()).append(" is rented by ").append(accountID);
                         user.setNoticeString(sb.toString());
                         addRecord(rentBook);
                         return true;
@@ -1066,8 +1066,8 @@ public class ModelController {
                         book.addWantBookCount();
                         StringBuilder sb = new StringBuilder();
                         sb.append(nextUser.getNoticeString());
-                        sb.append("[").append(getDate()).append("]: ");
-                        sb.append("The book with BookID: ").append(book.getISBN()).append(" is available now.\n\t");
+                        sb.append("\n\t[").append(getDate()).append("]: ");
+                        sb.append("The book with BookID: ").append(book.getISBN()).append(" is available now.");
                         nextUser.setNoticeString(sb.toString());
                         addRecord(placedBook);
                         book.addWantBookCount();
@@ -1085,8 +1085,8 @@ public class ModelController {
                     user.pushToDatabase();
                     StringBuilder sb = new StringBuilder();
                     sb.append(user.getNoticeString());
-                    sb.append("[").append(getDate()).append("]: ");
-                    sb.append("Your account is activated back.\n\t");
+                    sb.append("\n\t[").append(getDate()).append("]: ");
+                    sb.append("Your account is activated back.");
                     user.setNoticeString(sb.toString());
                     System.out.println("[Dear Manager, the following message has been sent to the user "+user.getAccountID()+" via email:");
                     System.out.println("    \"Dear User " +user.getAccountID());

@@ -13,15 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataBaseTest {
     DataBase db = DataBase.getDataBase();
 
-//    @BeforeEach
-//    void setup() {
-//        db = DataBase.getDataBase();
-//    }
-
     @Test
     void queryTest1() {
-
-
         String sql = "SELECT accountID, accountStatus, NOTIFICATION FROM USER_ACCOUNT";
         try{
             ResultSet resultSet = db.query(sql);
@@ -32,16 +25,11 @@ class DataBaseTest {
                 System.out.println(accountStatus);
                 String notice = resultSet.getString("NOTIFICATION").trim();
                 System.out.println(notice);
-
             }
-
         }
         catch (Exception e) {
             System.out.println(e);
         }
-
-
-
     }
 
     @Test
@@ -139,25 +127,4 @@ class DataBaseTest {
         }
     }
 
-    @Test
-    void update() {
-        try{
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    void delete() {
-    }
-
-    @Test
-    void insert() {
-    }
-
-    @Test
-    void commit() {
-    }
 }
