@@ -962,6 +962,10 @@ public class ModelController {
         for (RentBook rentBook: expiredRentBook) {
             try {
                 User user = userBuffer.get(rentBook.getAccountID());
+                if (!user.getAccountStatus()) {
+                    output.add(user);
+                    continue;
+                }
                 user.setAccountStatus(false);
                 user.pushToDatabase();
                 output.add(user);
