@@ -8,7 +8,7 @@ import java.util.*;
 public class LMSController {
     private static ModelController modelController = new ModelController();
     private static final MainView mainView = new MainView();
-    private static DataProcess dataProcess = new DataProcess();
+    private static DataAnalyser dataAnalyser = new DataAnalyser();
 
     public static String inputListener() {
         Scanner scanner = new Scanner(System.in);
@@ -588,20 +588,20 @@ public class LMSController {
                         }
                     } else if (mainOption.equals("T")) {
                         try {
-                            int totalBookNumber = dataProcess.getTotalBookNumber();
-                            int totalRentBookNumber = dataProcess.getTotalRentBook();
-                            List<String> mostRentBookISBN = dataProcess.getMostRentBookISBN();
-                            List<Book> mostRentBookID = dataProcess.getMostRentBookID();
-                            List<String> leastRentBookISBN = dataProcess.getLeastRentBookISBN();
-                            List<Book> leastRentBookID = dataProcess.getLeastRentBookID();
-                            List<String> mostWantBookISBN = dataProcess.getMostWantBookISBN();
-                            List<Book> mostWantBookID = dataProcess.getMostWantBookID();
-                            List<String> leastWantBookISBN = dataProcess.getLeastWantBookISBN();
-                            List<Book> leastWantBookID = dataProcess.getLeastWantBookID();
-                            List<String> mostRentBookISBNByCategory = dataProcess.getMostRentBookISBNByCategory();
-                            List<String> mostRentBookISBNByAuthor = dataProcess.getMostRentBookISBNByAuthor();
-                            List<String> mostWantBookISBNByCategory = dataProcess.getMostWantBookISBNByCategory();
-                            List<String> mostWantBookISBNByAuthor = dataProcess.getMostWantBookISBNByAuthor();
+                            int totalBookNumber = dataAnalyser.getTotalBookNumber();
+                            int totalRentBookNumber = dataAnalyser.getTotalRentBook();
+                            List<String> mostRentBookISBN = dataAnalyser.getMostRentBookISBN();
+                            List<Book> mostRentBookID = dataAnalyser.getMostRentBookID();
+                            List<String> leastRentBookISBN = dataAnalyser.getLeastRentBookISBN();
+                            List<Book> leastRentBookID = dataAnalyser.getLeastRentBookID();
+                            List<String> mostWantBookISBN = dataAnalyser.getMostWantBookISBN();
+                            List<Book> mostWantBookID = dataAnalyser.getMostWantBookID();
+                            List<String> leastWantBookISBN = dataAnalyser.getLeastWantBookISBN();
+                            List<Book> leastWantBookID = dataAnalyser.getLeastWantBookID();
+                            List<String> mostRentBookISBNByCategory = dataAnalyser.getMostRentBookISBNByCategory();
+                            List<String> mostRentBookISBNByAuthor = dataAnalyser.getMostRentBookISBNByAuthor();
+                            List<String> mostWantBookISBNByCategory = dataAnalyser.getMostWantBookISBNByCategory();
+                            List<String> mostWantBookISBNByAuthor = dataAnalyser.getMostWantBookISBNByAuthor();
                             mainView.analysisReportPage(totalBookNumber, totalRentBookNumber, mostRentBookISBN, mostRentBookID,
                                     leastRentBookISBN, leastRentBookID, mostWantBookISBN, mostWantBookID,
                                     leastWantBookISBN, leastWantBookID, mostRentBookISBNByCategory, mostRentBookISBNByAuthor,
