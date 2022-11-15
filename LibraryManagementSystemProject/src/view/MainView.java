@@ -155,7 +155,7 @@ public class MainView {
         System.out.println("[Dear Manager, the following message has been sent to the user "+accountID+" via email:");
         System.out.println("    \"Dear User " +accountID);
         System.out.println("    The book (ID: "+bookID+") has been rent is out of the MAX RENT DAY 14 days!");
-        System.out.println("    Your account will be banned until you return the book!\"]");
+        System.out.println("    Your account is deactivated until you return the book!\"]");
     }
 
     // A book can be reserved for up to 7 days
