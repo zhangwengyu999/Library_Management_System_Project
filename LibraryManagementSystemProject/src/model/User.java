@@ -33,6 +33,9 @@ public class User implements SQLModel {
         return inString;
     }
 
+    /**
+     * getter methods
+     */
     public String getAccountID() {
         return accountID;
     }
@@ -45,6 +48,9 @@ public class User implements SQLModel {
         return noticeString;
     }
 
+    /**
+     * setter methods
+     */
     public void setAccountID(String inAccountID) {
         this.accountID = inAccountID;
     }
@@ -59,10 +65,16 @@ public class User implements SQLModel {
         return reserveCount;
     }
 
+    /**
+     *  show related information
+     */
     public String showInfo(){
         return "[Account ID]: " + getAccountID() + " [Account Status]: " + getAccountStatus() +" [Notice String]: " + getNoticeString();
     }
 
+    /**
+     * increment the bookReserveNum by 1
+     */
     public boolean increaseReserveCount() {
         if (reserveCount < MAX_WANT_BOOK) {
             reserveCount++;
@@ -71,6 +83,9 @@ public class User implements SQLModel {
         return false;
     }
 
+    /**
+     * decrement the bookReserveNum by 1
+     */
     public boolean decreaseReserveCount() {
         if (reserveCount > 0) {
             reserveCount--;
@@ -79,12 +94,18 @@ public class User implements SQLModel {
         return false;
     }
 
+    /**
+     * Set the bookReserveNum
+     */
     public void setReserveCount(int inNum) {
         if (inNum>=0) {
             reserveCount = inNum;
         }
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
@@ -104,6 +125,9 @@ public class User implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (db.contains("USER_ACCOUNT","accountID",Integer.parseInt(accountID))){
@@ -131,6 +155,9 @@ public class User implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM USER_ACCOUNT WHERE accountID = " + accountID;

@@ -69,5 +69,4 @@ public class DayCalculator {
         }
         return days;
     }
-
 }

@@ -1,7 +1,6 @@
 package model;
 
 import controller.database.DataBase;
-import exception.canNotHappenedException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,15 +23,19 @@ public class WantBook implements SQLModel {
         this.size = 0;
     }
 
+    /**
+     *  show related information
+     */
     public String showInfo(){
         return " [Account ID]: " + accountID + " [ISBN]: " + wantISBN + " [Year]: " + wantYear + " [Month]: " + wantMonth + " [Day]: " + wantDay;
     }
 
-
+    /**
+     * getter methods
+     */
     public String getUserAccountID() {
         return this.accountID;
     }
-
 
     public String getWantISBNs() {
         return this.wantISBN;
@@ -45,6 +48,9 @@ public class WantBook implements SQLModel {
         return yyyy+"-"+mm+"-"+dd;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
@@ -75,6 +81,9 @@ public class WantBook implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (!db.contains("WANT_BOOK","ISBN","accountID",wantISBN,accountID)){
@@ -85,6 +94,9 @@ public class WantBook implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public void deleteFromDatabase () {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM WANT_BOOK WHERE ISBN = \'" + wantISBN + "\' AND accountID = " + accountID;
@@ -95,7 +107,11 @@ public class WantBook implements SQLModel {
         }
     }
 
-
+    /**
+     * Check whether is the same wantBook
+     * @param inw
+     * @return
+     */
     public boolean equals (WantBook inw) {
         if (this.getUserAccountID().equals(inw.getUserAccountID()) && this.getWantISBNs().equals(inw.getWantISBNs())) {
             return true;

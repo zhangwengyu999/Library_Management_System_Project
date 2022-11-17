@@ -11,6 +11,10 @@ public class PlacedBook extends RentBook implements SQLModel {
         super(inAccountID, inBookID, inYear, inMonth,inDay);
     }
 
+    /**
+     * Override the getDate method in RentBook
+     * @return
+     */
     public String getDate() {
         String yyyy = year+"";
         String mm = month<10?"0"+month:month+"";
@@ -18,6 +22,9 @@ public class PlacedBook extends RentBook implements SQLModel {
         return yyyy+"-"+mm+"-"+dd;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
@@ -39,6 +46,10 @@ public class PlacedBook extends RentBook implements SQLModel {
         }
         return this;
     }
+
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (!db.contains("HAS_PLACED","bookID",Integer.parseInt(bookID))){
@@ -49,6 +60,9 @@ public class PlacedBook extends RentBook implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM HAS_PLACED " +

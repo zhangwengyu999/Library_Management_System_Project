@@ -34,6 +34,9 @@ public class ModelController {
         initializeBuffers();
     }
 
+    /**
+     * Close the database connection
+     */
     public void closeDB() {
         try {
             db.closeConnection();
@@ -42,6 +45,10 @@ public class ModelController {
         }
     }
 
+    /**
+     * get the current date
+     * @return the current date in the format of "yyyy-MM-dd"
+     */
     public String getDate() {
         String yyyy = year+"";
         String mm = month<10?"0"+month:month+"";
@@ -49,6 +56,12 @@ public class ModelController {
         return yyyy+"-"+mm+"-"+dd;
     }
 
+    /**
+     * Set the current date
+     * @param inYear the year
+     * @param inMonth the month
+     * @param inDay the day
+     */
     public void setDate(String inYear, String inMonth, String inDay) {
         this.year = Integer.parseInt(inYear);
         this.month = Integer.parseInt(inMonth);
@@ -456,6 +469,7 @@ public class ModelController {
         }
         return result;
     }
+
     /**
      * Search book on category
      * @param inCategory: the category of the book
@@ -510,7 +524,6 @@ public class ModelController {
         if (rentBookBuffer.containsKey(inBookID)){
             result.add(rentBookBuffer.get(inBookID));
         }
-
         return result;
     }
 
@@ -527,7 +540,6 @@ public class ModelController {
                 result.add((RentBook) rentBook);
             }
         }
-
         return result;
     }
 
@@ -560,7 +572,6 @@ public class ModelController {
                 }
             }
         }
-
         return result;
     }
 
@@ -592,6 +603,7 @@ public class ModelController {
         out.addAll(placedBookBuffer.values());
         return out;
     }
+
     /**
      * Search placed book on accountID
      * @param inAccountID the accountID of the user that placed the book for
@@ -619,7 +631,6 @@ public class ModelController {
         if (placedBookBuffer.containsKey(inBookID)){
             result.add(placedBookBuffer.get(inBookID));
         }
-
         return result;
     }
 
@@ -685,7 +696,6 @@ public class ModelController {
      * @param inAccountID: the accountID of the user to be activated
      * @return boolean: true if the user is successfully activated, false if the user is already activated
      */
-
     public boolean activateUser(String inAccountID) {
         if (userBuffer.containsKey(inAccountID)) {
             try{
@@ -771,12 +781,17 @@ public class ModelController {
         }
     }
 
-    public boolean cancelReservedBook(String inISBN, String inAccountID) {
-        // Only a reserved book can be cancelled
-        // contains the inISBN and User pair in wantBookBuffer
-        // if (!reserveBook(inISBN, inUser.getAccountID())) return false;
 
-        // check whether the book is reserved by the user
+    /**
+     * Cancel a reservation of a book with a ISBN
+     * Only a reserved book can be cancelled
+     * contains the inISBN and User pair in wantBookBuffer
+     * check whether the book is reserved by the user
+     * @param inISBN the ISBN of the book the user wants to cancel
+     * @param inAccountID the user ID of the user who wants to cancel a reservation
+     * @return boolean: true if the book is successfully cancelled, false if the cancellation fails
+     */
+    public boolean cancelReservedBook(String inISBN, String inAccountID) {
         List<Book> foundBooks;
         try{
             foundBooks = searchBookOnBookISBN(inISBN);
@@ -809,12 +824,16 @@ public class ModelController {
         return true;
     }
 
+    /**
+     * Cancel a placed book with a bookID and accountID
+     * @param inBookID the bookID of the book the user wants to cancel
+     * @param inAccountID the user ID of the user who wants to cancel a placed book
+     * @return boolean: true if the book is successfully cancelled, false if the cancellation fails
+     */
     public boolean cancelPlacedBook(String inBookID, String inAccountID) {
-
         if (!userBuffer.containsKey(inAccountID) || !bookBuffer.containsKey(inBookID)) {
             return false;
         }
-
         try {
             searchPlacedBookOnAccountID(inAccountID);
         } catch (Exception e) {
@@ -855,7 +874,6 @@ public class ModelController {
         return true;
     }
 
-
     /**
      * put expired placed book to available and notice their user
      */
@@ -888,11 +906,9 @@ public class ModelController {
         }
     }
 
-
     /**
     * check the expired rent books and return the list of expired rent books
     * @return List<RentBook> expired rent Book and User
-    * @author Mike
     * */
     public List<RentBook> getExpiredRentBook() {
         List<RentBook> output = new ArrayList<>();
@@ -924,7 +940,7 @@ public class ModelController {
     /**
      * deactivates the user account due to overdue rent books
      * and return the list of deactivated users
-     * @return
+     * @return List<User> deactivated users
      */
     public List<User> deactivateUserForExpiredRentBook() {
         List<User> output = new ArrayList<>();
@@ -958,8 +974,6 @@ public class ModelController {
      * @return List<RentBook> expired rent Book of this user
      */
     public List<RentBook> getExpiredRentBook(String inAccountID) {
-
-
         List<RentBook> output = new ArrayList<>();
         if (!userBuffer.containsKey(inAccountID)) {
             return output;
@@ -983,7 +997,12 @@ public class ModelController {
         return output;
     }
 
-
+    /**
+     * Rent a book from library by a user
+     * @param accountID the user who wants to rent a book
+     * @param bookID the book which the user wants to rent
+     * @return true if the rent is successful, false if the rent is failed
+     */
     public boolean rentBookFromUser(String accountID, String bookID) {
         if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
             return false;
@@ -1021,6 +1040,11 @@ public class ModelController {
         return false;
     }
 
+    /**
+     * Return a book to library by a user
+     * @param bookID the book which the user wants to return
+     * @return true if the return is successful, false if the return is failed
+     */
     public boolean returnBookFromUser(String bookID) {
         if (!bookBuffer.containsKey(bookID)) {
             return false;
@@ -1071,6 +1095,12 @@ public class ModelController {
         return false;
     }
 
+    /**
+     * Rent a book from the placed book by a user
+     * @param accountID the user who wants to rent a book
+     * @param bookID the book which the user wants to rent
+     * @return true if the rent is successful, false if the rent is failed
+     */
     public boolean rentBookFromPlacedBook(String accountID,String bookID) {
         if (!userBuffer.containsKey(accountID) || !bookBuffer.containsKey(bookID)) {
             return false;
@@ -1103,6 +1133,12 @@ public class ModelController {
         }
         return false;
     }
+
+    /**
+     * check whether a String is in int format
+     * @param s the String to be checked
+     * @return true if the String is in int format, false if the String is not in int format
+     */
     private static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);

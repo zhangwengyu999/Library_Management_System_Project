@@ -36,9 +36,9 @@ public class Book implements SQLModel {
         return inString;
     }
 
-
-
-    // getter
+    /**
+     * getter methods
+     */
     public String getISBN() {
         return ISBN;
     }
@@ -63,24 +63,9 @@ public class Book implements SQLModel {
 
     public int getBookWantNum(){return bookWantNum;}
 
-    //new
-    public void addRentBookCount() {
-        bookRentNum++;
-    }
-    //new
-    public void addWantBookCount() {
-        bookWantNum++;
-    }
-
-    public void deleteWantBookCount() {bookWantNum--;}
-
-
-    // show related information
-    public String showInfo(){
-        return "[Book ID]:"+bookID+ " [Book ISBN]: " + ISBN + " [Book Name]: " + bookName + " [Author]: " + author + " [Category]: " + category + " [Time of Rent]: " + bookRentNum + " [Time of Want]: " + getBookWantNum();
-    }
-
-    // setter
+    /**
+     * setter methods
+     */
     public void setISBN(String inISBN) {
         this.ISBN = inISBN;
     }
@@ -101,8 +86,35 @@ public class Book implements SQLModel {
         this.category = inCategory;
     }
 
+    /**
+     * increment the bookRentNum by 1
+     */
+    public void addRentBookCount() {
+        bookRentNum++;
+    }
 
-    // for JDBC
+    /**
+     * increment the bookWantNum by 1
+     */
+    public void addWantBookCount() {
+        bookWantNum++;
+    }
+
+    /**
+     * decrement the bookRentNum by 1
+     */
+    public void deleteWantBookCount() {bookWantNum--;}
+
+    /**
+     *  show related information
+     */
+    public String showInfo(){
+        return "[Book ID]:"+bookID+ " [Book ISBN]: " + ISBN + " [Book Name]: " + bookName + " [Author]: " + author + " [Category]: " + category + " [Time of Rent]: " + bookRentNum + " [Time of Want]: " + getBookWantNum();
+    }
+
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pullFromDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
@@ -128,7 +140,9 @@ public class Book implements SQLModel {
         return this;
     }
 
-    // for JDBC
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (db.contains("BOOK", "bookID", Integer.parseInt(bookID))){
@@ -155,6 +169,9 @@ public class Book implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM BOOK WHERE bookID = " + bookID;

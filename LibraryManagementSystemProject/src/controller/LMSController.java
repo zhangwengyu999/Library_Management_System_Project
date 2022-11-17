@@ -10,15 +10,28 @@ public class LMSController {
     private static final MainView mainView = new MainView();
     private static DataAnalyser dataAnalyser = new DataAnalyser();
 
+    /**
+     * Get the current model controller
+     * @return the current model controller
+     */
+    public static ModelController getModelController() {
+        return modelController;
+    }
+
+    /**
+     * To listen the user keyboard input
+     * @return the user input
+     */
     public static String inputListener() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    public static ModelController getModelController() {
-        return modelController;
-    }
-
+    /**
+     * To check whether a String is in the format of int
+     * @param s the String to be checked
+     * @return true if the String is in the format of int, false otherwise
+     */
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
@@ -30,6 +43,10 @@ public class LMSController {
         return true;
     }
 
+    /**
+     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> The entry of the entire application <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     * @param args
+     */
     public static void main(String[] args) {
         while(true) {
             mainView.welcomePage();

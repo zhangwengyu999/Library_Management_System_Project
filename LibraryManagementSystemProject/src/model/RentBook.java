@@ -1,5 +1,4 @@
 package model;
-import exception.canNotHappenedException;
 import controller.database.DataBase;
 
 import java.sql.ResultSet;
@@ -20,6 +19,9 @@ public class RentBook implements SQLModel {
         this.day = inDay;
     }
 
+    /**
+     * getter methods
+     */
     public String getDate() {
         String yyyy = year+"";
         String mm = month<10?"0"+month:month+"";
@@ -31,12 +33,33 @@ public class RentBook implements SQLModel {
         return new int[]{year,month,day};
     }
 
+    public String getBookID() {
+        return this.bookID;
+    }
+
+    public String getAccountID() {
+        return this.accountID;
+    }
+
+    /**
+     * setter methods
+     */
     public void setDate(int[] inRentDate) {
         this.year = inRentDate[0];
         this.month = inRentDate[1];
         this.day = inRentDate[2];
     }
 
+    /**
+     *  show related information
+     */
+    public String showInfo() {
+        return "[Account ID]:" + accountID + " [Book ID]: " + bookID + " [Year]: "+ year + " [Month]: " + month  +" [Day]: "+day;
+    }
+
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pullFromDatabase() throws SQLException{
         DataBase db = DataBase.getDataBase();
         ResultSet resultSet;
@@ -60,6 +83,10 @@ public class RentBook implements SQLModel {
         }
         return this;
     }
+
+    /**
+     * Implement the SQLModel interface methods
+     */
     public SQLModel pushToDatabase() throws SQLException {
         DataBase db = DataBase.getDataBase();
         if (!db.contains("HAS_RENT","bookID",Integer.parseInt(bookID))){
@@ -75,6 +102,9 @@ public class RentBook implements SQLModel {
         return this;
     }
 
+    /**
+     * Implement the SQLModel interface methods
+     */
     public void deleteFromDatabase () throws SQLException {
         DataBase db = DataBase.getDataBase();
         String sql = "DELETE FROM HAS_RENT " +
@@ -85,19 +115,4 @@ public class RentBook implements SQLModel {
             e.printStackTrace();
         }
     }
-
-
-    public String getBookID() {
-        return this.bookID;
-    }
-
-    public String getAccountID() {
-        return this.accountID;
-    }
-
-    // Show the related information of RentBook
-    public String showInfo() {
-        return "[Account ID]:" + accountID + " [Book ID]: " + bookID + " [Year]: "+ year + " [Month]: " + month  +" [Day]: "+day;
-    }
-
 }

@@ -1,11 +1,9 @@
 package controller.database;
 import java.sql.*;
 import oracle.jdbc.driver.*;
-import oracle.sql.*;
 
 public class DataBase {
     private static final DataBase dataBase;
-
     static {
         try {
             dataBase = new DataBase();
@@ -13,20 +11,23 @@ public class DataBase {
             throw new RuntimeException(e);
         }
     }
-
     private static OracleConnection connection;
     private static final String username = "\"21098431d\"";
 
-    /** The password below is intentionally designed for the LMS Project Database connection,
-    it will be expired after the overall assessment grade is released and finalised. */
+        /** The password below is intentionally designed for the LMS Project Database connection,
+        it will be expired after the overall assessment grade is released and finalised. */
     private static final String pwd = "getPassword";
     private static final String url = "jdbc:oracle:thin:@studora.comp.polyu.edu.hk:1521:dbms";
 
+    /**
+     * Private constructor for Singleton pattern
+     * Ensure that only one instance of DataBase can be created
+     * Meaning only one database connection can be applied at a time
+     */
     private DataBase() throws SQLException {
         try{
             initializeConnection();
         }
-
         catch(SQLException e){
             System.out.println("Connection Failed!");
             e.printStackTrace();
@@ -34,10 +35,17 @@ public class DataBase {
         }
     }
 
+    /**
+     * Get the only instance of the database
+     * @return the only instance of the database
+     */
     public static DataBase getDataBase() {
         return dataBase;
     }
 
+    /**
+     * Reconnect to the database
+     */
     public void reConnect() {
         try {
             connection.close();
@@ -107,7 +115,6 @@ public class DataBase {
     public boolean contains(String inTable, String inAttr, String inObject) throws SQLException {
         String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = \'" + inObject+"\'";
         try{
-//            System.out.println(sql); //
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
                 return true;
@@ -122,12 +129,11 @@ public class DataBase {
     }
 
     /**
-     * change to int
+     * Overload the contains method
      */
     public boolean contains(String inTable, String inAttr, int inObject) throws SQLException {
         String sql = "SELECT * FROM " + inTable + " WHERE " + inAttr + " = " + inObject;
         try{
-//            System.out.println(sql); //
             ResultSet resultSet = query(sql);
             if (resultSet.next()) {
                 return true;
@@ -166,11 +172,9 @@ public class DataBase {
         return false;
     }
 
-
-
-    /*
+    /**
      * update the database
-     * @param sql: the sql statement
+     * @param inSql: the sql statement
      */
     public void update(String inSql) throws SQLException {
         try {
@@ -184,9 +188,9 @@ public class DataBase {
         }
     }
 
-    /*
+    /**
      * Delete the data in the table
-     * @param sql: the sql statement
+     * @param inSql: the sql statement
      */
     public void delete(String inSql) throws SQLException {
         try {
@@ -200,9 +204,9 @@ public class DataBase {
         }
     }
 
-    /*
+    /**
      * insert the data into the table
-     * @param sql: the sql statement
+     * @param inSql: the sql statement
      */
     public void insert(String inSql) throws SQLException {
         try {
@@ -216,7 +220,7 @@ public class DataBase {
         }
     }
 
-    /*
+    /**
      * commit the changes
      */
     public void commit() throws SQLException {

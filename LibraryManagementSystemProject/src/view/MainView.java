@@ -1,14 +1,13 @@
 package view;
 
-import java.rmi.dgc.Lease;
-import java.sql.SQLOutput;
-import java.text.SimpleDateFormat;
-
 import controller.LMSController;
 import controller.ModelController;
 import model.Book;
 import java.util.*;
 
+/**
+ * The class MainView is the main view part of the application.
+ */
 public class MainView {
 
     ModelController modelController = LMSController.getModelController();

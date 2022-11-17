@@ -1,15 +1,14 @@
 package controller;
 
-
 import controller.database.DataBase;
 import model.Book;
-
-//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-
+/**
+ * The class DataAnalyser is used to analyse the data from the database.
+ */
 public class DataAnalyser {
     ModelController modelController = new ModelController();
 
@@ -50,11 +49,6 @@ public class DataAnalyser {
         return totalBorrowedNumber;
     }
 
-    /**
-     *
-     * @return
-     * @throws SQLException
-     */
     public List<String> getMostRentBookISBN() throws SQLException{
         List<String> result = new ArrayList<>();
         DataBase db = DataBase.getDataBase();
@@ -79,11 +73,6 @@ public class DataAnalyser {
         return result;
     }
 
-    /**
-     *
-     * @return
-     * @throws SQLException
-     */
     public List<Book> getMostRentBookID() throws SQLException {
         List<Book> result = new ArrayList<>();
         DataBase db = DataBase.getDataBase();
@@ -133,12 +122,6 @@ public class DataAnalyser {
         return result;
     }
 
-
-    /**
-     *
-     * @return
-     * @throws SQLException
-     */
     public List<Book> getLeastRentBookID() throws SQLException {
         List<Book> result = new ArrayList<>();
         DataBase db = DataBase.getDataBase();
@@ -282,7 +265,6 @@ public class DataAnalyser {
         return result;
     }
 
-
     public List<String> getMostRentBookISBNByAuthor() throws SQLException {
         List<String> result = new ArrayList<>();
         DataBase db = DataBase.getDataBase();
@@ -305,7 +287,6 @@ public class DataAnalyser {
         }
         return result;
     }
-
 
     public List<String> getMostWantBookISBNByCategory() throws SQLException {
         List<String> result = new ArrayList<>();
@@ -352,5 +333,4 @@ public class DataAnalyser {
         }
         return result;
     }
-
 }
