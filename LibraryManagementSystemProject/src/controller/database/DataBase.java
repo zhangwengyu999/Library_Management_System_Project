@@ -16,6 +16,9 @@ public class DataBase {
 
     private static OracleConnection connection;
     private static final String username = "\"21098431d\"";
+
+    /** The password below is intentionally designed for the LMS Project Database connection,
+    it will be expired after the overall assessment grade is released and finalised. */
     private static final String pwd = "getPassword";
     private static final String url = "jdbc:oracle:thin:@studora.comp.polyu.edu.hk:1521:dbms";
 
