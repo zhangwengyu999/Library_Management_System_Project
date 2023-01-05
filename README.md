@@ -24,7 +24,7 @@
 4. Notifications when the desired book becomes available and reminders that a book should be returned to the library.  Both could be sent by email and/or when patron logs in to the LMS. 
 5. Provide analysis report to management to review the system.
 
-For detailed features, please refer to [Project Report](#project-report).
+For detailed features, please refer to [Project Report](https://github.com/zhangwengyu999/Library_Management_System_Project/blob/main/Project_Report.pdf).
 
 ---
 
