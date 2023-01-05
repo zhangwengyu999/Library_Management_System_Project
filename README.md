@@ -30,7 +30,7 @@ For detailed features, please refer to [Project Report](https://github.com/zhang
 
 ## User Guide
 
-For detailed user guide, please refer to [Project Guide](https://github.com/zhangwengyu999/Library_Management_System_Project/blob/main/User_Guide.pdf).
+For detailed user guide, please refer to [User Guide](https://github.com/zhangwengyu999/Library_Management_System_Project/blob/main/User_Guide.pdf).
 
 ---
 
