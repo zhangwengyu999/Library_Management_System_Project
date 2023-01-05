@@ -12,12 +12,12 @@ public class DataBase {
         }
     }
     private static OracleConnection connection;
-    private static final String username = "\"21098431d\"";
+    private static final String username = "\"123456789\""; // demo username
 
         /** The password below is intentionally designed for the LMS Project Database connection,
         it will be expired after the overall assessment grade is released and finalised. */
-    private static final String pwd = "getPassword";
-    private static final String url = "jdbc:oracle:thin:@studora.comp.polyu.edu.hk:1521:dbms";
+    private static final String pwd = "admin123"; // demo password
+    private static final String url = "jdbc:oracle:thin:@xxx.edu.xx:1234:dbms"; // demo url
 
     /**
      * Private constructor for Singleton pattern
