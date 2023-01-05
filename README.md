@@ -16,6 +16,10 @@
 
 ---
 
+<img src="./lms.png" width="50%"></img>
+
+---
+
 ## Features
 
 1. A book catalogue with search by name, author and category of the books.  Note there may  be more than one copy of each book, and a book may even be published by different  publishers. 
