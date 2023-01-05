@@ -28,9 +28,9 @@ For detailed features, please refer to [Project Report](https://github.com/zhang
 
 ---
 
-## User Manual
+## User Guide
 
-For detailed features, please refer to [Project Report](#project-report).
+For detailed user guide, please refer to [Project Guide](https://github.com/zhangwengyu999/Library_Management_System_Project/blob/main/User_Guide.pdf).
 
 ---
 
