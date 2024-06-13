@@ -16,6 +16,12 @@
 
 ---
 
+## Demo
+
+https://github.com/zhangwengyu999/Library_Management_System_Project/assets/68627255/eff4df6e-7cde-49fd-a1ba-4d9a1289d36b
+
+---
+
 <img src="./lms.png" width="50%"></img>
 
 ---
